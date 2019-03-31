@@ -1,0 +1,86 @@
+body {
+	color: #f2f2f2;
+	background-color: #0d0d0d;
+}
+
+/* ---Main Form CSS -----*/
+a {
+	color: #f2f2f2;
+}
+
+.nav-link:hover {
+	font-weight: bold;
+}
+.card {
+	background-color:transparent;
+	
+}
+
+.btn-link {
+	color:#ccccff;
+	border: 4px solid #33497B;
+}
+
+.btn-link:hover {
+	font-weight: bolder;
+	color:#ccccff;
+	border: 4px solid #ED1A23;
+}
+
+
+.form-control {
+	color: #f2f2f2;
+	background-color: #0d0d0d;
+}
+.form-control:disabled {
+	color: #f2f2f2;
+	background-color: #0d0d0d;
+}
+.form-control[readonly] {
+	color: #f2f2f2;
+	background-color: #0d0d0d;
+}
+
+#dispatchPanel, #demographicPanel, #problemPanel, #treatmentPanel,
+ #dispositionPanel, #apcfpPanel, #narrativePanel, #authorizationPanel {
+	background:#262626;
+}
+.btn-outline-secondary {
+	color: #f2f2f2;
+	font-weight:bold;
+}
+.card-header {
+	background-color:#404040;
+}
+
+ /* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+
+  
+  *,
+:before,
+:after {
+  box-sizing: border-box;
+}
+
+
+
+.signature-component {
+}
