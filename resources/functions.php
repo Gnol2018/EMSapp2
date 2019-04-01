@@ -63,6 +63,7 @@ function userLogin(){
            redirect('index.php');
         } else {
            redirect('form.php');
+           $_SESSION['userName'] = $userName;
         }
     }
 }

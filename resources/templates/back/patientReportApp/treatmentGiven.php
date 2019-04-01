@@ -247,10 +247,10 @@
     			</div>
     			<div class="form-group form-inline">
     				<input name="chkBLStxt4"class="form-check-input" type="checkbox">
-    				<label name="txtVomit"class="form-check-label">Vomiting Induced @</label>
-    				<input class="form-control" type="time">
-    				<label name="txtVomitMethod" class="form-label">Method:</label>
-    				<input class="form-control" type="text">
+    				<label class="form-check-label">Vomiting Induced @</label>
+    				<input name="txtVomit" class="form-control" type="text">
+    				<label class="form-label">Method:</label>
+    				<input name="txtVomitMethod" class="form-control" type="text">
     			</div>
     			<div class="form-inline">
     				<input name="chkBLStxt5" class="form-check-input" type="checkbox">
@@ -260,23 +260,23 @@
     			<div class="form-inline">
     				<input name="chkBLStxt6" class="form-check-input" type="checkbox">
     				<label class="form-check-label">Baby Delivered @:</label>	
-    				<input name="txtBabyDelivery" class="form-control" type="time">
+    				<input name="txtBabyDelivery" class="form-control" type="text">
     				<label class="form-label ml-1">In Country:</label>
     				<input name="txtBabyCountry" class="form-control" type="text">
     				<div class="form-check form-check-inline ml-1">
-        				<input class="form-check-input" type="radio" name="radBaby">
+        				<input class="form-check-input" type="radio" name="radBaby" value="Alive">
         				<label class="form-check-label">Alive</label>
                 	</div>
                 	<div class="form-check form-check-inline">
-        				<input class="form-check-input" type="radio" name="radBaby">
+        				<input class="form-check-input" type="radio" name="radBaby" value="Stillborn">
         				<label class="form-check-label">Stillborn</label>
                 	</div>
                 	<div class="form-check form-check-inline">
-        				<input class="form-check-input" type="radio" name="radBaby">
+        				<input class="form-check-input" type="radio" name="radBaby" value="Male">
         				<label class="form-check-label">Male</label>
                 	</div>
                 	<div class="form-check form-check-inline">
-        				<input class="form-check-input" type="radio" name="radBaby">
+        				<input class="form-check-input" type="radio" name="radBaby" value="Female">
         				<label class="form-check-label">Female</label>
                 	</div>
     			</div>

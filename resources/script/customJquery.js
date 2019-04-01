@@ -36,7 +36,7 @@
 			if($(this).is(':checked')){
 				showTrauma.show();		
 				} else {
-						showTrauma.hide();
+				showTrauma.hide();
 				}				
 			})	
 		//Helpful Checkbox Function

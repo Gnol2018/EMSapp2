@@ -60,10 +60,36 @@
     $txtCPR = $_SESSION['txtCPR'];
     $txtCPRstart = $_SESSION['txtCPRstart'];
     $txtCPRarrest = $_SESSION['txtCPRarrest'];
-   
+    
+    $numDef = $_SESSION['numDef'];
+    $radBLS4 = $_SESSION['radBLS4'];
+    $txtMast = $_SESSION['txtMast'];
+    $txtBleedCtrl = $_SESSION['txtBleedCtrl'];
+    $radLimb = $_SESSION['radLimb'];
+    $radBackBoard = $_SESSION['radBackBoard'];
+    $txtVomit = $_SESSION['txtVomit'];
+    $txtVomitMethod = $_SESSION['txtVomitMethod'];
+    $radLimb = $_SESSION['radLimb'];
+    $radLimb = $_SESSION['radLimb'];
+    $txtRestraints = $_SESSION['txtRestraints'];
+    $txtBabyDelivery = $_SESSION['txtBabyDelivery'];
+    $txtBabyCountry = $_SESSION['txtBabyCountry'];
+    $radBaby = $_SESSION['radBaby'];
+    $txtAEDshock = $_SESSION['txtAEDshock'];
+    $txtBLSother = $_SESSION['txtBLSother'];
+    
+  /*  $_SESSION['txtBabyDelivery'] = $txtBabyDelivery;
+    $_SESSION['txtBabyCountry'] = $txtBabyCountry;
+    $_SESSION['radBaby'] = $radBaby;
+    $_SESSION['txtAEDshock'] = $txtAEDshock;
+    $_SESSION['txtBLSother'] = $txtBLSother;
+    
+    */
     
     //Narrtive Notes
+    $txtNarrativeNote = $_SESSION['txtNarrativeNote'];
     $signOut1 = $_SESSION['signOut1'];
+    $signOut2 = $_SESSION['signOut2'];
 ?>
 <!DOCTYPE>
 <html>
@@ -106,6 +132,9 @@
         .label {
             font-weight:bold;
             text-decoration:underline;
+        }
+        .signaturePad {
+            background-color: black;
         }
        /* .page[size="A4"] {  
           width: 21cm;
@@ -191,9 +220,7 @@
     				<td><span class="label">Emergency Phone:</span> <?php print($patientEmerPhone)?></td>
 				</tr>
 			</table>
-			
-			
-			
+		
 			<table>
 				<tr>
 					<td colspan="2"><span class="label">Chief Complaint - Trauma:</span> <?php print($traumaComplaint)?>
@@ -253,26 +280,65 @@
 				<td>
 				<p><span class="label">Basic Life Support (BLS)</span> 
 				<?php 
-				echo implode(", ", $chkBLS);
+				
+				
 				if(isset($txtArtificial)) {
 				    echo 'Artificial Ventilation Method: ' . $txtArtificial;
 				}
 				if(isset($txtCPRstart)) {
-				    echo 'C.P.R. started @ ' . $txtCPRstart . "/ Time from Arrest til CPR " . $txtCPRarrest . ".";
+				    echo 'C.P.R. started @ ' . $txtCPRstart . "/ Time from Arrest til CPR " . $txtCPRarrest . ", ";
 				}
-				?>
+				if(isset($numDef)) {
+				    echo 'Defibrillation No. Times: ' . $txtCPRstart . "(" . $radBLS4 . "), ";
+				}
+				if(isset($txtMast)) {
+				    echo 'Mast Infated: ' . $txtMast . ", ";
+				}
+				if(isset($txtBleedCtrl)) {
+				    echo 'Bleeding/Hemorrhage Controlled (Method:' . $txtBleedCtrl . "), ";
+				}
+				if(isset($radLimb)){
+				    echo 'Limb Immobilized by: ' . $radLimb . ', ';
+				}
+				if(isset($radBackBoard)){
+				    echo 'Backboard Immobil: ' . $radBackBoard . ', ';
+				}
+				if(isset($txtVomit)){
+				    echo 'Vomiting Induced @ ' . $txtVomit . '/ Method: '. $txtVomitMethod . ', ';
+				}
+				
+				echo implode(", ", $chkBLS);
+				?></p>
 				</td>
 			</tr>
 		</table>
 		<table>
 			<tr>
-				<td><span class="label">Narrative Note: </span></td>
-			</tr>
-			<tr>
+				<td><p><span class="label">Narrative Note:  </span><?php echo $txtNarrativeNote;?></p></td>
 				<td>
-				<img style="width:400px; height:300px;" src= <?php print($signOut1)?> alt="Signature">
+				<img class="signaturePad" style="width:350px; height:auto;" src= <?php print($signOut1)?> alt="Signature">
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2">
+				<p style="font-weight: bold">I hereby refuse emergency medical treatment and/or transportation to the nearest emergency medical facility.
+				 I acknowledge that such treatment was advised by the ambulance technician or physician.
+				  I hereby release such persons from liability for respecting my wishes and following my express directions.</p>
+				</td>
+			</tr>
+			<tr>
+    			<td colspan="2">
+        			<p><span class="label">Patient Signature:  </span></p>
+        			<img class="signaturePad" style="width:350px; height:auto;" src= <?php print($signOut2)?> alt="Patient Signature">
+    			</td>
+			</tr>
 		</table>
+		<div>
+			<blockquote>
+				I request that payment of authorized Medicare, Medicaid, or any other insurance benefits be made on my behalf to Senior Care EMS for any services provided to me by Senior Care now or in the future. I understand that I am financially responsible for the services provided to me by Senior Care MES regardless of my insurance coverage, and in some cases, may be responsible for an amount in addition to that which was paid by my insurance. I agree to immediately remit to Senior Care EMS amy payments that I receive directly from insurance or any source whatsoever for the services provided to me and I assign all rights to such payments to Senior Care EMS. I authorize Senior Care EMS to to appeal payment denials or other adverse decisions on my behalf without further authorization. I authorize and direct any holder of medical information or documentation about me to release such information to Senior Care EMS and its billing agents, and/or the Centers for Medicare andMedicaid Services and its carriers and agents, and/or any other payers or insurers as may be necessary to determine these or other benefits payable for any 
+				services provided to me by Senior Care EMS, now or in the future. A copy of this form is as valid as an original.
+			</blockquote>
+		</div>
+		<p><span style="font-weight:bold">Privacy Practices Acknowledgment:</span> by signing below, I acknowledge that I have received Senior Care EMS Notice of Privacy Practices.</p>
 	</body>
 </html>

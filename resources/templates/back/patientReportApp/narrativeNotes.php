@@ -14,7 +14,7 @@
     		<div class="col-lg">
         		<div class="form-group">
         			<label>Notes</label>
-        			<textarea class="form-control" row="10"></textarea>
+        			<textarea name="txtNarrativeNote" class="form-control" row="10"></textarea>
         		</div>
     		</div>
     	</div>
@@ -46,8 +46,22 @@
     	<input type="text" id="signOut2" name="signOut2">
    		<script>
    		$('#accordion').one('shown.bs.collapse', function() {
-   			$("#signature1").jSignature();
-   			$("#signature2").jSignature();
+   			$("#signature1").resize();
+   			$("#signature1").jSignature({
+   	   			height: 300
+   	   			});
+   			$("#signature2").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec1").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec2").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec3").jSignature({
+				height: 300
+   				});
    			
    		});
    		
@@ -58,8 +72,6 @@
    			$('#signOut1').val(signOutput1);
    			$('#signOut2').val(signOutput2);
    	   		});
-   		
-   		   		
    		</script>
     </div>
 </div>

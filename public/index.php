@@ -1,5 +1,6 @@
 <?php
 require_once("../resources/config.php");
+echo $_SESSION['userName'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

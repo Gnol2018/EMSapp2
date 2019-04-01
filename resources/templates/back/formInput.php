@@ -88,8 +88,8 @@ if(isset($_POST['dispatchSubmit'])) {
         $txtBleedCtrl = $_POST['txtBleedCtrl'];
     }
     if (isset($_POST['chkBLStxt4'])) {
-        $txtBleedCtrl = $_POST['txtVomit'];
-        $txtBleedCtrl = $_POST['txtVomitMethod'];
+        $txtVomit = $_POST['txtVomit'];
+        $txtVomitMethod = $_POST['txtVomitMethod'];
     }
     if (isset($_POST['chkBLStxt5'])) {
         $txtRestraints = $_POST['txtRestraints'];
@@ -100,7 +100,7 @@ if(isset($_POST['dispatchSubmit'])) {
         $radBaby = $_POST['radBaby'];
     }
     if (isset($_POST['chkBLStxt7'])) {
-        $txtRestraints = $_POST['txtAEDshock'];
+        $txtAEDshock = $_POST['txtAEDshock'];
     }
     if (isset($_POST['chkBLStxt8'])) {
         $txtBLSother = $_POST['txtBLSother'];
@@ -117,7 +117,9 @@ if(isset($_POST['dispatchSubmit'])) {
     //Vital Sign Form Input
     $vitalTime = $_POST['vitalTime_1'];
     //Narrative Notes 
+    $txtNarrativeNote = $_POST['txtNarrativeNote'];
     $signOut1= $_POST['signOut1'];
+    $singOut2 = $_POST['signOut2'];
 }
 
 $_SESSION['mileTotal'] = $mileTotal;
@@ -192,17 +194,26 @@ $_SESSION['txtArtificial'] = $txtArtificial;
 $_SESSION['txtCPR'] = $txtCPR;
 $_SESSION['txtCPRstart'] = $txtCPRstart;
 $_SESSION['txtCPRarrest'] = $txtCPRarrest;
-
 $_SESSION['numDef'] = $numDef;
 $_SESSION['radBLS4'] = $radBLS4;
 $_SESSION['txtMast'] = $txtMast;
 $_SESSION['txtBleedCtrl'] = $txtBleedCtrl;
 $_SESSION['radLimb'] = $radLimb;
 $_SESSION['radBackBoard'] = $radBackBoard;
-
+$_SESSION['txtVomit'] = $txtVomit;
+$_SESSION['txtVomitMethod'] = $txtVomitMethod;
+$_SESSION['txtRestraints'] = $txtRestraints;
+$_SESSION['txtBabyDelivery'] = $txtBabyDelivery;
+$_SESSION['txtBabyCountry'] = $txtBabyCountry;
+$_SESSION['radBaby'] = $radBaby;
+$_SESSION['txtAEDshock'] = $txtAEDshock;
+$_SESSION['txtBLSother'] = $txtBLSother;
 
 //Narrate Note
+$_SESSION['txtNarrativeNote'] = $txtNarrativeNote;
 $_SESSION['signOut1'] = $signOut1;
+$_SESSION['signOut2'] = $singOut2;
+
 
 
 $result = implode(", ",$chkBLS);
@@ -213,4 +224,12 @@ echo $txtCPR;
 echo $_SESSION['txtBleedCtrl'];
 echo $_SESSION['radLimb'];
 echo $_SESSION['radBackBoard'];
+
+echo $_SESSION['txtBabyDelivery'];
+echo $_SESSION['txtBabyCountry'];
+echo $_SESSION['radBaby'];
+echo $_SESSION['txtVomit'];
+echo $_SESSION['txtVomitMethod'];
+echo $_SESSION['txtAEDshock'];
+echo $_SESSION['txtBLSother'];
 ?>

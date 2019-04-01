@@ -26,6 +26,59 @@
     		 have received Senior Care EMS Notice of Privacy Practices.</p>
     		</div>
     	</div>
+    	<h3 class="text-center">SIGNATURE SECTION: One of the following three sections MUST be completed.</h3>
+    	<div class="container-fluid my-4" >
+    		<h4>SECTION I - PATIENT SIGNATURE</h4>
+    		<p>The patient must sign here unless the patient is physically or mentally incapable of signing:</p>
+    		<h5>Patient Signature or Mark:</h5>
+    		<div id="signatureSec1"></div>
+    		<p>If the patient signs with an "X" or other mark, it is recommended that someone sign below as a witness:
+    		</p>
+    		<h5>Witness Signature:</h5>
+    		<div id="signatureSec2"></div>
+    		<div class="form-inline">
+    			<label class="font-weight-bold">Witness Printed Name: </label>
+    			<input class="form-control" type="text">
+    		</div>
+    		<p class="font-weight-bold">
+    		If patient is physically or mentally incapable of signing, Section II must be completed.
+    		</p>
+    	</div>
+    	<div class="container-fluid my-4">
+    		<h4>SECTION II - AUTHORIZED REPRESENTATIVE SIGNATURE</h4>
+    		<p>Complete this section only if patient is physically or mentally incapable of signing.<p>
+    		<div class="form-inline">
+    			<label>Reason the patient is physically or mentally incapable of signing: </label>
+    			<input class="form-control" type="text">
+    		</div>
+    		<p>Authorized representatives include only the following individuals (check one):</p>
+            <div class="form-inline">
+            	<input type="checkbox" class="form-control">
+            	<label>Patient's Legal Guardian</label>      
+            	<input type="checkbox" class="form-control">
+              	<label>Patient's Health Care Power of Attorney</label>        	
+            </div>
+            <div class="form-inline">
+            	<input type="checkbox" class="form-control">
+            	<label>Relative or other person who receives government benefits on behalf of patient</label>      
+            </div>
+             <div class="form-inline">
+            	<input type="checkbox" class="form-control">
+            	<label>Relative or other person who arranges treatment or handles the patient's affairs</label>      
+            </div>
+             <div class="form-inline">
+            	<input type="checkbox" class="form-control">
+            	<label>Representative of an agency or institution that furnished care, services or assistance to the patient.</label>      
+            </div>
+            <p class="font-italic">I am signing on behalf of the patient. I recognize that signing on behalf of 
+            the patient is not an acceptance of financial responsibility for the services rendered.</p>
+            <h5>Representative's Signature:</h5>
+            <div id="signatureSec3"></div>
+            <div class="form-inline">
+    			<label class="font-weight-bold">Representatives Printed Name: </label>
+    			<input class="form-control" type="text">
+    		</div
+    	</div>
    
     </div>
 </div>
