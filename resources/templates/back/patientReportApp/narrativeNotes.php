@@ -62,15 +62,32 @@
    			$("#signatureSec3").jSignature({
 				height: 300
    				});
+   			$("#signatureSec4").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec5").jSignature({
+				height: 300
+   				});
    			
    		});
    		
    		$('#signatureSave').on('click', function() {
    			var signOutput1 = $("#signature1").jSignature("getData");
    			var signOutput2 = $("#signature2").jSignature("getData");
+   			var signSec1 = $("#signatureSec1").jSignature("getData");
+   			var signSec2 = $("#signatureSec2").jSignature("getData");
+   			var signSec3 = $("#signatureSec3").jSignature("getData");
+   			var signSec4 = $("#signatureSec4").jSignature("getData");
+   			var signSec5 = $("#signatureSec5").jSignature("getData");
    			
    			$('#signOut1').val(signOutput1);
    			$('#signOut2').val(signOutput2);
+   			$('#signSec1').val(signSec1);
+   			$('#signSec2').val(signSec2);
+   			$('#signSec3').val(signSec3);
+   			$('#signSec4').val(signSec4);
+   			$('#signSec5').val(signSec5);
+   			
    	   		});
    		</script>
     </div>

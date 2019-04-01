@@ -116,11 +116,29 @@ if(isset($_POST['dispatchSubmit'])) {
     $traumaMapItems = $_POST['traumaMapItems'];
     //Vital Sign Form Input
     $vitalTime = $_POST['vitalTime_1'];
+    
     //Narrative Notes 
     $txtNarrativeNote = $_POST['txtNarrativeNote'];
     $signOut1= $_POST['signOut1'];
-    $singOut2 = $_POST['signOut2'];
-}
+    $signOut2 = $_POST['signOut2'];
+    
+    //Authorization Panel
+    $signSec1 = $_POST['signSec1'];
+    $signSec2 = $_POST['signSec2'];
+    $signSec3 = $_POST['signSec3'];
+    $signSec4 = $_POST['signSec4'];
+    $signSec5 = $_POST['signSec5'];
+    $txtWitnessName = $_POST['txtWitnessName'];
+    $txtReasonII = $_POST['txtReasonII'];
+    $chkSecII = $_POST['chkSecII'];
+    $txtRepName = $_POST['txtRepName'];
+    $txtReasonIII = $_POST['txtReasonIII'];
+    $txtFacilityIII = $_POST['txtFacilityIII'];
+    $txtFacilityTime = $_POST['txtFacilityTime'];
+    $txtCrewIII = $_POST['txtCrewIII'];
+    $txtRepIII = $_POST['txtRepIII'];
+    $chkSecIII = $_POST['chkSecIII'];
+} 
 
 $_SESSION['mileTotal'] = $mileTotal;
 $_SESSION['dispatchDate'] = $dispatchDate;
@@ -212,24 +230,38 @@ $_SESSION['txtBLSother'] = $txtBLSother;
 //Narrate Note
 $_SESSION['txtNarrativeNote'] = $txtNarrativeNote;
 $_SESSION['signOut1'] = $signOut1;
-$_SESSION['signOut2'] = $singOut2;
+$_SESSION['signOut2'] = $signOut2;
+
+//Authorization Form
+$_SESSION['signSec1'] = $signSec1;
+$_SESSION['signSec2'] = $signSec2;
+$_SESSION['signSec3'] = $signSec3;
+$_SESSION['signSec4'] = $signSec4;
+$_SESSION['signSec5'] = $signSec5;
+
+$_SESSION['txtWitnessName'] = $txtWitnessName;
+$_SESSION['txtReasonII'] = $txtReasonII;
+$_SESSION['chkSecII'] = $chkSecII;
+$_SESSION['txtRepName'] = $txtRepName;
+$_SESSION['txtReasonIII'] = $txtReasonIII;
+$_SESSION['txtFacilityIII'] = $txtFacilityIII;
+$_SESSION['txtFacilityTime'] = $txtFacilityTime;
+$_SESSION['txtCrewIII'] = $txtCrewIII;
+$_SESSION['txtRepIII'] = $txtRepIII;
+$_SESSION['chkSecIII'] = $chkSecIII;
+
+/*$txtWitnessName = $_POST['txtWitnessName'];
+$txtReasonII = $_POST['txtReasonII'];
+$chkSecII = $_POST['chkSecII'];
+$txtRepName = $_POST['txtRepName'];
+$txtReasonIII = $_POST['txtReasonIII'];
+$txtFacilityTime = $_POST['txtFacilityTime'];
+$txtCrewIII = $_POST['txtCrewIII'];
+$txtRepIII = $_POST['txtRepIII'];
+$chkSecIII = $_POST['chkSecIII'];*/
 
 
 
-$result = implode(", ",$chkBLS);
-echo $result;
-echo $txtArtificial;
-echo $txtCPR;
+echo implode(", ",$chkSecII);
 
-echo $_SESSION['txtBleedCtrl'];
-echo $_SESSION['radLimb'];
-echo $_SESSION['radBackBoard'];
-
-echo $_SESSION['txtBabyDelivery'];
-echo $_SESSION['txtBabyCountry'];
-echo $_SESSION['radBaby'];
-echo $_SESSION['txtVomit'];
-echo $_SESSION['txtVomitMethod'];
-echo $_SESSION['txtAEDshock'];
-echo $_SESSION['txtBLSother'];
 ?>

@@ -1,7 +1,7 @@
 <?php 
     ob_start();
     session_start();
-    
+    error_reporting(0);
     $mileTotal = $_SESSION['mileTotal'];
     $dispatchDate = $_SESSION['dispatchDate'];
     $runId = $_SESSION['runId'];
@@ -90,6 +90,25 @@
     $txtNarrativeNote = $_SESSION['txtNarrativeNote'];
     $signOut1 = $_SESSION['signOut1'];
     $signOut2 = $_SESSION['signOut2'];
+    
+    //Authorization 
+    $signSec1 = $_SESSION['signSec1'];
+    $signSec2 = $_SESSION['signSec2'];
+    $signSec3 = $_SESSION['signSec3'];
+    $signSec4 = $_SESSION['signSec4'];
+    $signSec5 = $_SESSION['signSec5'];
+    
+    $txtWitnessName = $_SESSION['txtWitnessName'];
+    $txtReasonII = $_SESSION['txtReasonII'];
+    $chkSecII = $_SESSION['chkSecII'];
+    $txtRepName = $_SESSION['txtRepName'];
+    $txtReasonIII = $_SESSION['txtReasonIII'];
+    $txtFacilityIII = $_SESSION['txtFacilityIII'];
+    $txtFacilityTime = $_SESSION['txtFacilityTime'];
+    $txtCrewIII = $_SESSION['txtCrewIII'];
+    $txtRepIII = $_SESSION['txtRepIII'];
+    $chkSecIII = $_SESSION['chkSecIII'];
+    
 ?>
 <!DOCTYPE>
 <html>
@@ -135,6 +154,11 @@
         }
         .signaturePad {
             background-color: black;
+            width:250px;
+            height: auto;
+        }
+        #authorizationForm {
+            border: 2px solid black;
         }
        /* .page[size="A4"] {  
           width: 21cm;
@@ -235,8 +259,10 @@
    
 				</tr>
 				<tr>
-					<td colspan="2"><span class="label">Diagnostic:</span> <?php print($traumaMapItems)?></td>
-					<td colspan="2"><img src="img/ron1.gif"</td>
+					<td colspan="2">
+					<p><span class="label">Diagnostic:</span> <?php print($traumaMapItems)?></p>
+					</td>
+					<td style="heigth: 300px" colspan="2"><img src="img/ron1.gif"</td>
 				</tr>
 				
 				
@@ -316,7 +342,7 @@
 			<tr>
 				<td><p><span class="label">Narrative Note:  </span><?php echo $txtNarrativeNote;?></p></td>
 				<td>
-				<img class="signaturePad" style="width:350px; height:auto;" src= <?php print($signOut1)?> alt="Signature">
+				<img class="signaturePad" style="width:250px; height:auto;" src= <?php print($signOut1)?> alt="Signature">
 				</td>
 			</tr>
 			<tr>
@@ -329,16 +355,120 @@
 			<tr>
     			<td colspan="2">
         			<p><span class="label">Patient Signature:  </span></p>
-        			<img class="signaturePad" style="width:350px; height:auto;" src= <?php print($signOut2)?> alt="Patient Signature">
+        			<img class="signaturePad" style="width: 250px; height:auto;" src= <?php print($signOut2)?> alt="Patient Signature">
     			</td>
 			</tr>
 		</table>
-		<div>
-			<blockquote>
-				I request that payment of authorized Medicare, Medicaid, or any other insurance benefits be made on my behalf to Senior Care EMS for any services provided to me by Senior Care now or in the future. I understand that I am financially responsible for the services provided to me by Senior Care MES regardless of my insurance coverage, and in some cases, may be responsible for an amount in addition to that which was paid by my insurance. I agree to immediately remit to Senior Care EMS amy payments that I receive directly from insurance or any source whatsoever for the services provided to me and I assign all rights to such payments to Senior Care EMS. I authorize Senior Care EMS to to appeal payment denials or other adverse decisions on my behalf without further authorization. I authorize and direct any holder of medical information or documentation about me to release such information to Senior Care EMS and its billing agents, and/or the Centers for Medicare andMedicaid Services and its carriers and agents, and/or any other payers or insurers as may be necessary to determine these or other benefits payable for any 
-				services provided to me by Senior Care EMS, now or in the future. A copy of this form is as valid as an original.
-			</blockquote>
+		<div id="authorizationForm">
+    		<blockquote>
+    			I request that payment of authorized Medicare, Medicaid, or any other insurance benefits be made on my behalf to Senior Care EMS for any services provided to me by Senior Care now or in the future. I understand that I am financially responsible for the services provided to me by Senior Care MES regardless of my insurance coverage, and in some cases, may be responsible for an amount in addition to that which was paid by my insurance. I agree to immediately remit to Senior Care EMS amy payments that I receive directly from insurance or any source whatsoever for the services provided to me and I assign all rights to such payments to Senior Care EMS. I authorize Senior Care EMS to to appeal payment denials or other adverse decisions on my behalf without further authorization. I authorize and direct any holder of medical information or documentation about me to release such information to Senior Care EMS and its billing agents, and/or the Centers for Medicare andMedicaid Services and its carriers and agents, and/or any other payers or insurers as may be necessary to determine these or other benefits payable for any 
+    			services provided to me by Senior Care EMS, now or in the future. A copy of this form is as valid as an original.
+    		</blockquote>
+			
+			<p><span style="font-weight:bold">Privacy Practices Acknowledgment:</span> by signing below, I acknowledge that 
+			I have received Senior Care EMS Notice of Privacy Practices.</p>
+			<h3 class="text-center">SIGNATURE SECTION: One of the following three sections MUST be completed.</h3>
+        	<div class="container-fluid my-4 border border-light" >
+        		<h4>SECTION I - PATIENT SIGNATURE</h4>
+        		<p>The patient must sign here unless the patient is physically or mentally incapable of signing:</p>
+        		<h5>Patient Signature or Mark:</h5>
+        		
+        		<img class="signaturePad" style="width:250px; height:auto;" src= <?php print($signSec1)?> alt="Signature">
+        		
+        		<p>If the patient signs with an "X" or other mark, it is recommended that someone sign below as a witness:
+        		</p>
+        		<h5>Witness Signature:</h5>
+        		
+        		<img class="signaturePad" src= <?php print($signSec2)?> alt="Signature">
+        		
+        		<div class="form-inline">
+        		
+        			<p><span style="font-weight: bold">Witness Printed Name:</span> <?php  echo($txtWitnessName)?> </p>
+        			
+        		</div>
+        		<p class="font-weight-bold">
+        		If patient is physically or mentally incapable of signing, Section II must be completed.
+        		</p>
+        	</div>
+        	<div class="container-fluid my-4 border border-light">
+        		<h4>SECTION II - AUTHORIZED REPRESENTATIVE SIGNATURE</h4>
+        		<p>Complete this section only if patient is physically or mentally incapable of signing.</p>
+        		<div class="form-inline">
+        			<p>Reason the patient 
+        			is physically or mentally incapable of signing:</span> <?php  echo($txtReasonII)?> </p>
+        		</div>
+        		<p>Authorized representatives include only the following individuals:</p>
+               	<p style="text-decoration: underline"><?php
+               	echo implode("<br> ",$chkSecII);
+               	?></p>
+               	
+               <p class="font-italic">I am signing on behalf of the patient. I recognize that signing on behalf of 
+                the patient is not an acceptance of financial responsibility for the services rendered.</p>
+                <h5>Representative's Signature:</h5>
+                
+                <img class="signaturePad" src= <?php print($signSec3)?> alt="Signature">
+                 
+                <div class="form-inline">
+        			<label class="font-weight-bold">Representatives Printed Name: </label>
+        			<p style="font-weight: bold"><?php
+               	    echo $txtRepName;
+                	?></p>
+        		</div>
+        	</div>
+        	
+        	<div class="container-fluid my-4 border border-light">
+        		<h4>SECTION III - EMERGENCIES ONLY - AMBULANCE CREW AND FACILITY REPRESENTATIVE SIGNATURES</h4>
+        		<p>Complete this section only for emergency ambulance transports, if patient was physically or mentally incapable of signing,
+        		 and no authorized representative (as listed in Section II) was available or willing to sign on behalf of the patient at the time of service.
+        		 </p>
+        		 <p class="font-weight-bold";>A. Ambulance Crew Member Statement (must be completed by crew member at time of transport)</p>
+        		 <p>My signature below indicates that, at the time of service, the patient named above was physically or mentally incapable of signing, and that none of the authorized representatives listed in Section II of this form were available or willing to sign on the patient's behalf.</p>
+        		 <div class="form-inline">
+        		 	<label>Reason patient incapable of signing:</label>
+        		 	<p style="font-weight: bold"><?php
+               	    echo $txtReasonIII;
+                	?></p>
+        		 	<label>	Name and Location of Receiving Facility:</label>
+        		 	<p style="font-weight: bold"><?php
+        		 	echo $txtFacilityIII;
+                	?></p>
+        		 </div>
+        		 <div class="form-inline">
+        		 	<label>Time at Receiving Facility:</label>
+        		 	<p style="font-weight: bold"><?php
+        		 	echo $txtFacilityTime;
+                	?></p>
+        		 </div>
+        		 <h5>Signature of Crewmember:</h5>
+        		 
+        		 <img class="signaturePad" src= <?php print($signSec4)?> alt="Signature">
+        		 
+        		 <div class="form-inline">
+        		 	<label class="font-weight-bold">Printed Name of Crewmember:</label>
+        		 	<p style="font-weight: bold"><?php
+        		 	echo $txtCrewIII;
+                	?></p>
+        		 </div>
+        		 <p class="font-weight-bold">B. Receiving Facility Representative Signature</p>
+        		 <p>The above-named patient was received by this facility at the date and time indicated above.</p>
+        		 <p class="font-weight-bold">Signature of Receiving Facility Representative:</p>
+        		 
+        		 <img class="signaturePad" src= <?php print($signSec5)?> alt="Signature">
+        		 
+        		 <div class="form-inline">
+        		 	<label class="font-weight-bold">Printed Name of Receiving Facility Representative: </label>
+        		 	<p style="font-weight: bold"><?php
+        		 	echo $txtRepIII;
+                	?></p>
+        		 </div>
+        		 <p>C. Secondary Documentation</p>
+        		 <p>If no facility representative signature is obtained, the ambulance crew should attempt to obtain one or more of the following forms of documentation from the receiving facility that indicates that the patient was transported to that facility by ambulance on the date and time indicated above. 
+        		 The release of this information by the hospital to the ambulance service is expressly permitted by Section 164.506(c) of HIPAA.
+        		 </p>
+        		<p style="font-weight: bold"><?php
+        		  implode(",", $chkSecIII);
+                ?></p>
+        	</div>
 		</div>
-		<p><span style="font-weight:bold">Privacy Practices Acknowledgment:</span> by signing below, I acknowledge that I have received Senior Care EMS Notice of Privacy Practices.</p>
 	</body>
 </html>
