@@ -44,6 +44,7 @@
     	</div>
     	<input type="text" id="signOut1" name="signOut1">
     	<input type="text" id="signOut2" name="signOut2">
+    	<input type="text" id="signAPCF" name="signAPCF">
    		<script>
    		$('#accordion').one('shown.bs.collapse', function() {
    			$("#signature1").resize();
@@ -68,6 +69,9 @@
    			$("#signatureSec5").jSignature({
 				height: 300
    				});
+   			$("#signatureAPCF").jSignature({
+				height: 300
+   				});
    			
    		});
    		
@@ -79,6 +83,7 @@
    			var signSec3 = $("#signatureSec3").jSignature("getData");
    			var signSec4 = $("#signatureSec4").jSignature("getData");
    			var signSec5 = $("#signatureSec5").jSignature("getData");
+   			var signAPCF = $("#signatureAPCF").jSignature("getData");
    			
    			$('#signOut1').val(signOutput1);
    			$('#signOut2').val(signOutput2);
@@ -87,7 +92,7 @@
    			$('#signSec3').val(signSec3);
    			$('#signSec4').val(signSec4);
    			$('#signSec5').val(signSec5);
-   			
+   			$('#signAPCF').val(signAPCF);
    	   		});
    		</script>
     </div>

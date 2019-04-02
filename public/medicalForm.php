@@ -78,14 +78,6 @@
     $txtAEDshock = $_SESSION['txtAEDshock'];
     $txtBLSother = $_SESSION['txtBLSother'];
     
-  /*  $_SESSION['txtBabyDelivery'] = $txtBabyDelivery;
-    $_SESSION['txtBabyCountry'] = $txtBabyCountry;
-    $_SESSION['radBaby'] = $radBaby;
-    $_SESSION['txtAEDshock'] = $txtAEDshock;
-    $_SESSION['txtBLSother'] = $txtBLSother;
-    
-    */
-    
     //Narrtive Notes
     $txtNarrativeNote = $_SESSION['txtNarrativeNote'];
     $signOut1 = $_SESSION['signOut1'];
@@ -108,6 +100,32 @@
     $txtCrewIII = $_SESSION['txtCrewIII'];
     $txtRepIII = $_SESSION['txtRepIII'];
     $chkSecIII = $_SESSION['chkSecIII'];
+    
+    //APCF Form SESSION variale
+    $chkScheduleApp = $_SESSION['chkScheduleApp'];
+    $txtOtherApp = $_SESSION['txtOtherApp'];
+    $txtAmbulance1 = $_SESSION['txtAmbulance1'];
+    $txtAmbulance2 = $_SESSION['txtAmbulance2'];
+    $chkAmbulance = $_SESSION['chkAmbulance'];
+    $chkUlcer = $_SESSION['chkUlcer'];
+    $chkUlcerOther = $_SESSION['chkUlcerOther'];
+    $txtUlcer3 = $_SESSION['txtUlcer3'];
+    $chkPara = $_SESSION['chkPara'];
+    $chkFracture = $_SESSION['chkFracture'];
+    $txtFracture4 = $_SESSION['txtFracture4'];
+    $chkContractures = $_SESSION['chkContractures'];
+    
+    $txtSeverePain5 = $_SESSION['txtSeverePain5'];
+    $chkPsychic = $_SESSION['chkPsychic'];
+    $chkPatientRequire = $_SESSION['chkPatientRequire'];
+    $chkIsolation = $_SESSION['$chkIsolation'];
+    $txtIsolation6 = $_SESSION['txtIsolation6'];
+    
+    $txtAPCFother = $_SESSION['txtAPCFother'];
+    $txtPhysicianName = $_SESSION['txtPhysicianName'];
+    $chkPhysician = $_SESSION['chkPhysician'];
+    $signAPCF =  $_SESSION['signAPCF'];
+    $txtIncEmt = $_SESSION['txtIncEmt'];
     
 ?>
 <!DOCTYPE>
@@ -395,7 +413,7 @@
         		<p>Complete this section only if patient is physically or mentally incapable of signing.</p>
         		<div class="form-inline">
         			<p>Reason the patient 
-        			is physically or mentally incapable of signing:</span> <?php  echo($txtReasonII)?> </p>
+        			is physically or mentally incapable of signing: <?php  echo($txtReasonII)?> </p>
         		</div>
         		<p>Authorized representatives include only the following individuals:</p>
                	<p style="text-decoration: underline"><?php
@@ -466,9 +484,135 @@
         		 The release of this information by the hospital to the ambulance service is expressly permitted by Section 164.506(c) of HIPAA.
         		 </p>
         		<p style="font-weight: bold"><?php
-        		  implode(",", $chkSecIII);
+        		
+        		foreach($chkSecIII as $result){
+        		    echo $result;
+        		}
                 ?></p>
-        	</div>
-		</div>
+        		</div>
+			</div>
+			
+			<div id="APCFform">
+       			<h3>A.P.C.F</h3>
+       			<h4>Scheduled Appointment For:</h4>
+       			<p>
+       			<?php 
+       			
+       			echo implode(", ", $chkScheduleApp);
+       			
+       		    if(isset($txtOtherApp)) {
+       			    echo $txtOtherApp;
+       			}
+       			?></p>
+       			<p>
+       			<span style="font-weight:bold">Physicians Certification Statement</span> - Required by 42 CFR 410.40 (D) for all Non-Emergent transports. In my professional opinion, this patient's medical condition requires transport by Ambulance and the level of care that implies and other means of transport 
+       			are contraindicated based on the patient's health and safety. 
+       			</p>
+       			<p>
+       			<span style="font-weight:bold">Patient Bed Confined</span> and is Unable to get up or out of bed without assistance AND Unable to ambulate AND Unable to sit in a Wheel chair or chair because:
+                Note: The term applies to individuals who are unable to tolerate any activity out of bed. This term is not synonymous with "Bed Rest", or "Non-Ambulatory", or "Stretcher Bound".
+                 All three components must be met in order for the patient to meet the requirements of the definition of "Bed Confined". 
+       			</p>
+       			<table>
+       				<tr>
+       					<td>
+       						<p><span class="label">Requires an Ambulance because:</span></p>
+       						<p>
+       						<?php 
+       						echo implode(",", $chkAmbulance);
+       						if(isset($txtAmbulance1)){
+       						    echo $txtAmbulance1 . ".";
+       						}
+       						if(isset($txtAmbulance2)){
+       						    echo $txtAmbulance2 . ".";
+       						}
+       						?>
+       						</p>
+       					</td>
+       					<td>
+       						<span class="label">Decubitus Ulcer of:</span><p>
+       						
+       						<?php 
+       						echo implode(",", $chkUlcer);
+       						if (isset($chkUlcerOther)) {
+       						    echo $chkUlcerOther . ".";
+       						}
+       						if (isset($txtUlcer3)) {
+       						    echo "Overall Wasting, too weak to sit up due to: " .$txtUlcer3 . ".";
+       						}
+       						?></p>
+       					
+       					</td>
+       					<td>
+       						<span class="label">Paralysis:</span>
+       						<p>
+       						<?php 
+       						   echo implode(",", $chkPara);
+       						?></p>
+       					</td>
+       					<td>
+       						<p><span class="label">Fracture of:</span> <?php 
+       						   echo implode(", ",$chkFracture);
+       						   if (isset($txtFracture4)) {
+       						       echo $txtFracture4 . ".";
+       						   }
+       						?></p>
+       					</td>
+       				</tr>
+       				<tr>
+       					<td>
+       						<p><span class="label">Contractures or Abnormal Stiffness or Rigidity of:</span> <?php 
+       						   echo implode(", ",$chkContractures);
+       						   if (isset($txtSeverePain5)) {
+       						       echo "Severe Pain due to: " . $txtSeverePain5 . ".";
+       						   }
+       						?></p>
+       					</td>
+       					<td>
+       						<p><span class="label">Contractures or Abnormal Stiffness or Rigidity of:</span> <?php 
+       						   echo implode(", ",$chkPsychic);
+       						?></p>
+       					</td>
+       					<td>
+       						<p><span class="label">Patient Requires Medical Monitoring:</span> <?php 
+       						echo implode(", ", $chkPatientRequire);
+       						?></p>
+       					</td>
+       					<td>
+       						<p><span class="label">Patient Requires Medical Monitoring:</span> <?php 
+       						echo implode(", ", $chkIsolation);
+       						if (isset($txtIsolation6)) {
+       						    echo "Severe Pain due to: " . $txtIsolation6 . ".";
+       						}
+       						?></p>
+       					</td>
+       				</tr>
+       				<tr>
+       					<td>
+       						<p><span class="label">Other (Describe what or why):</span>
+       							<?php 
+       							  echo $txtAPCFother;
+       							?>
+       						</p>
+       					</td>
+       				</tr>
+       			</table>
+       			<p>
+       			I certify the above information is true and correct based on my evaluation of this patient. I understand that the information herin shall be used by the Department of Health and Human Services to support the determination of Medical Necessity for Ambulance transportation. This does not guarantee or assure payment shall 
+       			be made for services rendered to your patient. <br>
+       			<span class="label">Physician or Designee Name: </span>
+       			<?php 
+       			  echo $txtPhysicianName . "(" . $chkPhysician . ")";
+       			?> <br>
+       			<span class="label">Physician or Designee Signature: </span>
+       			</p>
+       			<img class="signaturePad" src= <?php print($signAPCF)?> alt="Signature">
+       			<p>
+       				<span class="label">Senior Care Emergency Medical Services Inc EMT Name: </span>
+       				<?php 
+       				 echo $txtIncEmt;
+       				?>
+       			</p>
+       		</div>
 	</body>
 </html>

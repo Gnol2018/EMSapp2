@@ -138,7 +138,49 @@ if(isset($_POST['dispatchSubmit'])) {
     $txtCrewIII = $_POST['txtCrewIII'];
     $txtRepIII = $_POST['txtRepIII'];
     $chkSecIII = $_POST['chkSecIII'];
-} 
+    
+    //APCFP Panel Variables
+    $chkScheduleApp = $_POST['chkScheduleApp'];
+    if(isset($_POST['chkAPCFtxt0'])) {
+        $txtOtherApp = $_POST['txtOtherApp'];
+    }
+    if(isset($_POST['chkAPCFtxt1'])) {
+        $txtAmbulance1 = $_POST['txtAmbulance1'];
+    }
+    $chkAmbulance = $_POST['chkAmbulance'];
+    if(isset($_POST['chkAPCFtxt2'])) {
+        $txtAmbulance2 = $_POST['txtAmbulance2'];
+    }
+    $chkUlcer = $_POST['chkUlcer'];
+    if(isset($_POST['chkUlcertxt'])) {
+        $chkUlcerOther = $_POST['chkUlcerOther'];
+    }
+    if(isset($_POST['chkAPCFtxt3'])) {
+        $txtUlcer3 = $_POST['txtUlcer3'];
+    }
+    $chkPara = $_POST['chkPara'];
+    $chkFracture = $_POST['chkFracture'];
+    if(isset($_POST['chkAPCFtxt4'])) {
+        $txtFracture4 = $_POST['txtFracture4'];
+    }
+    $chkContractures = $_POST['chkContractures'];
+    if(isset($_POST['chkAPCFtxt5'])) {
+        $txtSeverePain5 = $_POST['txtSeverePain5'];
+    }
+    $chkPsychic = $_POST['chkPsychic'];
+    $chkPatientRequire = $_POST['chkPatientRequire'];
+    $chkIsolation = $_POST['chkIsolation'];
+    if(isset($_POST['chkAPCFtxt6'])) {
+        $txtIsolation6 = $_POST['txtIsolation6'];
+    }
+    $txtAPCFother = $_POST['txtAPCFother'];
+    $txtPhysicianName = $_POST['txtPhysicianName'];
+    $chkPhysician = $_POST['chkPhysician'];
+    $txtIncEmt = $_POST['txtIncEmt'];
+    $signAPCF = $_POST['signAPCF'];
+} else {
+    return false;
+}
 
 $_SESSION['mileTotal'] = $mileTotal;
 $_SESSION['dispatchDate'] = $dispatchDate;
@@ -250,18 +292,30 @@ $_SESSION['txtCrewIII'] = $txtCrewIII;
 $_SESSION['txtRepIII'] = $txtRepIII;
 $_SESSION['chkSecIII'] = $chkSecIII;
 
-/*$txtWitnessName = $_POST['txtWitnessName'];
-$txtReasonII = $_POST['txtReasonII'];
-$chkSecII = $_POST['chkSecII'];
-$txtRepName = $_POST['txtRepName'];
-$txtReasonIII = $_POST['txtReasonIII'];
-$txtFacilityTime = $_POST['txtFacilityTime'];
-$txtCrewIII = $_POST['txtCrewIII'];
-$txtRepIII = $_POST['txtRepIII'];
-$chkSecIII = $_POST['chkSecIII'];*/
+//APCF Form
+$_SESSION['chkScheduleApp'] = $chkScheduleApp;
+$_SESSION['txtOtherApp'] = $txtOtherApp;
+$_SESSION['txtAmbulance1'] = $txtAmbulance1;
+$_SESSION['txtAmbulance2'] = $txtAmbulance2;
+$_SESSION['chkAmbulance'] = $chkAmbulance;
+$_SESSION['chkUlcer'] = $chkUlcer;
+$_SESSION['chkUlcerOther'] = $chkUlcerOther;
+$_SESSION['txtUlcer3'] = $txtUlcer3;
+$_SESSION['chkPara'] = $chkPara;
+$_SESSION['chkFracture'] = $chkFracture;
+$_SESSION['txtFracture4'] = $txtFracture4;
+$_SESSION['chkContractures'] = $chkContractures;
+$_SESSION['txtSeverePain5'] = $txtSeverePain5;
+$_SESSION['chkPsychic'] = $chkPsychic;
+$_SESSION['chkPatientRequire'] = $chkPatientRequire;
+$_SESSION['chkIsolation'] = $chkIsolation;
+$_SESSION['txtIsolation6'] = $txtIsolation6;
+$_SESSION['txtAPCFother'] = $txtAPCFother;
+$_SESSION['txtPhysicianName'] = $txtPhysicianName;
+$_SESSION['chkPhysician'] = $chkPhysician;
+$_SESSION['txtIncEmt'] = $txtIncEmt;
+$_SESSION['signAPCF'] = $signAPCF;
 
-
-
-echo implode(", ",$chkSecII);
+echo implode(", ", $_SESSION['chkScheduleApp']);
 
 ?>
