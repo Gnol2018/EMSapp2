@@ -1,4 +1,4 @@
-<?php 
+ <?php 
 //include autoloader
 ob_start();
 
@@ -37,4 +37,5 @@ $document->render();
 
 $document->stream("Testo", array("Attachment"=>0));
 //1 = Download
+file_put_contents('PatientReport.pdf', $document->output());
 ?>

@@ -178,6 +178,23 @@
         #authorizationForm {
             border: 2px solid black;
         }
+        #APCFform{
+             border: 2px solid black;
+        }
+        /*Helper Class */
+        .text-center {
+            text-align: center;
+        }
+        .border {
+            border: 1px solid black;
+        }
+        
+        .margin {
+            margin: 1em;
+        }
+       .padding {
+            padding: 4px;
+       }
        /* .page[size="A4"] {  
           width: 21cm;
           height: 29.7cm; 
@@ -386,8 +403,8 @@
 			<p><span style="font-weight:bold">Privacy Practices Acknowledgment:</span> by signing below, I acknowledge that 
 			I have received Senior Care EMS Notice of Privacy Practices.</p>
 			<h3 class="text-center">SIGNATURE SECTION: One of the following three sections MUST be completed.</h3>
-        	<div class="container-fluid my-4 border border-light" >
-        		<h4>SECTION I - PATIENT SIGNATURE</h4>
+        	<div class="border margin padding" >
+        		<h4 class="text-center">SECTION I - PATIENT SIGNATURE</h4>
         		<p>The patient must sign here unless the patient is physically or mentally incapable of signing:</p>
         		<h5>Patient Signature or Mark:</h5>
         		
@@ -408,8 +425,8 @@
         		If patient is physically or mentally incapable of signing, Section II must be completed.
         		</p>
         	</div>
-        	<div class="container-fluid my-4 border border-light">
-        		<h4>SECTION II - AUTHORIZED REPRESENTATIVE SIGNATURE</h4>
+        	<div class="border margin padding">
+        		<h4 class="text-center ">SECTION II - AUTHORIZED REPRESENTATIVE SIGNATURE</h4>
         		<p>Complete this section only if patient is physically or mentally incapable of signing.</p>
         		<div class="form-inline">
         			<p>Reason the patient 
@@ -434,8 +451,8 @@
         		</div>
         	</div>
         	
-        	<div class="container-fluid my-4 border border-light">
-        		<h4>SECTION III - EMERGENCIES ONLY - AMBULANCE CREW AND FACILITY REPRESENTATIVE SIGNATURES</h4>
+        	<div class="border margin padding">
+        		<h4 class="text-center">SECTION III - EMERGENCIES ONLY - AMBULANCE CREW AND FACILITY REPRESENTATIVE SIGNATURES</h4>
         		<p>Complete this section only for emergency ambulance transports, if patient was physically or mentally incapable of signing,
         		 and no authorized representative (as listed in Section II) was available or willing to sign on behalf of the patient at the time of service.
         		 </p>
