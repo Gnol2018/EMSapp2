@@ -9,6 +9,6 @@
 		<a><button class="btn btn-sm btn-outline-secondary" data-toggle="collapse" data-target="#apcfpPanel" aria-expanded="true" aria-controls="collapseOne">APCF</button></a>
 		<a><button id="btnExpandAll" class="btn btn-sm btn-outline-secondary">Expand All</button></a>
 		<a><button class="btn btn-sm btn-outline-secondary">Close All</button></a>
-		<a><button class="btn btn-sm btn-outline-secondary">Generate PCR</button></a>
+		<a href="testPDF.php"><button class="btn btn-sm btn-outline-secondary">Generate PCR</button></a>
 		<a><button class="btn btn-sm btn-outline-secondary">Reference</button></a>
 	</nav>

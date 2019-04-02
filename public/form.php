@@ -34,7 +34,7 @@ if(empty($_SESSION['userName'])) {
 	?>
 	<!-- Navgiation End Here -->
 	
-	<form method="POST" id="accordion">
+	<form class="container-fluid" method="POST" id="accordion">
 	    <!-- Dispatch Panel Start Here -->
 	    <?php 
 	       include(TEMPLATE_BACK. DS. "patientReportApp/dispatchForm.php")
@@ -83,8 +83,9 @@ if(empty($_SESSION['userName'])) {
 		?>
 		<!-- A.P.C.F.P End Here -->		
 		<div class="row">
-		<input id="dispatchSubmit" name="dispatchSubmit" type="submit" value="Submit"></input>
-		<a href="medicalForm.php">Print</a>
+			<div class="col">
+				<input id="dispatchSubmit" name="dispatchSubmit" type="submit" value="Submit"></input>
+			</div>
 		</div>
 	</form>
 	
