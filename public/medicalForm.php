@@ -185,6 +185,9 @@
         .text-center {
             text-align: center;
         }
+        .font-weight-bold{
+            font-weight: bold;
+        }
         .border {
             border: 1px solid black;
         }
@@ -377,7 +380,7 @@
 			<tr>
 				<td><p><span class="label">Narrative Note:  </span><?php echo $txtNarrativeNote;?></p></td>
 				<td>
-				<img class="signaturePad" style="width:250px; height:auto;" src= <?php print($signOut1)?> alt="Signature">
+				<img class="signaturePad" src= <?php print($signOut1)?> alt="Signature">
 				</td>
 			</tr>
 			<tr>
@@ -388,9 +391,12 @@
 				</td>
 			</tr>
 			<tr>
-    			<td colspan="2">
+    			<td>
         			<p><span class="label">Patient Signature:  </span></p>
-        			<img class="signaturePad" style="width: 250px; height:auto;" src= <?php print($signOut2)?> alt="Patient Signature">
+        			
+    			</td>
+    			<td>
+    				<img class="signaturePad" src= <?php print($signOut2)?> alt="Patient Signature">
     			</td>
 			</tr>
 		</table>
@@ -406,20 +412,18 @@
         	<div class="border margin padding" >
         		<h4 class="text-center">SECTION I - PATIENT SIGNATURE</h4>
         		<p>The patient must sign here unless the patient is physically or mentally incapable of signing:</p>
-        		<h5>Patient Signature or Mark:</h5>
+        		<p class="label">Patient Signature or Mark:</p>
         		
         		<img class="signaturePad" style="width:250px; height:auto;" src= <?php print($signSec1)?> alt="Signature">
         		
         		<p>If the patient signs with an "X" or other mark, it is recommended that someone sign below as a witness:
         		</p>
-        		<h5>Witness Signature:</h5>
+        		<p class="label">Witness Signature:</p>
         		
         		<img class="signaturePad" src= <?php print($signSec2)?> alt="Signature">
         		
         		<div class="form-inline">
-        		
-        			<p><span style="font-weight: bold">Witness Printed Name:</span> <?php  echo($txtWitnessName)?> </p>
-        			
+        			<p><span class="label">Witness Printed Name:</span> <?php  echo($txtWitnessName)?> </p>
         		</div>
         		<p class="font-weight-bold">
         		If patient is physically or mentally incapable of signing, Section II must be completed.
@@ -433,18 +437,19 @@
         			is physically or mentally incapable of signing: <?php  echo($txtReasonII)?> </p>
         		</div>
         		<p>Authorized representatives include only the following individuals:</p>
-               	<p style="text-decoration: underline"><?php
+               	<p style="text-decoration: underline">
+               	<?php
                	echo implode("<br> ",$chkSecII);
                	?></p>
                	
                <p class="font-italic">I am signing on behalf of the patient. I recognize that signing on behalf of 
                 the patient is not an acceptance of financial responsibility for the services rendered.</p>
-                <h5>Representative's Signature:</h5>
+                <p class="label">Representative's Signature:</p>
                 
                 <img class="signaturePad" src= <?php print($signSec3)?> alt="Signature">
                  
                 <div class="form-inline">
-        			<label class="font-weight-bold">Representatives Printed Name: </label>
+        			<p class="label">Representatives Printed Name: </p>
         			<p style="font-weight: bold"><?php
                	    echo $txtRepName;
                 	?></p>

@@ -3,6 +3,7 @@
 ob_start();
 session_start();
 error_reporting(0);
+
 $mileTotal = $_SESSION['mileTotal'];
 $dispatchDate = $_SESSION['dispatchDate'];
 $runId = $_SESSION['runId'];
