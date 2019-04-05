@@ -117,7 +117,50 @@ if(isset($_POST['dispatchSubmit'])) {
     //Vital Sign Form Input
     $vitalTime = $_POST['vitalTime_1'];
     
-    //Narrative Notes 
+    //Disposition Form Input
+    $chkALStransport = $_POST['chkALStransport'];
+    $txtDisCode = $_POST['txtDisCode'];
+    $selDisDes = $_POST['selDisDes'];
+    $radALStran = $_POST['radALStran'];
+    $selDisPurpose = $_POST['selDisPurpose'];
+    $selDisRequester = $_POST['selDisRequester'];
+    $selDisType = $_POST['selDisType'];
+    $txtDisWeight = $_POST['txtDisWeight'];
+    $txtDisRound = $_POST['txtDisRound'];
+    $txtDisStretcher = $_POST['txtDisStretcher'];
+    
+    $chkDisDeath = $_POST['chkDisDeath'];
+    if (isset($_POST['chkDistxt1'])) {
+        $txtTrans1 = $_POST['txtTrans1'];
+    }
+    if (isset($_POST['chkDistxt2'])) {
+        $txtOther2 = $_POST['txtOther2'];
+    }
+    
+    $chkDisTransport = $_POST['chkDisTransport'];
+    if (isset($_POST['chkDistxt3'])) {
+        $txtDisOther3 = $_POST['txtDisOther3'];
+    }
+    
+    $inChargeName= $_POST['inChargeName'];
+    $radInCharge = $_POST['radInCharge'];
+    $inChargeNum= $_POST['inChargeNum'];
+    
+    $driverName = $_POST['driverName'];
+    $radDriver = $_POST['radDriver'];
+    $driverNumber= $_POST['driverNumber'];
+    
+
+    $otherDriver1 = $_POST['otherDriver1'];
+    $radOtherDriver1 = $_POST['radOtherDriver1'];
+    $otherDriverNum1 = $_POST['otherDriverNum1'];
+    
+    $otherDriver2 = $_POST['otherDriver2'];
+    $radOtherDriver2 = $_POST['radOtherDriver2'];
+    $otherDriverNum2 = $_POST['otherDriverNum2'];
+    
+    
+    //Narrative Notes Form Input
     $txtNarrativeNote = $_POST['txtNarrativeNote'];
     $signOut1= $_POST['signOut1'];
     $signOut2 = $_POST['signOut2'];
@@ -222,17 +265,6 @@ $_SESSION['patientEmerContact'] = $patientEmerContact;
 $_SESSION['patientEmerPhone'] = $patientEmerPhone;
 
 
-/*
-$patientPhone1 = escape_string($_POST['patientPhone1']);
-$patientPhone2 = escape_string($_POST['patientPhone2']);
-$patientCity = escape_string($_POST['patientCity']);
-$patientState = escape_string($_POST['patientState']);
-$patientZipcode = escape_string($_POST['patientZipcode']);
-$patientDOB = escape_string($_POST['patientDOB']);
-$patientName = escape_string($_POST['patientName']);
-$patientGender = escape_string($_POST['patientGender']);
-$patientSS = escape_string($_POST['patientSS']);*/
-
 //Presenting Problems
 $_SESSION['traumaComplaint'] = $traumaComplaint;
 $_SESSION['traumaInjury'] = $traumaInjury;
@@ -269,6 +301,78 @@ $_SESSION['radBaby'] = $radBaby;
 $_SESSION['txtAEDshock'] = $txtAEDshock;
 $_SESSION['txtBLSother'] = $txtBLSother;
 
+//Disposition SESSION VARIABLE
+$_SESSION['chkALStransport'] = $chkALStransport;
+$_SESSION['txtDisCode'] = $txtDisCode;
+$_SESSION['selDisDes'] = $selDisDes;
+$_SESSION['radALStran'] = $radALStran;
+$_SESSION['selDisPurpose'] = $selDisPurpose;
+$_SESSION['selDisRequester'] = $selDisRequester;
+$_SESSION['selDisType'] = $selDisType;
+$_SESSION['txtDisWeight'] = $txtDisWeight;
+$_SESSION['txtDisRound'] = $txtDisRound;
+$_SESSION['txtDisStretcher'] = $txtDisStretcher;
+
+$_SESSION['chkDisDeath'] = $chkDisDeath;
+$_SESSION['txtTrans1'] = $txtTrans1;
+$_SESSION['txtOther2'] = $txtOther2;
+$_SESSION['chkDisTransport'] = $chkDisTransport;
+$_SESSION['txtDisOther3'] = $txtDisOther3;
+$_SESSION['inChargeName'] = $inChargeName;
+$_SESSION['radInCharge'] = $radInCharge;
+$_SESSION['inChargeNum'] = $inChargeNum;
+$_SESSION['driverName'] = $driverName;
+$_SESSION['radDriver'] = $radDriver;
+$_SESSION['driverNumber'] = $driverNumber;
+
+$_SESSION['otherDriver1'] = $otherDriver1;
+$_SESSION['radOtherDriver1'] = $radOtherDriver1;
+$_SESSION['otherDriverNum1'] = $otherDriverNum1;
+
+$_SESSION['otherDriver2'] = $otherDriver2;
+$_SESSION['radOtherDriver2'] = $radOtherDriver2;
+$_SESSION['otherDriverNum2'] = $otherDriverNum2;
+/*$chkALStransport = $_POST['chkALStransport'];
+$txtDisCode = $_POST['txtDisCode'];
+$selDisDes = $_POST['selDisDes'];
+$radALStran = $_POST['radALStran'];
+$selDisPurpose = $_POST['selDisPurpose'];
+$selDisRequester = $_POST['selDisRequester'];
+$selDisType = $_POST['selDisType'];
+$txtDisWeight = $_POST['txtDisWeight'];
+$txtDisRound = $_POST['txtDisRound'];
+$txtDisStretcher = $_POST['txtDisStretcher'];
+
+$chkDisDeath = $_POST['chkDisDeath'];
+if (isset($_POST['chkDistxt1'])) {
+    $radBackBoard = $_POST['txtTrans1'];
+}
+if (isset($_POST['chkDistxt2'])) {
+    $radBackBoard = $_POST['txtOther2'];
+}
+
+$chkDisTransport = $_POST['chkDisTransport'];
+if (isset($_POST['chkDistxt3'])) {
+    $radBackBoard = $_POST['txtDisOther3'];
+}
+
+$inChargeName= $_POST['inChargeName'];
+$radInCharge = $_POST['radInCharge'];
+$inChargeNum= $_POST['inChargeNum'];
+
+$driverName = $_POST['driverName'];
+$radDriver = $_POST['radDriver'];
+$driverNumber= $_POST['driverNumber'];
+
+
+$otherDriver1 = $_POST['otherDriver1'];
+$radOtherDriver1 = $_POST['radOtherDriver1'];
+$otherDriverNum1 = $_POST['otherDriverNum1'];
+
+$otherDriver2 = $_POST['otherDriver2'];
+$radOtherDriver2 = $_POST['radOtherDriver2'];
+$otherDriverNum2 = $_POST['otherDriverNum2'];
+*/
 //Narrate Note
 $_SESSION['txtNarrativeNote'] = $txtNarrativeNote;
 $_SESSION['signOut1'] = $signOut1;

@@ -1,7 +1,37 @@
 <?php 
     ob_start();
+    error_reporting(0);   
+    $chkALStransport = $_SESSION['chkALStransport'];
+    $txtDisCode = $_SESSION['txtDisCode'];
+    $selDisDes =  $_SESSION['selDisDes'];
+    $radALStran = $_SESSION['radALStran'];
+    $selDisPurpose = $_SESSION['selDisPurpose'];
+    $selDisRequester = $_SESSION['selDisRequester'];
+    $selDisType =  $_SESSION['selDisType'];
     
+    $txtDisWeight = $_SESSION['txtDisWeight'];
+    $txtDisRound = $_SESSION['txtDisRound'];
+    $txtDisStretcher = $_SESSION['txtDisStretcher'];
+    $chkDisDeath =  $_SESSION['chkDisDeath'];
+    $txtTrans1 = $_SESSION['txtTrans1'];
     
+    $txtOther2 = $_SESSION['txtOther2'];
+    $chkDisTransport = $_SESSION['chkDisTransport'];
+    $txtDisOther3 = $_SESSION['txtDisOther3'];
+    $inChargeName =   $_SESSION['inChargeName'];
+    $radInCharge = $_SESSION['radInCharge'];
+    $inChargeNum = $_SESSION['inChargeNum'];
+    $driverName = $_SESSION['driverName'];
+    $radDriver = $_SESSION['radDriver'];
+    $driverNumber = $_SESSION['driverNumber'];
+    
+    $otherDriver1 = $_SESSION['otherDriver1'];
+    $radOtherDriver1 = $_SESSION['radOtherDriver1'];
+    $otherDriverNum1 = $_SESSION['otherDriverNum1'];
+    
+    $otherDriver2 = $_SESSION['otherDriver2'];
+    $radOtherDriver2 = $_SESSION['radOtherDriver2'];
+    $otherDriverNum2 = $_SESSION['otherDriverNum2'];
 ?>
 <!DOCTYPE>
 <html>
@@ -32,13 +62,13 @@
         }
         table {
         width: 100%;
-        margin: 5px;
+        margin: 10px 0px;
         border: 2px solid black;
         }
-        table th td {
+        td {
         margin: 1px;
+        padding: 1px;
         border: 1px solid black;
-        
         }
         
         .label {
@@ -92,6 +122,11 @@
 			<h2 style="text-align:center;">PATIENT CARE REPORT</h2>
 			<table>
 				<tr>
+					<th colspan=4>
+						<h3>DISPATCH</h3>
+					</th>
+				</tr>
+				<tr>
 					<td><p><span class="label" style="text-align:left;">Total Milleage:</span> <?php print($mileTotal)?> miles</p></td>
 					<td><p><span class="label" style="text-align:left;">Date:</span> <?php print($dispatchDate)?></p></td>
 					<td><p><span class="label" style="text-align:left;">Run Id:</span> <?php print($runId)?></p></td>
@@ -119,16 +154,21 @@
     			<tr>
     				<td><span class="label">At Destination:</span> <?php print($timeAtDes)?></td>
     				<td><span class="label">In Serrvice:</span> <?php print($timeInService)?></td>
-    				<td><span class="label">In Quarter:</span> <?php print($timeInQuarter)?></td>
+    				<td colspan="2"><span class="label">In Quarter:</span> <?php print($timeInQuarter)?></td>
     			</tr>
     			<tr>
     				<td><span class="label">Call Type:</span> <?php print($dispatchCallType)?></td>
     				<td><span class="label">Patient Number:</span> <?php print($dispatchPatientNumb)?></td>
-    				<td><span class="label">Dispatch Method:</span> <?php print($dispatchMethod)?></td>
+    				<td colspan="2"<span class="label">Dispatch Method:</span> <?php print($dispatchMethod)?></td>
 				</tr>
 			</table>
 			
 			<table>
+				<tr>
+					<th colspan= 4>
+						<h3>DEMOGRAPHIC</h3>
+					</th>
+				</tr>
 				<tr>
 					<td><span class="label">First Name:</span> <?php print($patientFname)?></td>
     				<td><span class="label">Middle Name:</span> <?php print($patientMname)?></td>
@@ -157,6 +197,11 @@
 		
 			<table>
 				<tr>
+					<th colspan = "4">
+						<h3  >PRESENTING PROBLEM</h3>
+					</th>
+				</tr>
+				<tr>
 					<td colspan="2"><span class="label">Chief Complaint - Trauma:</span> <?php print($traumaComplaint)?>
 					</td>
 					<td>
@@ -176,8 +221,7 @@
 				</tr>
 				
 				
-			</table>
-			<table>
+			
 				<tr>
 					<td colspan="2"><span class="label">Chief Complaint - Medical:</span> <?php print($medicalComplaint)?>
 					</td>
@@ -188,14 +232,19 @@
 					</td>
 				</tr>
 				<tr>
-					<td><span class="label">Allergy:</span>
+					<td colspan="2"><span class="label">Allergy:</span>
 					</td>
-					<td><span class="label">Other:</span> 
+					<td colspan="2"><span class="label">Other:</span> 
 					</td>
 				</tr>
 			</table>
 		</div>
 		<table>
+			<tr>
+				<th colspan= "2">
+					<h3>TREATMENT GIVEN</h3>
+				</th>
+			</tr>
 			<tr>
 				<td>
 				<p><span class="label">Advanced Life Support (ALS):</span> 
@@ -250,26 +299,109 @@
 		</table>
 		<table>
 			<tr>
-				<td><p><span class="label">Narrative Note:  </span><?php echo $txtNarrativeNote;?></p></td>
+				<td colspan=2>
+					<p><?php 
+    					if(isset($chkALStransport)){
+    					    echo $chkALStransport . '<br>';
+    					} else {
+    					    echo 'Not Transported as ALS <br>';
+    					}
+    					echo '<span class="label">Disposition Code:</span>' . $txtDisCode . '<br>';
+    					echo '<span class="label">Destination (Hospital/Non-Hospital):</span>' . $selDisDes . '<br>';
+    					echo '<span class="label">Proximity:</span>' . $radALStran . '<br>';
+    					echo '<span class="label">Purpose:</span>' . $selDisPurpose . '<br>';
+    					echo '<span class="label">Ambulance Requested By:</span>' . $selDisRequester . '<br>';
+    					echo '<span class="label">Type of Transport:</span>' . $selDisType . '<br>';
+    					?>
+					</p>
+				</td>
+				<td colspan=2><?php 
+				echo '<span class="label">Weight of Patient:</span>' . $txtDisWeight . '<br>';
+				echo '<span class="label">Purpose of Round Trip:</span>' . $txtDisRound . '<br>';
+				echo '<span class="label">Reason for Stretcher:</span>' . $txtDisStretcher . '<br>';
+				echo implode(',', $chkDisDeath) . "<br>";
+				if (isset($txtTrans1)){
+				    echo '<span class="label">Transported by:</span>' . $txtTrans1 . "<br";
+				}
+				if (isset($txtOther2)){
+				    echo '<span class="label">Other:</span>'. $txtOther2 . "<br>";				}
+				?>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=4>
+				<p><span class="label">Transportation:</span>
+					<p><?php 
+					   echo implode (',', $chkDisTransport);
+					   if(isset($txtDisOther3)) {
+					       echo 'Others:' . $txtDisOther3;
+					   }
+					   ?>
+					</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p><?php 
+					echo '<span class="label">In Charger:</span>'. $inChargeName . "<br>";
+					echo  $radInCharge . "<br>";
+					echo '<span class="label">#:</span>'. $inChargeNum . "<br>";
+					?>
+					</p>
+				</td>
+				<td>
+					<p><?php 
+					echo '<span class="label">In Charger:</span>'. $driverName . "<br>";
+					echo  $radDriver . "<br>";
+					echo '<span class="label">#:</span>'. $driverNumber . "<br>";
+					?>
+					</p>
+				</td>
+				<td>
+					<p><?php 
+					echo '<span class="label">Other:</span>'. $otherDriver1 . "<br>";
+					echo  $radOtherDriver1 . "<br>";
+					echo '<span class="label">#:</span>'. $otherDriverNum1 . "<br>";
+					?>
+					</p>
+				</td>
+				<td>
+					<p><?php 
+					echo '<span class="label">Other:</span>'. $otherDriver2 . "<br>";
+					echo  $radOtherDriver2 . "<br>";
+					echo '<span class="label">#:</span>'. $otherDriverNum2 . "<br>";
+					?>
+					</p>
+				</td>
+			</tr>
+		</table>
+		
+		<table>
+			<tr>
+				<th colspan = "2"><h3>Narrative Note</h3>
+				</th>
+			</tr>
+			<tr>
+				<td>
+				<p><span class="label">Narrative Note:  </span><?php echo $txtNarrativeNote;?></p></td>
 				<td>
 				<img class="signaturePad" style="width:250px; height:auto;" src= <?php print($signOut1)?> alt="Signature">
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2">
+				<td>
 				<p style="font-weight: bold">I hereby refuse emergency medical treatment and/or transportation to the nearest emergency medical facility.
 				 I acknowledge that such treatment was advised by the ambulance technician or physician.
 				  I hereby release such persons from liability for respecting my wishes and following my express directions.</p>
 				</td>
-			</tr>
-			<tr>
-    			<td colspan="2">
+				<td>
         			<p><span class="label">Patient Signature:  </span></p>
         			<img class="signaturePad" style="width: 250px; height:auto;" src= <?php print($signOut2)?> alt="Patient Signature">
     			</td>
 			</tr>
 		</table>
 		<div id="authorizationForm">
+			<h3 class="text-center">AUTHORIZATION</h3>
     		<blockquote>
     			I request that payment of authorized Medicare, Medicaid, or any other insurance benefits be made on my behalf to Senior Care EMS for any services provided to me by Senior Care now or in the future. I understand that I am financially responsible for the services provided to me by Senior Care MES regardless of my insurance coverage, and in some cases, may be responsible for an amount in addition to that which was paid by my insurance. I agree to immediately remit to Senior Care EMS amy payments that I receive directly from insurance or any source whatsoever for the services provided to me and I assign all rights to such payments to Senior Care EMS. I authorize Senior Care EMS to to appeal payment denials or other adverse decisions on my behalf without further authorization. I authorize and direct any holder of medical information or documentation about me to release such information to Senior Care EMS and its billing agents, and/or the Centers for Medicare andMedicaid Services and its carriers and agents, and/or any other payers or insurers as may be necessary to determine these or other benefits payable for any 
     			services provided to me by Senior Care EMS, now or in the future. A copy of this form is as valid as an original.
@@ -277,7 +409,7 @@
 			
 			<p><span style="font-weight:bold">Privacy Practices Acknowledgment:</span> by signing below, I acknowledge that 
 			I have received Senior Care EMS Notice of Privacy Practices.</p>
-			<h3 class="text-center">SIGNATURE SECTION: One of the following three sections MUST be completed.</h3>
+			<h4 class="text-center">SIGNATURE SECTION: One of the following three sections MUST be completed.</h4>
         	<div class="border margin padding" >
         		<h4 class="text-center">SECTION I - PATIENT SIGNATURE</h4>
         		<p>The patient must sign here unless the patient is physically or mentally incapable of signing:</p>
