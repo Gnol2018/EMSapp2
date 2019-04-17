@@ -53,13 +53,12 @@
     	btnAdd.click(function(){
     		//Select last ID
     		var vitalTime = $('.cloned-row .col-sm input[type=text]:nth-child(2)').last().attr('id');
-    		var vitalName = $('.cloned-row .col-sm input[type=text]:nth-child(2)').last().attr('name');
     		
+    		var vitalCons = $('.cloned-row .vitalCons input[type=radio]').last().attr('name');
     		var vitalResRate = $('.cloned-row .resRate input[type=text]:nth-child(3)').last().attr('id');
     		
     		var split_id = vitalTime.split('_');
-    		var split_name = vitalName.split('_') ;
-    	
+    		
     		var splitResRate = vitalResRate.split('_');
     		
     		//New Index
@@ -72,13 +71,23 @@
     		console.log(vitalResRate);
     		console.log(index);
     	
-    		
+    		$(rowNumber).val("Row_" + index); 
     		//Create Clone
     		var newRow = $(".cloned-row:last").clone(true);
     		console.log(newRow);
-    		//Set id of new elements on cloned Row
+    		//Set new Id for textbox
     		 $(newRow).find('.col-sm input[type=text]:nth-child(2)').attr("id","vitalTime_"+index);
-    		 $(newRow).find('.col-sm input[type=text]:nth-child(2)').attr("name","vitalTime_"+index);
+    		 
+    		 //Set new Name for Radio Button
+    		 $(newRow).find('.vitalCons input[type=radio]').attr("name","radCons" + index);
+    		 $(newRow).find('.col-sm .rightPupils input[type=radio]').attr("name","radRightPupil" + index);
+    		 $(newRow).find('.col-sm .leftPupils input[type=radio]').attr("name","radLeftPupil" + index);
+    		 $(newRow).find('.vitalSkin input[type=radio]').attr("name","radSkin" + index);
+    		 $(newRow).find('.vitalStatus input[type=radio]').attr("name","radStatus" + index);
+    		 //Set new Name for Checkbox
+    		 $(newRow).find('.resRate input[type=checkbox]').attr("name","vitalResCheck" + index + "[]");
+    		 $(newRow).find('.vitalPulse input[type=checkbox]').attr("name","chkPulse" + index + "[]");
+    		 
     		 $(newRow).find('.col-sm input[type=text]:nth-child(2)').attr("onclick","getClock(vitalTime_" + index + ")");
     		 //Set Value
     		 $(newRow).find('.col-sm input[type=text]:nth-child(2)').val("vitalTime_"+ index);

@@ -114,9 +114,58 @@ if(isset($_POST['dispatchSubmit'])) {
     
     //Set Map Items
     $traumaMapItems = $_POST['traumaMapItems'];
-    //Vital Sign Form Input
-    $vitalTime = $_POST['vitalTime_1'];
     
+    //---------------Vital Sign Form Input---------------
+    $row = explode("_", $_POST['rowNumber']);
+    if($row[1] > 0){
+        $maxRow =  $row[1];
+        $_SESSION['maxRow'] = $maxRow;
+    }
+    var_dump($_SESSION['maxRow']);
+    $vitalTime = $_POST['vitalTime'];
+    $vitalResRate = $_POST['vitalResRate'];
+    $vitalPulseRate = $_POST['vitalPulseRate'];
+    $txtBP = $_POST['txtBP'];
+    for($i= 0; $i <= $maxRow; $i++) {
+        $radConsIndex = array('radCons' . $i);
+        $radRightPupilIndex = array('radRightPupil' . $i);
+        $radLeftPupilIndex = array('radLeftPupil' . $i);
+        $radSkinIndex = array('radSkin' . $i);
+        $radStatusIndex = array('radStatus' . $i);
+        var_dump($radConsIndex);
+        
+        $vitalResIndex = 'vitalResCheck' . $i;
+        $vitalPulseIndex = 'chkPulse' . $i;
+        
+        //Assign declared Variable to POST variable
+        $radCons = $_POST[$radConsIndex[0]];
+        $radRightPupil = $_POST[$radRightPupilIndex[0]];
+        $radLeftPupil = $_POST[$radLeftPupilIndex[0]];
+        $radSkin = $_POST[$radSkinIndex[0]];
+        $radStatus = $_POST[$radStatusIndex[0]];
+        
+        $vitalResCheck = $_POST[$vitalResIndex];
+        $vitalPulseCheck = $_POST[$vitalPulseIndex];
+        
+        $_SESSION['radCons'. $i] = $radCons;
+        $_SESSION['radRightPupil'. $i] = $radRightPupil;
+        $_SESSION['radLeftPupil'. $i] = $radLeftPupil;
+        $_SESSION['radSkin'. $i] = $radSkin;
+        $_SESSION['radStatus'. $i] = $radStatus;
+        
+        $_SESSION['vitalResCheck' . $i] = $vitalResCheck;
+        $_SESSION['chkPulse' . $i] = $vitalPulseCheck;
+        var_dump($vitalResCheck);
+        var_dump($vitalPulseCheck);
+        var_dump($_SESSION['vitalResCheck' . $i]);
+    }
+    $_SESSION['vitalTime'] = $vitalTime;
+    $_SESSION['vitalResRate'] = $vitalResRate;
+    $_SESSION['vitalPulseRate'] = $vitalPulseRate;
+    $_SESSION['txtBP'] = $txtBP;
+    var_dump( $_SESSION['vitalTime']);
+    
+    //--------------Vital Sign Form Input End---------------
     //Disposition Form Input
     $chkALStransport = $_POST['chkALStransport'];
     $txtDisCode = $_POST['txtDisCode'];
@@ -274,6 +323,29 @@ $_SESSION['pastMedical'] = $pastMedical;
 $_SESSION['patientMedication'] = $patientMedication;
 $_SESSION['traumaMapItems'] = $traumaMapItems;
 
+$_SESSION['vitalTime'] = $vitalTime;
+$_SESSION['vitalResRate'] = $vitalResRate;
+$_SESSION['vitalPulseRate'] = $vitalPulseRate;
+$_SESSION['txtBP'] = $txtBP;
+
+$_SESSION['maxRow'] = $maxRow;
+/*
+$_SESSION['radCons'] = $radCons;
+$_SESSION['radRightPupil'] = $radRightPupil;
+$_SESSION['radLeftPupil'] = $radLeftPupil;
+$_SESSION['radSkin'] = $radSkin;
+$_SESSION['radStatus'] = $radStatus;
+$_SESSION['vitalResCheck'] = $vitalResCheck;
+$_SESSION['vitalPulseCheck'] = $vitalPulseCheck;
+var_dump($_SESSION[$vitalTime]);
+var_dump($_SESSION['maxRow']);
+var_dump($_SESSION['radCons']);
+var_dump($_SESSION['radRightPupil']);
+var_dump($_SESSION['radSkin']);
+var_dump($_SESSION['vitalResCheck']);
+
+ 
+ */
 //Treatment Given
 $_SESSION['chkALS'] = $chkALS;
 $_SESSION['chkALStxt1'] = $chkALStxt1;
@@ -332,47 +404,7 @@ $_SESSION['otherDriverNum1'] = $otherDriverNum1;
 $_SESSION['otherDriver2'] = $otherDriver2;
 $_SESSION['radOtherDriver2'] = $radOtherDriver2;
 $_SESSION['otherDriverNum2'] = $otherDriverNum2;
-/*$chkALStransport = $_POST['chkALStransport'];
-$txtDisCode = $_POST['txtDisCode'];
-$selDisDes = $_POST['selDisDes'];
-$radALStran = $_POST['radALStran'];
-$selDisPurpose = $_POST['selDisPurpose'];
-$selDisRequester = $_POST['selDisRequester'];
-$selDisType = $_POST['selDisType'];
-$txtDisWeight = $_POST['txtDisWeight'];
-$txtDisRound = $_POST['txtDisRound'];
-$txtDisStretcher = $_POST['txtDisStretcher'];
 
-$chkDisDeath = $_POST['chkDisDeath'];
-if (isset($_POST['chkDistxt1'])) {
-    $radBackBoard = $_POST['txtTrans1'];
-}
-if (isset($_POST['chkDistxt2'])) {
-    $radBackBoard = $_POST['txtOther2'];
-}
-
-$chkDisTransport = $_POST['chkDisTransport'];
-if (isset($_POST['chkDistxt3'])) {
-    $radBackBoard = $_POST['txtDisOther3'];
-}
-
-$inChargeName= $_POST['inChargeName'];
-$radInCharge = $_POST['radInCharge'];
-$inChargeNum= $_POST['inChargeNum'];
-
-$driverName = $_POST['driverName'];
-$radDriver = $_POST['radDriver'];
-$driverNumber= $_POST['driverNumber'];
-
-
-$otherDriver1 = $_POST['otherDriver1'];
-$radOtherDriver1 = $_POST['radOtherDriver1'];
-$otherDriverNum1 = $_POST['otherDriverNum1'];
-
-$otherDriver2 = $_POST['otherDriver2'];
-$radOtherDriver2 = $_POST['radOtherDriver2'];
-$otherDriverNum2 = $_POST['otherDriverNum2'];
-*/
 //Narrate Note
 $_SESSION['txtNarrativeNote'] = $txtNarrativeNote;
 $_SESSION['signOut1'] = $signOut1;

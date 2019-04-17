@@ -1,6 +1,8 @@
 <?php 
-    ob_start();
     error_reporting(0);   
+    
+   
+    //------------------Vital Talble Input End Here---------------
     $chkALStransport = $_SESSION['chkALStransport'];
     $txtDisCode = $_SESSION['txtDisCode'];
     $selDisDes =  $_SESSION['selDisDes'];
@@ -41,6 +43,7 @@
    		<style>
       	body {
           background: rgb(204,204,204); 
+          width:100%;
         }
        
         .page {
@@ -237,7 +240,52 @@
 					<td colspan="2"><span class="label">Other:</span> 
 					</td>
 				</tr>
+				<tr>
+					
+				</tr>
 			</table>
+			
+			<?php 
+			$maxRow =  $_SESSION['maxRow'];
+			$vitalTime = $_SESSION['vitalTime'];
+			$vitalResRate = $_SESSION['vitalResRate'];
+			$vitalPulseRate = $_SESSION['vitalPulseRate'];
+			$txtBP = $_SESSION['$txtBP'];
+			echo $maxRow;
+			echo "<table>";
+			echo "<tr>";
+			echo "<th>Vital Time</th>
+                <th>Respiration</th>
+                <th>Pulse/BP</th>
+                <th>Level of Conscousness</th>
+                <th>Pupils</th>
+                <th>Skin</th>
+                <th>Status</th>";
+			for ($i = 0; $i <= $maxRow; $i++){
+			    $radCons = $_SESSION['radCons'. $i];
+			    $radRightPupil = $_SESSION['radRightPupil'. $i];
+			    $radLeftPupil = $_SESSION['radLeftPupil'. $i];
+			    $radSkin = $_SESSION['radSkin'. $i];
+			    $radStatus = $_SESSION['radStatus'. $i];
+			    
+			    $vitalResCheck = $_SESSION['vitalResCheck' . $i];
+			    $vitalPulseCheck = $_SESSION['chkPulse' . $i];
+			    
+			    echo $i;
+			    echo "</tr><tr>";
+			    echo "<td>Vital time:" . $vitalTime[$i] . "</td>";
+			    echo "<td>Respiration: " . $vitalResRate[$i] . "<br>"
+            . "(" . implode(',', $vitalResCheck) . ")" ."</td>";
+            echo "<td>Pulse: ". $vitalPulseRate[$i] . "<br>" . implode(', ', $vitalPulseCheck) . "<br>" .
+                "BP: ". $txtBP[$i] . "</td>";
+            echo "<td>Level of Conscousness: ". $radCons ."</td>";
+            echo "<td>Pupils: " . $radRightPupil ."(Right)" . "/ ". $radLeftPupil . "(Left)" . " </td>";
+            echo "<td>Skin: " . $radSkin . "</td>";
+            echo "<td>Status: " . $radStatus ."</td>";
+    			};
+			echo "</tr>";
+			echo "</table>";
+		    ?>
 		</div>
 		<table>
 			<tr>
@@ -299,19 +347,25 @@
 		</table>
 		<table>
 			<tr>
-				<td colspan=2>
+				<th colspan= "4">
+					<h3>DISPOSITION</h3>
+				</th>
+			</tr>
+			<tr>
+				<td colspan= "2">
 					<p><?php 
     					if(isset($chkALStransport)){
     					    echo $chkALStransport . '<br>';
+    					    echo '<span class="label">Disposition Code:</span>' . $txtDisCode . '<br>';
+    					    echo '<span class="label">Destination (Hospital/Non-Hospital):</span>' . $selDisDes . '<br>';
+    					    echo '<span class="label">Proximity:</span>' . $radALStran . '<br>';
+    					    echo '<span class="label">Purpose:</span>' . $selDisPurpose . '<br>';
+    					    echo '<span class="label">Ambulance Requested By:</span>' . $selDisRequester . '<br>';
+    					    echo '<span class="label">Type of Transport:</span>' . $selDisType . '<br>';
     					} else {
     					    echo 'Not Transported as ALS <br>';
     					}
-    					echo '<span class="label">Disposition Code:</span>' . $txtDisCode . '<br>';
-    					echo '<span class="label">Destination (Hospital/Non-Hospital):</span>' . $selDisDes . '<br>';
-    					echo '<span class="label">Proximity:</span>' . $radALStran . '<br>';
-    					echo '<span class="label">Purpose:</span>' . $selDisPurpose . '<br>';
-    					echo '<span class="label">Ambulance Requested By:</span>' . $selDisRequester . '<br>';
-    					echo '<span class="label">Type of Transport:</span>' . $selDisType . '<br>';
+    					
     					?>
 					</p>
 				</td>

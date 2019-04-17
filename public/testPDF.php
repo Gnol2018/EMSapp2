@@ -3,7 +3,7 @@
 ob_start();
 session_start();
 error_reporting(0);
-
+//Dispatch SESSION variable
 $mileTotal = $_SESSION['mileTotal'];
 $dispatchDate = $_SESSION['dispatchDate'];
 $runId = $_SESSION['runId'];
@@ -25,6 +25,7 @@ $dispatchCallType = $_SESSION['dispatchCallType'];
 $dispatchPatientNumb = $_SESSION['dispatchPatientNumb'];
 $dispatchMethod = $_SESSION['dispatchMethod'];
 
+//Demographic SESSION Variable
 $patientFname = $_SESSION['patientFname'];
 $patientMname = $_SESSION['patientMname'];
 $patientLname = $_SESSION['patientLname'];
@@ -42,6 +43,7 @@ $patientAge = $_SESSION['patientAge'];
 $patientEmerContact = $_SESSION['patientEmerContact'];
 $patientEmerPhone = $_SESSION['patientEmerPhone'];
 
+//Presenting Problem SESSION Variable
 $traumaComplaint = $_SESSION['traumaComplaint'];
 $traumaInjury = $_SESSION['traumaInjury'];
 $presentProblem = $_SESSION['presentProblem'];
@@ -50,7 +52,40 @@ $pastMedical = $_SESSION['pastMedical'];
 $patientMedication = $_SESSION['patientMedication'];
 $traumaMapItems = $_SESSION['traumaMapItems'];
 
-//Treatment Given
+//------------------Disposition SESSSION variable---------------
+$chkALStransport = $_SESSION['chkALStransport'];
+$txtDisCode = $_SESSION['txtDisCode'];
+$selDisDes =  $_SESSION['selDisDes'];
+$radALStran = $_SESSION['radALStran'];
+$selDisPurpose = $_SESSION['selDisPurpose'];
+$selDisRequester = $_SESSION['selDisRequester'];
+$selDisType =  $_SESSION['selDisType'];
+
+$txtDisWeight = $_SESSION['txtDisWeight'];
+$txtDisRound = $_SESSION['txtDisRound'];
+$txtDisStretcher = $_SESSION['txtDisStretcher'];
+$chkDisDeath =  $_SESSION['chkDisDeath'];
+$txtTrans1 = $_SESSION['txtTrans1'];
+
+$txtOther2 = $_SESSION['txtOther2'];
+$chkDisTransport = $_SESSION['chkDisTransport'];
+$txtDisOther3 = $_SESSION['txtDisOther3'];
+$inChargeName =   $_SESSION['inChargeName'];
+$radInCharge = $_SESSION['radInCharge'];
+$inChargeNum = $_SESSION['inChargeNum'];
+$driverName = $_SESSION['driverName'];
+$radDriver = $_SESSION['radDriver'];
+$driverNumber = $_SESSION['driverNumber'];
+
+$otherDriver1 = $_SESSION['otherDriver1'];
+$radOtherDriver1 = $_SESSION['radOtherDriver1'];
+$otherDriverNum1 = $_SESSION['otherDriverNum1'];
+
+$otherDriver2 = $_SESSION['otherDriver2'];
+$radOtherDriver2 = $_SESSION['radOtherDriver2'];
+$otherDriverNum2 = $_SESSION['otherDriverNum2'];
+
+//Treatment Given SESSION variable
 $chkALS = $_SESSION['chkALS'];
 $chkALStxt1 = $_SESSION['chkALStxt1'];
 $chkALStxt2 = $_SESSION['chkALStxt2'];
