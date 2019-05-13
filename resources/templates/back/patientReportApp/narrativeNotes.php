@@ -6,27 +6,26 @@
     	 	</a>
     	</h5>
     </div>
-   
     	
     <div class="container-fluid my-2 py-2 collapse signature-component " id="narrativePanel">
       
     	<div class="row">
     		<div class="col-lg">
         		<div class="form-group">
-        			<label>Notes</label>
+        			<label>Narrative expressed:</label>
         			<textarea name="txtNarrativeNote" class="form-control" row="10"></textarea>
         		</div>
     		</div>
     	</div>
     	
     	
-    	
-    	 <div id="signature1">
-    	 <h3>Signature</h3>
+    	<h3>AMA Signature</h3>
+    	<div class="row">
+        	<div id="signature1"></div>
        	</div>
        	<div class="row">
        		<div class="col">
-       			<a class="btn" id="signatureSave">Save Signature</a>
+       			<a onclick="signatureReset(signature1)" class="btn btn-secondary" id="signatureReset">Reset</a>
        		</div>
        	</div>
     	
@@ -42,58 +41,16 @@
     	<div id="signature2">
     	
     	</div>
-    	<input type="text" id="signOut1" name="signOut1">
-    	<input type="text" id="signOut2" name="signOut2">
-    	<input type="text" id="signAPCF" name="signAPCF">
+    	<div class="row">
+       		<div class="col">
+       			<a onclick="signatureReset(signature2)" class="btn btn-secondary">Reset</a>
+       		</div>
+       	</div>
+    	<input hidden type="text" id="signOut1" name="signOut1">
+    	<input hidden type="text" id="signOut2" name="signOut2">
+    	<input hidden type="text" id="signAPCF" name="signAPCF">
    		<script>
-   		$('#accordion').one('shown.bs.collapse', function() {
-   			$("#signature1").resize();
-   			$("#signature1").jSignature({
-   	   			height: 300
-   	   			});
-   			$("#signature2").jSignature({
-				height: 300
-   				});
-   			$("#signatureSec1").jSignature({
-				height: 300
-   				});
-   			$("#signatureSec2").jSignature({
-				height: 300
-   				});
-   			$("#signatureSec3").jSignature({
-				height: 300
-   				});
-   			$("#signatureSec4").jSignature({
-				height: 300
-   				});
-   			$("#signatureSec5").jSignature({
-				height: 300
-   				});
-   			$("#signatureAPCF").jSignature({
-				height: 300
-   				});
-   			
-   		});
    		
-   		$('#signatureSave').on('click', function() {
-   			var signOutput1 = $("#signature1").jSignature("getData");
-   			var signOutput2 = $("#signature2").jSignature("getData");
-   			var signSec1 = $("#signatureSec1").jSignature("getData");
-   			var signSec2 = $("#signatureSec2").jSignature("getData");
-   			var signSec3 = $("#signatureSec3").jSignature("getData");
-   			var signSec4 = $("#signatureSec4").jSignature("getData");
-   			var signSec5 = $("#signatureSec5").jSignature("getData");
-   			var signAPCF = $("#signatureAPCF").jSignature("getData");
-   			
-   			$('#signOut1').val(signOutput1);
-   			$('#signOut2').val(signOutput2);
-   			$('#signSec1').val(signSec1);
-   			$('#signSec2').val(signSec2);
-   			$('#signSec3').val(signSec3);
-   			$('#signSec4').val(signSec4);
-   			$('#signSec5').val(signSec5);
-   			$('#signAPCF').val(signAPCF);
-   	   		});
    	
    		</script>
     </div>

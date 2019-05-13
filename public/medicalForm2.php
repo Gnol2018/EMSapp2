@@ -1,6 +1,191 @@
 <?php 
     error_reporting(0);   
+    //Dispatch SESSION variable
+    $mileTotal = $_SESSION['mileTotal'];
+    $dispatchDate = $_SESSION['dispatchDate'];
+    $runId = $_SESSION['runId'];
+    $vehId = $_SESSION['vehId'];
+    $dispatchAgency = $_SESSION['dispatchAgency'];
+    $dispatchLocation = $_SESSION['dispatchLocation'] ;
+    $lCode = $_SESSION['lCode'];
+    $dispatchInfo = $_SESSION['dispatchInfo'];
+    $lType = $_SESSION['lType'];
+    $dispatchCross = $_SESSION['dispatchCross'];
+    $timeReceived = $_SESSION['timeReceived'];
+    $timeRoute = $_SESSION['timeRoute'] ;
+    $timeAtScene = $_SESSION['timeAtScene'] ;
+    $timeFromScene = $_SESSION['timeFromScene'];
+    $timeAtDes = $_SESSION['timeAtDes'] ;
+    $timeInService = $_SESSION['timeInService'];
+    $timeInQuarter = $_SESSION['timeInQuarter'];
+    $dispatchCallType = $_SESSION['dispatchCallType'];
+    $dispatchPatientNumb = $_SESSION['dispatchPatientNumb'];
+    $dispatchMethod = $_SESSION['dispatchMethod'];
     
+    //Demographic SESSION Variable
+    $patientFname = $_SESSION['patientFname'];
+    $patientMname = $_SESSION['patientMname'];
+    $patientLname = $_SESSION['patientLname'];
+    $patientAddress = $_SESSION['patientAddress'];
+    $patientApt = $_SESSION['patientAptUnit'];
+    $patientPhone1 = $_SESSION['patientPhone1'];
+    $patientPhone2 = $_SESSION['patientPhone2'];
+    $patientCity = $_SESSION['patientCity'];
+    $patientState = $_SESSION['patientState'];
+    $patientZipcode = $_SESSION['patientZipcode'];
+    $patientDOB = $_SESSION['patientDOB'];
+    $patientGender = $_SESSION['patientGender'];
+    $patientSS = $_SESSION['patientSS'];
+    $patientAge = $_SESSION['patientAge'];
+    $patientEmerContact = $_SESSION['patientEmerContact'];
+    $patientEmerPhone = $_SESSION['patientEmerPhone'];
+    
+    //Insurance Session Variable
+    $insurPolicy1 = $_SESSION['insurPolicy1'];
+    $insurCompany1 = $_SESSION['insurCompany1'];
+    $insurAddress1 = $_SESSION['insurAddress1'];
+    $insurPhone1 = $_SESSION['insurPhone1'];
+    $insurGroup1 = $_SESSION['insurGroup1'];
+    $insurPol1 = $_SESSION['insurPol1'];
+    $insurHolder1 = $_SESSION['insurHolder1'];
+    $insurSS1 = $_SESSION['insurSS1'];
+    $insurDOB1 = $_SESSION['insurDOB1'];
+    $insurMedicare1 = $_SESSION['insurMedicare1'];
+    $insurMedicaid1 = $_SESSION['insurMedicaid1'];
+    $insurClaim1 = $_SESSION['insurClaim1'];
+    
+    $insurPolicy2 = $_SESSION['insurPolicy2'];
+    $insurCompany2 = $_SESSION['insurCompany2'];
+    $insurAddress2 = $_SESSION['insurAddress2'];
+    $insurPhone2 = $_SESSION['insurPhone2'];
+    $insurGroup2 = $_SESSION['insurGroup2'];
+    $insurPol2 = $_SESSION['insurPol2'];
+    $insurHolder2 = $_SESSION['insurHolder2'];
+    $insurSS2 = $_SESSION['insurSS2'];
+    $insurDOB2 = $_SESSION['insurDOB2'];
+    $insurMedicare2 = $_SESSION['insurMedicare2'];
+    $insurMedicaid2 = $_SESSION['insurMedicaid2'];
+    $insurClaim2 = $_SESSION['insurClaim2'];
+    //Presenting Problem SESSION Variable
+    $traumaComplaint = $_SESSION['traumaComplaint'];
+    $traumaInjury = $_SESSION['traumaInjury'];
+    $presentProblem = $_SESSION['presentProblem'];
+    $medicalComplaint = $_SESSION['medicalComplaint'];
+    $pastMedical = $_SESSION['pastMedical'];
+    $patientMedication = $_SESSION['patientMedication'];
+    $traumaMapItems = $_SESSION['traumaMapItems'];
+    
+    //------------------Disposition SESSSION variable---------------
+    $chkALStransport = $_SESSION['chkALStransport'];
+    $txtDisCode = $_SESSION['txtDisCode'];
+    $selDisDes =  $_SESSION['selDisDes'];
+    $radALStran = $_SESSION['radALStran'];
+    $selDisPurpose = $_SESSION['selDisPurpose'];
+    $selDisRequester = $_SESSION['selDisRequester'];
+    $selDisType =  $_SESSION['selDisType'];
+    
+    $txtDisWeight = $_SESSION['txtDisWeight'];
+    $txtDisRound = $_SESSION['txtDisRound'];
+    $txtDisStretcher = $_SESSION['txtDisStretcher'];
+    $chkDisDeath =  $_SESSION['chkDisDeath'];
+    $txtTrans1 = $_SESSION['txtTrans1'];
+    
+    $txtOther2 = $_SESSION['txtOther2'];
+    $chkDisTransport = $_SESSION['chkDisTransport'];
+    $txtDisOther3 = $_SESSION['txtDisOther3'];
+    $inChargeName =   $_SESSION['inChargeName'];
+    $radInCharge = $_SESSION['radInCharge'];
+    $inChargeNum = $_SESSION['inChargeNum'];
+    $driverName = $_SESSION['driverName'];
+    $radDriver = $_SESSION['radDriver'];
+    $driverNumber = $_SESSION['driverNumber'];
+    
+    $otherDriver1 = $_SESSION['otherDriver1'];
+    $radOtherDriver1 = $_SESSION['radOtherDriver1'];
+    $otherDriverNum1 = $_SESSION['otherDriverNum1'];
+    
+    $otherDriver2 = $_SESSION['otherDriver2'];
+    $radOtherDriver2 = $_SESSION['radOtherDriver2'];
+    $otherDriverNum2 = $_SESSION['otherDriverNum2'];
+    
+    //Treatment Given SESSION variable
+    $chkALS = $_SESSION['chkALS'];
+    $chkALStxt1 = $_SESSION['chkALStxt1'];
+    $chkALStxt2 = $_SESSION['chkALStxt2'];
+    $radEKG = $_SESSION['radEKG'];
+    $chkALStxt3 = $_SESSION['chkALStxt3'];
+    $txtCath = $_SESSION['txtCath'];
+    $chkBLS = $_SESSION['chkBLS'];
+    $txtArtificial = $_SESSION['txtArtificial'];
+    $txtCPR = $_SESSION['txtCPR'];
+    $txtCPRstart = $_SESSION['txtCPRstart'];
+    $txtCPRarrest = $_SESSION['txtCPRarrest'];
+    
+    $numDef = $_SESSION['numDef'];
+    $radBLS4 = $_SESSION['radBLS4'];
+    $txtMast = $_SESSION['txtMast'];
+    $txtBleedCtrl = $_SESSION['txtBleedCtrl'];
+    $radLimb = $_SESSION['radLimb'];
+    $radBackBoard = $_SESSION['radBackBoard'];
+    $txtVomit = $_SESSION['txtVomit'];
+    $txtVomitMethod = $_SESSION['txtVomitMethod'];
+    $radLimb = $_SESSION['radLimb'];
+    $radLimb = $_SESSION['radLimb'];
+    $txtRestraints = $_SESSION['txtRestraints'];
+    $txtBabyDelivery = $_SESSION['txtBabyDelivery'];
+    $txtBabyCountry = $_SESSION['txtBabyCountry'];
+    $radBaby = $_SESSION['radBaby'];
+    $txtAEDshock = $_SESSION['txtAEDshock'];
+    $txtBLSother = $_SESSION['txtBLSother'];
+    
+    //Narrtive Notes
+    $txtNarrativeNote = $_SESSION['txtNarrativeNote'];
+    $signOut1 = $_SESSION['signOut1'];
+    $signOut2 = $_SESSION['signOut2'];
+    
+    //Authorization
+    $signSec1 = $_SESSION['signSec1'];
+    $signSec2 = $_SESSION['signSec2'];
+    $signSec3 = $_SESSION['signSec3'];
+    $signSec4 = $_SESSION['signSec4'];
+    $signSec5 = $_SESSION['signSec5'];
+    
+    $txtWitnessName = $_SESSION['txtWitnessName'];
+    $txtReasonII = $_SESSION['txtReasonII'];
+    $chkSecII = $_SESSION['chkSecII'];
+    $txtRepName = $_SESSION['txtRepName'];
+    $txtReasonIII = $_SESSION['txtReasonIII'];
+    $txtFacilityIII = $_SESSION['txtFacilityIII'];
+    $txtFacilityTime = $_SESSION['txtFacilityTime'];
+    $txtCrewIII = $_SESSION['txtCrewIII'];
+    $txtRepIII = $_SESSION['txtRepIII'];
+    $chkSecIII = $_SESSION['chkSecIII'];
+    
+    //APCF Form SESSION variale
+    $chkScheduleApp = $_SESSION['chkScheduleApp'];
+    $txtOtherApp = $_SESSION['txtOtherApp'];
+    $txtAmbulance1 = $_SESSION['txtAmbulance1'];
+    $txtAmbulance2 = $_SESSION['txtAmbulance2'];
+    $chkAmbulance = $_SESSION['chkAmbulance'];
+    $chkUlcer = $_SESSION['chkUlcer'];
+    $chkUlcerOther = $_SESSION['chkUlcerOther'];
+    $txtUlcer3 = $_SESSION['txtUlcer3'];
+    $chkPara = $_SESSION['chkPara'];
+    $chkFracture = $_SESSION['chkFracture'];
+    $txtFracture4 = $_SESSION['txtFracture4'];
+    $chkContractures = $_SESSION['chkContractures'];
+    
+    $txtSeverePain5 = $_SESSION['txtSeverePain5'];
+    $chkPsychic = $_SESSION['chkPsychic'];
+    $chkPatientRequire = $_SESSION['chkPatientRequire'];
+    $chkIsolation = $_SESSION['$chkIsolation'];
+    $txtIsolation6 = $_SESSION['txtIsolation6'];
+    
+    $txtAPCFother = $_SESSION['txtAPCFother'];
+    $txtPhysicianName = $_SESSION['txtPhysicianName'];
+    $chkPhysician = $_SESSION['chkPhysician'];
+    $signAPCF =  $_SESSION['signAPCF'];
+    $txtIncEmt = $_SESSION['txtIncEmt'];
    
     //------------------Vital Talble Input End Here---------------
     $chkALStransport = $_SESSION['chkALStransport'];
@@ -196,8 +381,70 @@
     				<td><span class="label">Emergency Contact:</span> <?php print($patientEmerContact)?></td>
     				<td><span class="label">Emergency Phone:</span> <?php print($patientEmerPhone)?></td>
 				</tr>
+				<!-- Make a row for Insurance nested table -->
+				<tr>
+					<th colspan=4>Insurance Information</th>
+				</tr>
+				<tr>
+					<td colspan=2>
+    					<table>
+            				<tr> 
+            					<td colspan = 4><span class="label">Primary Insurance Policy: </span><?php print($insurPolicy1)?></td>
+            				</tr>
+            				<tr>
+            					<td colspan=2><span class="label">Company: </span><?php print($insurCompany1)?></td>
+            					<td colspan=2><span class="label">Address: </span><?php print($insurAddress1)?></td>
+            				</tr>
+            				<tr>
+            					<td colspan=2><span class="label">Phone: </span><?php print($insurPhone1)?></td>
+            					<td colspan=2><span class="label">Group#: </span><?php print($insurGroup1)?></td>
+            				</tr>
+            				<tr>
+            					<td><span class="label">Policy: </span><?php print($insurPol1)?></td>
+            					<td><span class="label">Policy Holder: </span><?php print($insurHolder1)?></td>
+            					<td><span class="label">SS#: </span><?php print($insurSS1)?></td>
+            					<td><span class="label">DOB: </span><?php print($insurDOB1)?></td>
+            				</tr>
+            				<tr>
+            					<td><span class="label">Medicare#: </span><?php print($insurMedicare1)?></td>
+            					<td><span class="label">Medicaid#: </span><?php print($insurMedicaid1)?></td>
+            					<td colspan=2><span class="label">Claim#: </span><?php print($insurClaim1)?></td>
+            				</tr>
+    					</table>
+					</td>
+					<td colspan=2>
+    					<table>
+    						
+            				<tr> 
+            					<td colspan = 4><span class="label">Secondary Insurance Policy: </span><?php print($insurPolicy2)?></td>
+            				</tr>
+            				<tr>
+            					<td colspan=2><span class="label">Company: </span><?php print($insurCompany2)?></td>
+            					<td colspan=2><span class="label">Address: </span><?php print($insurAddress2)?></td>
+            				</tr>
+            				<tr>
+            					<td colspan=2><span class="label">Phone: </span><?php print($insurPhone2)?></td>
+            					<td colspan=2><span class="label">Group#: </span><?php print($insurGroup2)?></td>
+            				</tr>
+            				<tr>
+            					<td><span class="label">Policy: </span><?php print($insurPol2)?></td>
+            					<td><span class="label">Policy Holder: </span><?php print($insurHolder2)?></td>
+            					<td><span class="label">SS#: </span><?php print($insurSS2)?></td>
+            					<td><span class="label">DOB: </span><?php print($insurDOB2)?></td>
+            				</tr>
+            				<tr>
+            					<td><span class="label">Medicare#: </span><?php print($insurMedicare2)?></td>
+            					<td><span class="label">Medicaid#: </span><?php print($insurMedicaid2)?></td>
+            					<td colspan=2><span class="label">Claim#: </span><?php print($insurClaim2)?></td>
+            				</tr>
+    					</table>
+					</td>
+				</tr>
 			</table>
-		
+			
+			<!-- table insurance information -->
+			
+			
 			<table>
 				<tr>
 					<th colspan = "4">
@@ -250,7 +497,7 @@
 			$vitalTime = $_SESSION['vitalTime'];
 			$vitalResRate = $_SESSION['vitalResRate'];
 			$vitalPulseRate = $_SESSION['vitalPulseRate'];
-			$txtBP = $_SESSION['$txtBP'];
+			$txtBP = $_SESSION['txtBP'];
 			echo $maxRow;
 			echo "<table>";
 			echo "<tr>";

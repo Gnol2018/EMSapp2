@@ -31,6 +31,10 @@
             				<input name="chkALS[]" class="form-check-input" type="checkbox" value="EndoTracheal Tube (E/T)">
             				<label class="form-check-label">EndoTracheal Tube (E/T)</label>
             			</div>
+            			<div class="form-check">
+            				<input name="chkALS[]" class="form-check-input" checked type="checkbox" value="EndoTracheal Tube (E/T)">
+            				<label class="form-check-label">Ventilator</label>
+            			</div>
             			<div class="form-inline">
             				<input name="chkAlStxt1[]" class="form-check-input" type="checkbox" value="chkEKG">
             				<label class="form-check-label">EKG Monitored [Rythm(s):
@@ -186,7 +190,7 @@
             	</div>
             	<div class="form-check">
     				<input name="chkBLStxt2" class="form-check-input" type="checkbox" value="">
-    				<label class="form-check-label">Mast Infated</label>
+    				<label class="form-check-label">Mast Inflated</label>
     				<input name="txtMast" class="form-control form-control-sm w-25" type="text">
             	</div>
             	<div class="form-inline">

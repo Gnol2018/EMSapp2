@@ -1,4 +1,4 @@
-//Script to calculate the milleage
+	  //Script to calculate the milleage
     	function mileCal(){
         	var e = document.getElementById("mileEnd").value ;
         	var b = document.getElementById("mileBegin").value;
@@ -103,7 +103,85 @@
     	});
     	
     	//Signature Pad
+    	$(document).ready(function() {
+   			$("#signature1").resize();
+   			$("#signature1").jSignature({
+   	   			height: 300
+   	   			});
+   			$("#signature2").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec1").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec2").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec3").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec4").jSignature({
+				height: 300
+   				});
+   			$("#signatureSec5").jSignature({
+				height: 300
+   				});
+   			$("#signatureAPCF").jSignature({
+				height: 300
+   				});
+   			//When a stroke is made, save data to textbox for submitting
+   			$('#signature1').bind('change', function()
+   		   		   	{
+   		       	   		var signOutput1 = $("#signature1").jSignature("getData");
+   		       	
+   		       	   		$('#signOut1').val(signOutput1);
+   		   		   	});
+	    	$('#signature2').bind('change', function()
+	   		   	{
+	       	   		var signOutput2 = $("#signature2").jSignature("getData");
+	       	   		
+	       	   		$('#signOut2').val(signOutput2);
+	   		   	});
+	    	$('#signatureSec1').bind('change', function()
+	   		   	{
+	       	   		var signSec1 = $("#signatureSec1").jSignature("getData");
+	       	  
+	       	   		$('#signSec1').val(signSec1);
+	   		   	});
+	    	$('#signatureSec2').bind('change', function()
+	   		   	{
+	       	   		var signSec2 = $("#signatureSec2").jSignature("getData");
+	       	  
+	       	   		$('#signSec2').val(signSec2);
+	   		   	});
+	    	$('#signatureSec3').bind('change', function()
+	   		   	{
+	       	   		var signSec3 = $("#signatureSec3").jSignature("getData");
+	       	  
+	       	   		$('#signSec3').val(signSec3);
+	   		   	});
+	    	$('#signatureSec4').bind('change', function()
+		   		{
+	       	   		var signSec4 = $("#signatureSec4").jSignature("getData");
+	       	  
+	       	   		$('#signSec4').val(signSec4);
+	   		   	});
+	    	$('#signatureSec5').bind('change', function()
+		   		{
+	       	   		var signSec5 = $("#signatureSec5").jSignature("getData");
+	       	  
+	       	   		$('#signSec5').val(signSec5);
+	   		   	});
+	    	$('#signatureAPCF').bind('change', function()
+		   		{
+	       	   		var signAPCF = $("#signatureAPCF").jSignature("getData");
+	       	   		$('#signAPCF').val(signAPCF);
+	   		   	});
+   		});
     	
+	
+   	
+    	//Jsignature Pad end here
     	//Show Item List for Pain Map
     	function mapClearLists()
         {
@@ -138,13 +216,24 @@
     	//Pick Date for dispatch fomr
     	function getDate(txtDate){
     		var time = new Date();
+    		var month = time.getMonth() + 1;
     		var date = time.getDate();
-    		var month = time.getMonth();
     		var year = time.getFullYear();
     		var today = month + "/" + date + "/" + year;
     		txtDate.value = today;
     		
     		$(txtDate).attr('readonly', true);
+    		
+    	}
+    	//Get Run Id for dispatch Form
+    	function getRunId(txtDate){
+    		var time = new Date();
+    		var month = time.getMonth() + 1;
+    		var date = time.getDate();
+    		var year = time.getFullYear();
+    		var dateIndex = month + date + year;
+    		 
+    		console.log(dateIndex);
     		
     	}
     	//Pick Hours + Minutues + Seconds for time calling

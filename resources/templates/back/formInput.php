@@ -1,46 +1,71 @@
 <?php 
 if(isset($_POST['dispatchSubmit'])) {   
     //set Dispatch form inputs to Session Varible for printing
-    $mileTotal = escape_string($_POST['mileTotal']);
-    $dispatchDate = escape_string($_POST['dispatchDate']);
-    $runId = escape_string($_POST['runId']);
-    $vehId = escape_string($_POST['vehId']);
-    $dispatchAgency = escape_string($_POST['dispatchAgency']);
-    $dispatchLocation = escape_string($_POST['dispatchLocation']);
-    $lCode = escape_string($_POST['lCode']);
-    $dispatchInfo = escape_string($_POST['dispatchInfo']);
-    $lType = escape_string($_POST['lType']);
-    $dispatchCross = escape_string($_POST['dispatchCross']);
-    $timeReceived = escape_string($_POST['timeReceived']);
-    $timeRoute = escape_string($_POST['timeRoute']);
-    $timeAtScene = escape_string($_POST['timeAtScene']);
-    $timeFromScene = escape_string($_POST['timeFromScene']);
-    $timeAtDes = escape_string($_POST['timeAtDes']);
-    $timeInService = escape_string($_POST['timeInService']);
-    $timeInQuarter = escape_string($_POST['timeInQuarter']);
-    $dispatchCallType = escape_string($_POST['dispatchCallType']);
-    $dispatchPatientNumb = escape_string($_POST['dispatchPatientNumb']);
-    $dispatchMethod = escape_string($_POST['dispatchMethod']);
+    $mileTotal = trim_input($_POST['mileTotal']);
+    $dispatchDate = trim_input($_POST['dispatchDate']);
+    $runId = trim_input($_POST['runId']);
+    $vehId = trim_input($_POST['vehId']);
+    $dispatchAgency = trim_input($_POST['dispatchAgency']);
+    $dispatchLocation = trim_input($_POST['dispatchLocation']);
+    $lCode = trim_input($_POST['lCode']);
+    $dispatchInfo = trim_input($_POST['dispatchInfo']);
+    $lType = trim_input($_POST['lType']);
+    $dispatchCross = trim_input($_POST['dispatchCross']);
+    $timeReceived = trim_input($_POST['timeReceived']);
+    $timeRoute = trim_input($_POST['timeRoute']);
+    $timeAtScene = trim_input($_POST['timeAtScene']);
+    $timeFromScene = trim_input($_POST['timeFromScene']);
+    $timeAtDes = trim_input($_POST['timeAtDes']);
+    $timeInService = trim_input($_POST['timeInService']);
+    $timeInQuarter = trim_input($_POST['timeInQuarter']);
+    $dispatchCallType = trim_input($_POST['dispatchCallType']);
+    $dispatchPatientNumb = trim_input($_POST['dispatchPatientNumb']);
+    $dispatchMethod = trim_input($_POST['dispatchMethod']);
     
     //Set Demographic form inputs to SEssion Variable for printing
-    $patientFname = escape_string($_POST['patientFname']);
-    $patientMname = escape_string($_POST['patientMname']);
-    $patientLname = escape_string($_POST['patientLname']);
-    $patientAddress = escape_string($_POST['patientAddress']);
-    $patientApt = escape_string($_POST['patientAptUnit']);
-    $patientPhone1 = escape_string($_POST['patientPhone1']);
-    $patientPhone2 = escape_string($_POST['patientPhone2']);
-    $patientCity = escape_string($_POST['patientCity']);
-    $patientState = escape_string($_POST['patientState']);
-    $patientZipcode = escape_string($_POST['patientZipcode']);
-    $patientDOB = escape_string($_POST['patientDOB']);
-    $patientAge = escape_string($_POST['patientAge']);
-    $patientGender = escape_string($_POST['patientGender']);
-    $patientSS = escape_string($_POST['patientSS']);
-    $patientEmerContact = escape_string($_POST['patientEmerContact']);
-    $patientEmerPhone = escape_string($_POST['patientEmerPhone']);
+    $patientFname = ($_POST['patientFname']);
+    $patientMname = ($_POST['patientMname']);
+    $patientLname = ($_POST['patientLname']);
+    $patientAddress = ($_POST['patientAddress']);
+    $patientApt = ($_POST['patientAptUnit']);
+    $patientPhone1 = ($_POST['patientPhone1']);
+    $patientPhone2 = ($_POST['patientPhone2']);
+    $patientCity = ($_POST['patientCity']);
+    $patientState = ($_POST['patientState']);
+    $patientZipcode = ($_POST['patientZipcode']);
+    $patientDOB = ($_POST['patientDOB']);
+    $patientAge = ($_POST['patientAge']);
+    $patientGender = ($_POST['patientGender']);
+    $patientSS = ($_POST['patientSS']);
+    $patientEmerContact = ($_POST['patientEmerContact']);
+    $patientEmerPhone = ($_POST['patientEmerPhone']);
     
     //Set Insurance Company Input to Session
+    $insurPolicy1 = $_POST['insurPolicy1'];
+    $insurCompany1 = $_POST['insurCompany1'];
+    $insurAddress1 = $_POST['insurAddress1'];
+    $insurPhone1 = $_POST['insurPhone1'];
+    $insurGroup1 = $_POST['insurGroup1'];
+    $insurPol1 = $_POST['insurPol1'];
+    $insurHolder1 = $_POST['insurHolder1'];
+    $insurSS1 = $_POST['insurSS1'];
+    $insurDOB1 = $_POST['insurDOB1'];
+    $insurMedicare1 = $_POST['insurMedicare1'];
+    $insurMedicaid1 = $_POST['insurMedicaid1'];
+    $insurClaim1 = $_POST['insurClaim1'];
+    
+    $insurPolicy2 = $_POST['insurPolicy2'];
+    $insurCompany2 = $_POST['insurCompany2'];
+    $insurAddress2 = $_POST['insurAddress2'];
+    $insurPhone2 = $_POST['insurPhone2'];
+    $insurGroup2 = $_POST['insurGroup2'];
+    $insurPol2 = $_POST['insurPol2'];
+    $insurHolder2 = $_POST['insurHolder2'];
+    $insurSS2 = $_POST['insurSS2'];
+    $insurDOB2 = $_POST['insurDOB2'];
+    $insurMedicare2 = $_POST['insurMedicare2'];
+    $insurMedicaid2 = $_POST['insurMedicaid2'];
+    $insurClaim2 = $_POST['insurClaim2'];
     
     //Set Presenting Problem form to Session Variable
     $traumaComplaint = $_POST['traumaComplaint'];
@@ -121,7 +146,7 @@ if(isset($_POST['dispatchSubmit'])) {
         $maxRow =  $row[1];
         $_SESSION['maxRow'] = $maxRow;
     }
-    var_dump($_SESSION['maxRow']);
+   
     $vitalTime = $_POST['vitalTime'];
     $vitalResRate = $_POST['vitalResRate'];
     $vitalPulseRate = $_POST['vitalPulseRate'];
@@ -132,7 +157,7 @@ if(isset($_POST['dispatchSubmit'])) {
         $radLeftPupilIndex = array('radLeftPupil' . $i);
         $radSkinIndex = array('radSkin' . $i);
         $radStatusIndex = array('radStatus' . $i);
-        var_dump($radConsIndex);
+       
         
         $vitalResIndex = 'vitalResCheck' . $i;
         $vitalPulseIndex = 'chkPulse' . $i;
@@ -155,15 +180,13 @@ if(isset($_POST['dispatchSubmit'])) {
         
         $_SESSION['vitalResCheck' . $i] = $vitalResCheck;
         $_SESSION['chkPulse' . $i] = $vitalPulseCheck;
-        var_dump($vitalResCheck);
-        var_dump($vitalPulseCheck);
-        var_dump($_SESSION['vitalResCheck' . $i]);
+      
     }
     $_SESSION['vitalTime'] = $vitalTime;
     $_SESSION['vitalResRate'] = $vitalResRate;
     $_SESSION['vitalPulseRate'] = $vitalPulseRate;
     $_SESSION['txtBP'] = $txtBP;
-    var_dump( $_SESSION['vitalTime']);
+   
     
     //--------------Vital Sign Form Input End---------------
     //Disposition Form Input
@@ -313,6 +336,32 @@ $_SESSION['patientSS'] = $patientSS;
 $_SESSION['patientEmerContact'] = $patientEmerContact;
 $_SESSION['patientEmerPhone'] = $patientEmerPhone;
 
+//Insurance Session Variable 
+$_SESSION['insurPolicy1'] = $insurPolicy1;
+$_SESSION['insurCompany1'] = $insurCompany1;
+$_SESSION['insurAddress1'] = $insurAddress1;
+$_SESSION['insurPhone1'] = $insurPhone1;
+$_SESSION['insurGroup1'] = $insurGroup1;
+$_SESSION['insurPol1'] = $insurPol1;
+$_SESSION['insurHolder1'] = $insurHolder1;
+$_SESSION['insurSS1'] = $insurSS1;
+$_SESSION['insurDOB1'] = $insurDOB1;
+$_SESSION['insurMedicare1'] = $insurMedicare1;
+$_SESSION['insurMedicaid1'] = $insurMedicaid1;
+$_SESSION['insurClaim1'] = $insurClaim1;
+
+$_SESSION['insurPolicy2'] = $insurPolicy2;
+$_SESSION['insurCompany2'] = $insurCompany2;
+$_SESSION['insurAddress2'] = $insurAddress2;
+$_SESSION['insurPhone2'] = $insurPhone2;
+$_SESSION['insurGroup2'] = $insurGroup2;
+$_SESSION['insurPol2'] = $insurPol2;
+$_SESSION['insurHolder2'] = $insurHolder2;
+$_SESSION['insurSS2'] = $insurSS2;
+$_SESSION['insurDOB2'] = $insurDOB2;
+$_SESSION['insurMedicare2'] = $insurMedicare2;
+$_SESSION['insurMedicaid2'] = $insurMedicaid2;
+$_SESSION['insurClaim2'] = $insurClaim2;
 
 //Presenting Problems
 $_SESSION['traumaComplaint'] = $traumaComplaint;
@@ -329,23 +378,7 @@ $_SESSION['vitalPulseRate'] = $vitalPulseRate;
 $_SESSION['txtBP'] = $txtBP;
 
 $_SESSION['maxRow'] = $maxRow;
-/*
-$_SESSION['radCons'] = $radCons;
-$_SESSION['radRightPupil'] = $radRightPupil;
-$_SESSION['radLeftPupil'] = $radLeftPupil;
-$_SESSION['radSkin'] = $radSkin;
-$_SESSION['radStatus'] = $radStatus;
-$_SESSION['vitalResCheck'] = $vitalResCheck;
-$_SESSION['vitalPulseCheck'] = $vitalPulseCheck;
-var_dump($_SESSION[$vitalTime]);
-var_dump($_SESSION['maxRow']);
-var_dump($_SESSION['radCons']);
-var_dump($_SESSION['radRightPupil']);
-var_dump($_SESSION['radSkin']);
-var_dump($_SESSION['vitalResCheck']);
 
- 
- */
 //Treatment Given
 $_SESSION['chkALS'] = $chkALS;
 $_SESSION['chkALStxt1'] = $chkALStxt1;
@@ -452,6 +485,6 @@ $_SESSION['chkPhysician'] = $chkPhysician;
 $_SESSION['txtIncEmt'] = $txtIncEmt;
 $_SESSION['signAPCF'] = $signAPCF;
 
-echo implode(", ", $_SESSION['chkScheduleApp']);
 
+//It will work if you put it here insertPcrPdf();
 ?>

@@ -35,7 +35,7 @@
 					</div>
 					<div class="col-sm">
 						<label>Run Id: </label>
-						<input type="text" class="form-control" name="runId" id="runId" value="">
+						<input onclick="getRunId(dispatchDate)"type="text" class="form-control" name="runId" id="runId" value="">
 					</div>
 					<div class="col-sm">
 						<label>Veh. Id: </label>
@@ -46,7 +46,7 @@
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="dispatchAgency">Agency Name</label>
-						<input text="text" class="form-control" name="dispatchAgency" id="dispatchAgency">
+						<input readonly text="text" class="form-control" name="dispatchAgency" id="dispatchAgency" value="Intercity Ambulance">
 					</div>
 					<div class="form-group col-sm">
 						<label for="dispatchLocation">Location</label>
@@ -166,27 +166,12 @@
 					<div class="form-group col-sm">
 						<label>Call Received As: </label>
 						<select name="dispatchCallType" class="form-control form-control-sm">
-							<option>Standby (001)</option>
-							<option>BLS (990)</option>
-							<option>BLS Emergency (995)</option>
-							<option>ALS Level 1 (1000)</option>
-							<option>ALS Level 1 Emergency (1005)</option>
-							<option value="1020">Specialty Care Transport (1020)</option>
-							<option value="1025">Fixed Wing (Airplane) (1025)</option>
-							<option value="1030">Rotary Wing (Helicopter) (1030)</option>
-							<option value="B1">Body Removal (billing)</option>
-							<option value="B2">Stand-by Chargeable (billing)</option>
-							<option value="B3">Stand-by Non-chargeable (billing)</option>
-							<option value="B4">Wheel Chair Transport (billing)</option>
-							<option value="B5">Stretcher Transport (billing)</option>
-							<option value="B6">Service Car Transport (billing)</option>
-							<option value="4835">Refusal/No Transport (4835)</option>
-							<option value="4840">No Transport-Treated and Release (4840)</option>
-							<option value="4825">No Patient Found (4825)</option>
-							<option value="-025">Not Applicable (-25)</option>
-							<option value="-015">Not Reporting (-15)</option>
-							<option value="-010">Not Known (-10)</option>
-							<option value="-005">Not Available (-5)</option>
+							<option>Hospital Transfer</option>
+							<option>Nursing Home</option>
+							<option>Hotspice</option>
+							<option>911 request</option>
+							<option>Private Report</option>
+							
 						</select>
 					</div>
 					<div class="form-group col-sm">

@@ -186,7 +186,7 @@
 				    			</div>
 				    			<div class="form-control col-sm">
 				    				<label>Secondary Insurance Policy</label>
-				    				<select name="insurancePolicy2" class="form-control form-control-sm">
+				    				<select name="insurPolicy2" class="form-control form-control-sm">
 										<option>&lt;Select&gt;</option>
         								<option>Auto Insurance</option>
         								<option>Commercial</option>
@@ -259,15 +259,15 @@
 									<div class="form-row">
 										<div class="col-sm">
 											<label>Medicare#:</label>
-											<input class="form-control" id="companyMedicare2"></input>
+											<input class="form-control" id="insurMedicare2"></input>
 										</div>
 										<div class="col-sm">
 											<label>Medicaid#:</label>
-											<input class="form-control" id="companyMedicaid2"></input>
+											<input class="form-control" id="insurMedicaid2"></input>
 										</div>
 										<div class="col-sm">
 											<label>Claim#:</label>
-											<input class="form-control" id="companyClaim2"></input>
+											<input class="form-control" id="insurClaim2"></input>
 										</div>
 									</div>
 				    			</div>

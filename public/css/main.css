@@ -2,6 +2,16 @@ body {
 	color: #f2f2f2;
 	background-color: #0d0d0d;
 }
+/*----- Media Query -----*/
+@media only screen 
+and (max-width: 768px) 
+and (max-width: 1024px){
+	.nav-item {
+		width: 120px !important;
+	}	
+}
+
+
 
 /* ---Main Form CSS -----*/
 a {
@@ -10,6 +20,17 @@ a {
 
 .nav-link:hover {
 	font-weight: bold;
+}
+.navbar {
+	background-color: #0d0d0d;
+}
+.nav-item{
+	background-color: #0d0d0d;
+}
+
+.submitRow > .btn {
+	margin-top: 5px;
+	font-size: 1.5em;
 }
 .card {
 	background-color:transparent;
@@ -83,4 +104,6 @@ a {
 
 
 .signature-component {
+	width:100%;
+	max-height: 100%;
 }
