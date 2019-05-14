@@ -261,9 +261,15 @@
     	function getDate(txtDate){
     		var time = new Date();
     		var month = time.getMonth() + 1;
+    		var monthFormat = month;
+    		if (month < 10) {
+    			monthFormat = "0" + month;
+    		} else {
+    			monthFormat = month;
+    		}
     		var date = time.getDate();
     		var year = time.getFullYear();
-    		var today = month + "/" + date + "/" + year;
+    		var today = monthFormat + "/" + date + "/" + year;
     		txtDate.value = today;
     		$(txtDate).attr('readonly', true);
     	}
@@ -274,14 +280,18 @@
     		var date = time.getDate();
     		var year = time.getFullYear();
     		var dateIndex = month + date + year;
-    		 
-    		console.log(dateIndex);
-    		
     	}
     	//Pick Hours + Minutues + Seconds for time calling
     	function getClock(timeCall){
     		var time = new Date();
-    		var showTime = time.getHours() + ":" + time.getMinutes();
+    		var minutes = time.getMinutes();
+    		var minutesFormat = minutes; 
+    		if (minutes < 10) {
+    			minutesFormat = "0" + minutes;
+    		} else {
+    			minutesFormat = minutes;
+    		}
+    		var showTime = time.getHours() + ":" + minutesFormat;
     		timeCall.value = showTime;
         	$(timeCall).attr('readonly');
 

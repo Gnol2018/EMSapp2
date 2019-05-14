@@ -265,7 +265,7 @@
 						
 						</script>
 						<!-- Insert Picture for Map -->
-						<img id="painMap" usemap="#painMap1" alt ="Pain Map" src="img/ron1.gif">
+						<img id="painMap" usemap="#painMap1" alt ="Pain Map" src="img/ron1.png">
 						
 						<div class="form-group" id="headMapList" style="position:absolute; left: 10px; top:0 ;z-index:10; width:400px;background-color:black; border:1px solid #464f5a; display:none;">
     						<label id="selectHead">Head</label>
@@ -375,33 +375,30 @@
 					
 					<!-- Set coordination point for click to certain area on the map -->
 					<map name="painMap1">
-						<area class="headArea" name="head" shape="circle" coords="115,42,31" onclick="boxShow('headMapList')" href="#" alt="Head">
-						<area class="neckArea" name="neck" shape="rect" coords="98,79,133,99" onclick="boxShow('neckMapList')" href="#" alt="Neck">
-						<area onclick="boxShow('thoraxMapList')" class="thorax" name="thorax" shape="poly" coords="70,104,96,93,114,99,132,91,159,101,153,155,84,153" href="#" alt="Thorax" >
-						<area onclick="boxShow('abdomenMapList')" class="abdomenArea" name="abdomen" shape="poly" coords="83,156,84,187,80,212,105,225,130,223,156,213,152,158" href="#" alt="Abdomen" >
-						<area onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="67,104,77,140,75,166,65,189,42,231,32,262,6,257,4,238,27,224,38,192,51,165,56,127" href="#" alt="Arm" >
-						<area onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="166,101,170,114,177,137,192,178,210,220,230,230,228,248,222,261,204,252,200,233,163,185,153,149,158,105" href="#" alt="Arm" >
-						<area onclick="boxShow('groinMapList')" class="groinArea" name="groin" shape="circle" coords="121,238,14" href="#" alt="Groin">
-						<area onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="76,217,108,228,108,239,114,251,108,303,102,339,102,365,97,398,97,412,97,440,88,457,73,442,82,413,81,395,75,368,84,331,84,312,74,255" href="#" alt="Leg">						
-						<area onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="157,217,133,227,132,239,122,252,137,333,137,347,138,377,145,400,143,417,147,447,153,457,165,447,158,415,162,357,159,335,160,311,162,273" href="#" alt="Leg">
+						<!-- To use ImageMapster, it will require to have href="#", but when it bugs out, the customJquery will keep making the page go up on top -->
+						<area href="#" class="headArea" name="head" shape="circle" coords="115,42,31" onclick="boxShow('headMapList')"  alt="Head">
+						<area href="#"class="neckArea" name="neck" shape="rect" coords="98,79,133,99" onclick="boxShow('neckMapList')"  alt="Neck">
+						<area href="#" onclick="boxShow('thoraxMapList')" class="thorax" name="thorax" shape="poly" coords="70,104,96,93,114,99,132,91,159,101,153,155,84,153"  alt="Thorax" >
+						<area href="#" onclick="boxShow('abdomenMapList')" class="abdomenArea" name="abdomen" shape="poly" coords="83,156,84,187,80,212,105,225,130,223,156,213,152,158"  alt="Abdomen" >
+						<area href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="67,104,77,140,75,166,65,189,42,231,32,262,6,257,4,238,27,224,38,192,51,165,56,127"  alt="Arm" >
+						<area href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="166,101,170,114,177,137,192,178,210,220,230,230,228,248,222,261,204,252,200,233,163,185,153,149,158,105"  alt="Arm" >
+						<area href="#" onclick="boxShow('groinMapList')" class="groinArea" name="groin" shape="circle" coords="121,238,14"  alt="Groin">
+						<area href="#" onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="76,217,108,228,108,239,114,251,108,303,102,339,102,365,97,398,97,412,97,440,88,457,73,442,82,413,81,395,75,368,84,331,84,312,74,255"  alt="Leg">						
+						<area href="#" onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="157,217,133,227,132,239,122,252,137,333,137,347,138,377,145,400,143,417,147,447,153,457,165,447,158,415,162,357,159,335,160,311,162,273"  alt="Leg">
 						<!-- Set coordination point for click to second part of the map-- -->
-						<area onclick="boxShow('headMapList')" class="headArea" name="head" shape="circle" coords="367,33,26" href="#" alt="Head">
-						<area onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="321,94,330,144,325,177,293,225,284,257,258,250,258,234,281,217,295,177,308,158,312,121" href="#" alt="Arm">
-						<area onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="413,94,427,124,448,194,457,222,477,233,476,255,473,262,450,263,438,224,416,174,404,149" href="#" alt="Arm">
-						<area onclick="boxShow('neckMapList')" class="neckArea" name="neck" shape="poly" coords="348,63,350,77,365,76,383,76,385,64,368,62" href="#" alt="Neck">	
-						<area onclick="boxShow('thoraxMapList')" class="thorax" name="thorax" shape="poly" coords="324,97,352,78,385,79,409,93,402,150,336,149" href="#" alt="Thorax" >			
-						<area onclick="boxShow('abdomenMapList')" class="abdomenArea" name="abdomen" shape="poly" coords="337,157,400,157,397,178,410,233,391,250,372,239,346,248,324,230,339,174" href="#" alt="Abdomen">
-						<area onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="325,230,345,249,368,246,356,325,348,405,350,457,327,444,334,405,325,348,336,320" href="#" alt="Leg">						
-						<area onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="372,245,395,249,412,238,408,321,420,441,400,455,390,409,388,329" href="#" alt="Leg">
+						<area href="#" onclick="boxShow('headMapList')" class="headArea" name="head" shape="circle" coords="367,33,26"  alt="Head">
+						<area href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="321,94,330,144,325,177,293,225,284,257,258,250,258,234,281,217,295,177,308,158,312,121"  alt="Arm">
+						<area href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="413,94,427,124,448,194,457,222,477,233,476,255,473,262,450,263,438,224,416,174,404,149"  alt="Arm">
+						<area href="#" onclick="boxShow('neckMapList')" class="neckArea" name="neck" shape="poly" coords="348,63,350,77,365,76,383,76,385,64,368,62"  alt="Neck">	
+						<area href="#" onclick="boxShow('thoraxMapList')" class="thorax" name="thorax" shape="poly" coords="324,97,352,78,385,79,409,93,402,150,336,149"  alt="Thorax" >			
+						<area href="#" onclick="boxShow('abdomenMapList')" class="abdomenArea" name="abdomen" shape="poly" coords="337,157,400,157,397,178,410,233,391,250,372,239,346,248,324,230,339,174"  alt="Abdomen">
+						<area href="#" onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="325,230,345,249,368,246,356,325,348,405,350,457,327,444,334,405,325,348,336,320"  alt="Leg">						
+						<area href="#" onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="372,245,395,249,412,238,408,321,420,441,400,455,390,409,388,329"  alt="Leg">
 					</map>
+					
 					<script>
-					//Initialize Imapster for pain map
-					$('#painMap').mapster({
-						 fillColor: 'ff0000',
-					     fillOpacity: 0.3
-					}
-					);
-					console.log($('#painMap').mapster());
+					$('#painMap').mapster();
+						
 					</script>
 				
 					

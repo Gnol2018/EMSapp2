@@ -14,9 +14,10 @@ require_once 'dompdf/src/Autoloader.php';
 require_once 'dompdf/autoload.inc.php';
 Dompdf\Autoloader::register();
 
+//-------------------Function to insert to the database---------------------
 insertPcrPdf();
 insertZipcodeInfo();
-//Function to insert to the database
+//-------------------Function to insert to the database END here---------------------
 
 
 // reference the Dompdf namespace

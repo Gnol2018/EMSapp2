@@ -205,15 +205,14 @@ function insertPcrPdf(){
     $stmtUserId->execute([$userName]);
     $userId = $stmtUserId->fetchColumn();
     //if patient based on patient Fname, Lname, DOB and Address does not exist, add a row to patientsTable.
-    //Find the patientId with the following conditions, more restriction mean less duplicated patient rows
+    //Find the patientId with the following conditions, more restriction mean more duplicated patient rows
     $sqlPatientUnique = "SELECT patientId FROM patients WHERE patientFname = ? 
-                        AND patientLname = ? AND patientAddress = ? 
-                        AND patientPhone1 = ? AND patientZipcode = ? 
+                        AND patientLname = ? AND patientAddress = ?  
                         AND patientDOB = ? AND patientSS = ?";
     $stmtPatientUnique = $conn->prepare($sqlPatientUnique);
-    $stmtPatientUnique->execute([$patientFname,$patientLname,$patientAddress, $patientPhone1, $patientZipcode, $patientDOB, $patientSS]);
+    $stmtPatientUnique->execute([$patientFname,$patientLname,$patientAddress, $patientDOB, $patientSS]);
     $patientUnique = $stmtPatientUnique->fetchColumn();
-    var_dump($row);
+   
     
     //If PatientId are false as not existed, insert a new row of patient. If patient existed, do not add more row
     if ($patientUnique == false) {
@@ -233,11 +232,8 @@ function insertPcrPdf(){
         $stmt->bindValue(':patientEmerContact', $patientEmerContact);
         $stmt->bindValue(':patientEmerPhone', $patientEmerPhone);
         $insertPatientInfo = $stmt->execute();
-        var_dump($insertPatientInfo);
     } else {
     }
-   
-    var_dump($last_patientId);
     
     //Find whether the run Id is existed, if exist, do nothing. If it does not, find patientId and Insert new PCR Form
     $sqlRunIdIndex = "SELECT runId FROM pcrtable WHERE runId = ? ";
@@ -245,15 +241,14 @@ function insertPcrPdf(){
     $stmt2->execute([$runId]);
     $count = $stmt2->fetchColumn();
     if ($count != $runId) {
-        //---gotta find Patient Id--- ( the strict condition should be the same when insert the Id)
+        //---gotta find Patient Id--- (There are more conditions so that the patientId will be selected more precisely in the database)
         $sqlPatientId = "SELECT patientId FROM patients WHERE patientFname = ?
                         AND patientLname = ? AND patientAddress = ?
-                        AND patientPhone1 = ? AND patientZipcode = ?
                         AND patientDOB = ? AND patientSS = ?";
         $stmt1 = $conn->prepare($sqlPatientId);
-        $stmt1->execute([$patientFname,$patientLname,$patientAddress, $patientPhone1, $patientZipcode, $patientDOB, $patientSS]);
+        $stmt1->execute([$patientFname,$patientLname,$patientAddress, $patientDOB, $patientSS]);
         $patientId = $stmt1->fetchColumn();
-        var_dump($patientId);
+        
         // Patient Id is newly Inserted, thanks for the above INSERT, so we find it (If the insert of new Patient fail, this will not work).
         $pcrForm = 'PCRapp/PatientReport'. $runId .'.pdf';
         $sqlInsert = "INSERT INTO pcrtable (runId, userId, patientId, pcrForm, pcrDate) VALUE (?,?,?,?,?)";

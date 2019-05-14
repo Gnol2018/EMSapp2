@@ -10,7 +10,7 @@
 		    	<div class="form-row">
 		    		<div class="form-group col-sm">
 		    			<label>First Name:</label>
-		    			<input type="text" class="form-control" id="demographicFname"></input>
+		    			<input type="text" class="form-control" id="demographicFname" required ></input>
 		    		</div>
 		    		<div class="form-group col-sm">
 		    			<label class="pr-5">MI:</label>
@@ -18,14 +18,14 @@
 		    		</div>
 		    		<div class="form-group col-sm">
 		    			<label>Last Name:</label>
-		    			<input type="text" class="form-control" id="demographicLname"></input>
+		    			<input type="text" class="form-control" id="demographicLname" required></input>
 		    		</div>
 		    	</div>
 		    	
 		    	<div class="form-row">
 		    		<div class="form-group col-lg">
 		    			<label>Address:</label>
-		    			<input type="text" class="form-control" id="demographicAddress"></input>
+		    			<input type="text" class="form-control" id="demographicAddress" required></input>
 		    		</div>
 		    	</div>
 		    	
@@ -62,7 +62,7 @@
 		    	<div class="form-row">
 		    		<div class="form-group col-sm">
 		    			<label class="pr-5">DOB</label>
-		    			<input type="text" class="form-control" id="demographicDOB"></input>
+		    			<input type="text" class="form-control" id="demographicDOB" required></input>
 		    		</div>
 		    		<div class="form-group col-sm">
 		    			<label class="pr-5">Age</label>

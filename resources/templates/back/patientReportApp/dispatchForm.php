@@ -15,11 +15,11 @@
 				
 					<div class="col-sm">
 						<label for="dispatchDate">Begin: </label>
-						<input  oninput="mileCal()" type="text" class="form-control" id="mileBegin" value=""></input>
+						<input  oninput="mileCal()" type="text" class="form-control" id="mileBegin" value="" required></input>
 					</div>
 					<div class="col-sm">
 						<label>End:  </label>
-						<input oninput="mileCal()" type="text" class="form-control" id="mileEnd" value=""></input>
+						<input oninput="mileCal()" type="text" class="form-control" id="mileEnd" value="" required></input>
 					</div>
 					<div class="col-sm">
 						<label>Total:  </label>
@@ -31,7 +31,7 @@
 				<div class="form-row">
 					<div class="form-group col-sm">
 						<label for="dispatchDate">Date</label>
-						<input onclick="getDate(dispatchDate)" name="dispatchDate" id="dispatchDate" type="text" class="form-control" ></input>
+						<input required onclick="getDate(dispatchDate)" name="dispatchDate" id="dispatchDate" type="text" class="form-control" ></input>
 					</div>
 					<div class="col-sm">
 						<label>Run Id: </label>

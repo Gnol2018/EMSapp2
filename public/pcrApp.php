@@ -1,6 +1,5 @@
 <?php
 require_once("../resources/pdoConnect.php");
-echo $_SESSION['userName'];
 if(empty($_SESSION['userName'])) {
     redirect('index.php');
 }

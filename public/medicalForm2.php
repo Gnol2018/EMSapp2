@@ -458,7 +458,7 @@
     					<span class="label">Mechanism of Injury:</span> <?php foreach($traumaInjury as $result){
                         echo $result, ', ';}?></td>
                    	<td>
-                       	<p><span class="label">Presenting Problem:</span> <?php foreach($presentProblem as $Problemresult){                                echo $Problemresult, ', ';
+                       	<p><span class="label">Presenting Problem:</span> <?php foreach($presentProblem as $Problemresult){ echo $Problemresult, ', ';
                         }?></p>
                     </td>
    
@@ -475,7 +475,8 @@
 				<tr>
 					<td colspan="2"><span class="label">Chief Complaint - Medical:</span> <?php print($medicalComplaint)?>
 					</td>
-					<td><span class="label">Past Medical History:</span> <?php foreach($pastMedical as $result){
+					<td><span class="label">Past Medical History:</span> <?php 
+					foreach($pastMedical as $result){
                     echo $result, ', ';}?>
                     </td>
                     <td><span class="label">Medication:</span> <?php print($patientMedication)?>
@@ -741,7 +742,8 @@
         			is physically or mentally incapable of signing: <?php  echo($txtReasonII)?> </p>
         		</div>
         		<p>Authorized representatives include only the following individuals:</p>
-               	<p style="text-decoration: underline"><?php
+               	<p style="text-decoration: underline">
+               	<?php
                	echo implode("<br> ",$chkSecII);
                	?></p>
                	
@@ -753,7 +755,8 @@
                  
                 <div class="form-inline">
         			<label class="font-weight-bold">Representatives Printed Name: </label>
-        			<p style="font-weight: bold"><?php
+        			<p style="font-weight: bold">
+        			<?php
                	    echo $txtRepName;
                 	?></p>
         		</div>
