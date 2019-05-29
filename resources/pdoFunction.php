@@ -307,5 +307,23 @@ function insertZipcodeInfo(){
         return false;
     }
 }
+
+function insertProblem(){
+    require('pdoConfig.php');
+    //Get the POST input from 
+    $runId = $_POST['runId'];
+    $traumaComplaint = $_POST['traumaComplaint'];
+    $traumaInjury = $_POST['trauma_injury'];
+    $presentProblem = $_POST['present_problem'];
+    $medicalComplaint = $_POST['medicalComplaint'];
+    $pastMedical = $_POST['past_medical'];
+    $patientMedication = $_POST['patientMedication'];
+    $traumaMapItems = $_POST['traumaMapItems'];
+    //Creat SQL and start insert
+    $sqlProblem = "INSERT INTO problemtable (runId, traumaComplain, traumaInjury, presentProblem, medicalComplain, medicalHistory, medicalMedi, problemMap)
+                   VALUE ()";
+    $stmt = $conn->prepare($sqlProblem);
+    $stmt->execute([$runId,$traumaComplaint,$traumaInjury,$presentProblem, $medicalComplaint, $pastMedical, $patientMedication,$traumaMapItems]);
+}
 //-----------------------Insert to database function END here-----------------------------
 ?>

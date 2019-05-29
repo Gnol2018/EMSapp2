@@ -232,6 +232,7 @@
         }
        
         .page {
+          font-size:11px;
           background: white;
           display: block;
           margin: 0 auto;
@@ -244,7 +245,7 @@
         
         .title {
         font-family:Arial,sans-serif;
-        font-size:133.1%;
+        font-size:120%;
         font-weight:bold;
         width:100%;
         }
@@ -264,8 +265,8 @@
             text-decoration:underline;
         }
         .signaturePad {
-            background-color: black;
-            width:250px;
+            background-color: white;
+            width:150px;
             height: auto;
         }
         #authorizationForm {
@@ -288,7 +289,7 @@
        .padding {
             padding: 4px;
        }
-       /* .page[size="A4"] {  
+     /*   .page[size="A4"] {  
           width: 21cm;
           height: 29.7cm; 
         }
@@ -467,7 +468,7 @@
 					<td colspan="2">
 					<p><span class="label">Diagnostic:</span> <?php print($traumaMapItems)?></p>
 					</td>
-					<td style="heigth: 300px" colspan="2"><img src="img/ron1.gif"</td>
+					<td style="heigth: 200px" colspan="2"><img src="img/ron1.gif"</td>
 				</tr>
 				
 				
@@ -535,6 +536,8 @@
 			echo "</table>";
 		    ?>
 		</div>
+		
+		<!-- Treatment Given Start Here  -->
 		<table>
 			<tr>
 				<th colspan= "2">
@@ -564,7 +567,7 @@
 				
 				
 				if(isset($txtArtificial)) {
-				    echo 'Artificial Ventilation Method: ' . $txtArtificial;
+				    echo 'Artificial Ventilation Method: ' . $txtArtificial . ', ';
 				}
 				if(isset($txtCPRstart)) {
 				    echo 'C.P.R. started @ ' . $txtCPRstart . "/ Time from Arrest til CPR " . $txtCPRarrest . ", ";
@@ -593,6 +596,7 @@
 				</td>
 			</tr>
 		</table>
+		<!-- Treatment Given End Here  -->
 		<table>
 			<tr>
 				<th colspan= "4">
@@ -687,7 +691,7 @@
 				<td>
 				<p><span class="label">Narrative Note:  </span><?php echo $txtNarrativeNote;?></p></td>
 				<td>
-				<img class="signaturePad" style="width:250px; height:auto;" src= <?php print($signOut1)?> alt="Signature">
+				<img class="signaturePad" style="width:150px; height:auto;" src= <?php print($signOut1)?> alt="Signature">
 				</td>
 			</tr>
 			<tr>
@@ -698,7 +702,7 @@
 				</td>
 				<td>
         			<p><span class="label">Patient Signature:  </span></p>
-        			<img class="signaturePad" style="width: 250px; height:auto;" src= <?php print($signOut2)?> alt="Patient Signature">
+        			<img class="signaturePad" src= <?php print($signOut2)?> alt="Patient Signature">
     			</td>
 			</tr>
 		</table>
@@ -717,7 +721,7 @@
         		<p>The patient must sign here unless the patient is physically or mentally incapable of signing:</p>
         		<h5>Patient Signature or Mark:</h5>
         		
-        		<img class="signaturePad" style="width:250px; height:auto;" src= <?php print($signSec1)?> alt="Signature">
+        		<img class="signaturePad" style="width:150px; height:auto;" src= <?php print($signSec1)?> alt="Signature">
         		
         		<p>If the patient signs with an "X" or other mark, it is recommended that someone sign below as a witness:
         		</p>

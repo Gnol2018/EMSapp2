@@ -17,6 +17,7 @@ Dompdf\Autoloader::register();
 //-------------------Function to insert to the database---------------------
 insertPcrPdf();
 insertZipcodeInfo();
+insertProblem();
 //-------------------Function to insert to the database END here---------------------
 
 

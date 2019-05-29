@@ -462,7 +462,7 @@
         		</div>
         		<div class="form-row">
             		<label>Medication:</label>
-            		<input name="patientMedication" type="text" class="form-control"></input>
+            		<input name="medicalMedi" type="text" class="form-control"></input>
         		</div>
         		<div class="form-row form-check form-check-inline">
         			<div class="col-sm">
