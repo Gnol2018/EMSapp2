@@ -485,6 +485,8 @@ $_SESSION['chkPhysician'] = $chkPhysician;
 $_SESSION['txtIncEmt'] = $txtIncEmt;
 $_SESSION['signAPCF'] = $signAPCF;
 
-
+echo implode(',', $traumaInjury);
+echo implode(',',$_SESSION['pastMedical']);
 //It will work if you put it here insertPcrPdf();
+insertVital();
 ?>

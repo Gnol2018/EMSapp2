@@ -51,6 +51,12 @@ function userLogin(){
 }
 
 //-------------Finding Information Function Start Here--------------------
+function findPatient(){
+    if(isset($_POST['btnSearchPatient'])){
+        require('pdoConfig.php');
+        
+    }
+}
 function pcrFindOnDate(){
     if(isset($_POST['searchSubmit'])) {
          require('pdoConfig.php');
@@ -308,22 +314,58 @@ function insertZipcodeInfo(){
     }
 }
 
+//Insert Form information to problemtable
 function insertProblem(){
     require('pdoConfig.php');
     //Get the POST input from 
-    $runId = $_POST['runId'];
-    $traumaComplaint = $_POST['traumaComplaint'];
-    $traumaInjury = $_POST['trauma_injury'];
-    $presentProblem = $_POST['present_problem'];
-    $medicalComplaint = $_POST['medicalComplaint'];
-    $pastMedical = $_POST['past_medical'];
-    $patientMedication = $_POST['patientMedication'];
-    $traumaMapItems = $_POST['traumaMapItems'];
+    $runId = $_SESSION['runId'];
+    $traumaComplaint = $_SESSION['traumaComplaint'];
+    $traumaInjury = implode(',', $_SESSION['traumaInjury']);
+    $presentProblem = $_SESSION['presentProblem'];
+    $medicalComplaint = $_SESSION['medicalComplaint'];
+    $pastMedical = $_SESSION['pastMedical'];
+    $patientMedication = $_SESSION['patientMedication'];
+    $traumaMapItems = $_SESSION['traumaMapItems'];
     //Creat SQL and start insert
     $sqlProblem = "INSERT INTO problemtable (runId, traumaComplain, traumaInjury, presentProblem, medicalComplain, medicalHistory, medicalMedi, problemMap)
-                   VALUE ()";
+                   VALUE (?,?,?,?,?,?,?,?)";
     $stmt = $conn->prepare($sqlProblem);
     $stmt->execute([$runId,$traumaComplaint,$traumaInjury,$presentProblem, $medicalComplaint, $pastMedical, $patientMedication,$traumaMapItems]);
+}
+//Insert vital table into database vital table 
+function insertVital(){
+    require('pdoConfig.php');
+    //Get the POST or session input
+    $runId = $_SESSION['runId'];
+    $maxRow = $_SESSION['maxRow'];
+    $vitalTime = $_SESSION['vitalTime'];
+    $vitalResRate = $_SESSION['vitalResRate'];
+    $vitalPulseRate = $_SESSION['vitalPulseRate'];
+    $txtBP = $_SESSION['txtBP'];
+    //Need to loops through i to get all the values
+    for ($i = 0; $i <= $maxRow; $i++) {
+        $radCons = $_SESSION['radCons'. $i];
+        $radRightPupil = $_SESSION['radRightPupil'. $i];
+        $radLeftPupil = $_SESSION['radLeftPupil'. $i];
+        $radPupil = $radRightPupil + $radLeftPupil;
+        $radSkin = $_SESSION['radSkin'. $i];
+        $radStatus = $_SESSION['radStatus'. $i];
+        
+        $vitalResCheck = $_SESSION['vitalResCheck' . $i];
+        $vitalPulseCheck = $_SESSION['chkPulse' . $i];
+        
+        $vitalRes = ($vitalResRate[$i] . implode(',', $vitalResCheck));
+        $vitalPulse = ($vitalPulseRate[$i] . implode(',', $vitalPulseCheck));
+        
+        $rowNum = ($runId . $i);
+        echo $maxRow;
+        echo $vitalRes;
+        echo $vitalPulse;
+        $sqlVital = "INSERT INTO vitaltable (runId, maxRow, rowNum, vitalTime, vitalRes, vitalPulse, vitalCons, vitalPupils, vitalSkin, vitalStatus)
+                     VALUE (?,?,?,?,?,?,?,?,?)";
+        $stmt = $conn->prepare($sqlVital);
+        $stmt->execute([$runId, $maxRow, $rowNum, $vitalTime[$i], $vitalRes, $vitalPulse, $radCons, $radPupil, $radSkin, $radStatus]);
+    }
 }
 //-----------------------Insert to database function END here-----------------------------
 ?>

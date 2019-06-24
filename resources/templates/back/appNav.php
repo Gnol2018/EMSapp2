@@ -13,6 +13,9 @@
                 <li class="nav-item">
                	  <a class="nav-link" href="infoFind.php">Dispatch Info</a>
                 </li>
+                <li class="nav-item">
+               	  <a class="nav-link" href="patientSec.php">Patient</a>
+                </li>
               </ul>
               <div class="dropdown show">
               	<a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
