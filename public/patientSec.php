@@ -46,6 +46,7 @@ function loadall() {
 };
 $(document).ajaxComplete(function() {
     $(document).ready(function(){
+        
     	$(document).on('click', 'a[data-role=select]', function() {
     		alert('Click');
     		var id = $(this).data('id');
@@ -59,7 +60,20 @@ $(document).ajaxComplete(function() {
     		console.log(address);
     		console.log(phone1);
     		console.log(phone2);
+    		event.preventDefault();
+    		$.ajax({
+				type: 'post',
+				url: 'patientSes.php',
+				data: {
+					patientFname:firstName,
+					patientLname:lastName,
+				},
+				success: function(response) {
+					$('#display_info').html(response);
+				}
+            });
     	});
+    	// I need to pass Javascript Value to PhP Session Here
     })
 });
 

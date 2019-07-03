@@ -5,4 +5,5 @@
 	<?php 
 	include(TEMPLATE_FRONT . DS . "patientSection/patientHTML.php");
 	?>
+	
 </body>

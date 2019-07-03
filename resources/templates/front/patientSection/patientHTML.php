@@ -93,10 +93,23 @@
 <div class="card-header" id="headingOne">
   <input class="btn btn-primary" id="btnAddPatient" name="btnAddPatient" type="submit" value="SELECT PATIENT" onclick="selectPatient()"></input>
 </div>
-<div class="container-fluid my-2 py-2">   
-    <div class="row">
-    	
-    </div>
+<div class="card-header" id="headingOne">
+  <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open Modal</a>
 </div>
+<!-- Initialize Modal -->
+<div id="myModal" class="modal fade bg-dark" role="dialog">
+	<div class="text-dark modal-dialog">
+	<!-- Modal Content -->
+    	<div class="modal-content">
+    		<div class="modal-header">
+    			<h4 class="modal-title">Selected Patient</h4>
+    		</div>
+    		<div class="modal-body">
+        		<p>Some text in the modal.</p>
+      		</div>
+    	</div>
+	</div>
+</div>
+<!-- Modal -->
 <div class="container-fluid my-2 py-2" id="display_info">   
 </div>
