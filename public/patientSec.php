@@ -4,7 +4,9 @@ require_once("../resources/pdoConnect.php");
 <!DOCTYPE html>
 <html lang="en">
 
-<?php include(TEMPLATE_BACK . DS . "appHeader.php") ?>
+<?php 
+
+include(TEMPLATE_BACK . DS . "appHeader.php") ?>
 <script>
 //Ajax 
 
@@ -48,7 +50,6 @@ $(document).ajaxComplete(function() {
     $(document).ready(function(){
         
     	$(document).on('click', 'a[data-role=select]', function() {
-    		alert('Click');
     		var id = $(this).data('id');
     		var firstName = $('#'+ id).children('td[data-target=firstName]').text();
     		var lastName = $('#' + id).children('td[data-target=lastName]').text();
@@ -61,15 +62,28 @@ $(document).ajaxComplete(function() {
     		console.log(phone1);
     		console.log(phone2);
     		event.preventDefault();
+
+    		$('#firstName').val(firstName);
+    	    $('#lastName').val(lastName);
+    	    $('#address').val(address);
+    	    $('#myModal').modal('toggle');
+    		
     		$.ajax({
 				type: 'post',
 				url: 'patientSes.php',
 				data: {
+					valueTrue : true,
+					valueFalse: false,
+					valueNull : "Null",
+					//passing javascript variable to php Post variable
 					patientFname:firstName,
 					patientLname:lastName,
+					address: patientAddress,
+					phone1: patientPhone1,
+					phone2: patientPhone2,
 				},
 				success: function(response) {
-					$('#display_info').html(response);
+					$('#myModal').modal('toggle');
 				}
             });
     	});
@@ -80,6 +94,11 @@ $(document).ajaxComplete(function() {
 //Normal Javascript Here
 
 </script>
+<?php 
+    if(isset($_POST['selectSubmit'])) {
+      redirect('pcrAppTest.php');
+    }
+?>
 <?php include(TEMPLATE_FRONT . DS . "patientBody.php") ?>
 
 </html>

@@ -96,16 +96,31 @@
 <div class="card-header" id="headingOne">
   <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open Modal</a>
 </div>
+
 <!-- Initialize Modal -->
-<div id="myModal" class="modal fade bg-dark" role="dialog">
-	<div class="text-dark modal-dialog">
+<div id="myModal" class="modal fade " role="dialog">
+	<div class=" modal-dialog">
 	<!-- Modal Content -->
-    	<div class="modal-content">
+    	<div class="bg-dark text-light modal-content">
     		<div class="modal-header">
     			<h4 class="modal-title">Selected Patient</h4>
     		</div>
     		<div class="modal-body">
-        		<p>Some text in the modal.</p>
+        		<form method="POST" class="form-group">
+        			<div class="form-row">
+        				<label>First Name</label>
+        				<input type="text" id="firstName" class="form-control">
+        			</div>
+        			<div class="form-row">
+        				<label>Last Name</label>
+        				<input type="text" id="lastName" class="form-control">
+        			</div>
+        			<div class="form-row">
+        				<label>Address</label>
+        				<input type="text" id="address" class="form-control">
+        			</div>
+        			<button type="submit" name="selectSubmit" class="my-2 btn btn-primary">Select Patient</button>
+        		</form>
       		</div>
     	</div>
 	</div>
