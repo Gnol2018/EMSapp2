@@ -37,12 +37,27 @@ function userLogin(){
         require('pdoConfig.php');
         $userName = $_POST['userName'];
         $password = $_POST['password'];
-        $query = $conn->prepare('SELECT * FROM users WHERE username = ? AND userPassword = ?');
+        $query = $conn->prepare('SELECT userName, userPassword, userRole FROM users WHERE username = ? AND userPassword = ?');
         $query->execute([$userName, $password]);
        
         if($query->rowCount() > 0) {
+            foreach($query as $row) {
+                $_SESSION['userRole'] = $row['userRole'];
+            }
             $_SESSION['userName'] = $userName;
-            redirect('pcrApp.php');
+            
+            switch($_SESSION['userRole']) {
+                case 'admin':
+                    redirect('pcrApp.php');
+                    break;
+                case 'medic':
+                    redirect('pcrProcess1.php');
+                    break;
+                case 'dispatcher':
+                    redirect('searchPatient.php');
+                    break;
+            }
+            
         } else {
             set_message("Your User Name or Password is Wrong!");
             redirect('index.php');
@@ -51,10 +66,50 @@ function userLogin(){
 }
 
 //-------------Finding Information Function Start Here--------------------
+
+//Function to auto-fill Demographic form
+
+function fillDemographic(){
+    require('pdoConfig.php');
+    //Pick up patient index infor from addPatient
+    $patientFname = $_SESSION['patientFname'];
+    $patientLname = $_SESSION['patientLname'];
+    $patientAddress = $_SESSION['patientAddress'];
+    //Prepare the SQL statement 
+    $query = $conn->prepare('SELECT patientFname, patientLname, patientAddress, patientPhone1, patientPhone2,  patientZipcode, patientDOB, patientGender, patientSS, patientEmerContact, patientEmerPhone
+                                FROM patients
+                                WHERE patientFname = ?
+                                AND patientLname = ?
+                                AND patientAddress = ?');
+    $query->execute([$patientFname, $patientLname, $patientAddress]);
+    foreach($query as $row){
+        $_SESSION['patientFname'] = $row['patientFname'];
+        $_SESSION['patientLname'] = $row['patientLname'];
+        $_SESSION['patientAddress'] = $row['patientAddress'];
+        $_SESSION['patientPhone1'] = $row['patientPhone1'];
+        $_SESSION['patientPhone2'] = $row['patientPhone2'];
+        $_SESSION['patientZipcode'] = $row['patientZipcode'];
+        $_SESSION['patientDOB'] = $row['patientDOB'];
+        $_SESSION['patientGender'] = $row['patientGender'];
+        $_SESSION['patientSS'] = $row['patientSS'];
+        $_SESSION['patientEmerContact'] = $row['patientEmerContact'];
+    }
+    if(!empty($patientZipcode)) {
+        $queryZipcode = $conn->prepare('SELECT patientCity, patientState
+	                                        FROM zipcodes
+                                            WHERE patientZipcode = ?');
+        $queryZipcode->execute([$patientZipcode]);
+        foreach($queryZipcode as $row) {
+            $_SESSION['patientCity'] = $row['patientCity'];
+            $_SESSION['patientState'] = $row['patientState'];
+        }
+    };
+   
+}
+
 function findPatient(){
     if(isset($_POST['btnSearchPatient'])){
         require('pdoConfig.php');
-        
     }
 }
 function pcrFindOnDate(){
@@ -368,4 +423,31 @@ function insertVital(){
     }
 }
 //-----------------------Insert to database function END here-----------------------------
+//----------------------Interactive Function----------------------
+function findUserRole(){
+    require('pdoConfig.php');
+    $userName = $_SESSION['userName'];
+    $sql = "SELECT userRole FROM users WHERE userName = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$userName]);
+    foreach($stmt as $row) {
+        $userRole = $row['userRole'];
+        $_SESSION['userRole'] =  $userRole;
+    }
+}
+
+function transferPatient(){
+    require('pdoConfig.php');
+    if(isset($_POST['selectSubmit'])){
+        $patientFname = $_POST['firstName'];
+        $patientLname = $_POST['lastName'];
+        $patientAddress = $_POST['address'];
+        $patientPhone1 = $_POST['phone1'];
+        $_SESSION['patientFname'] = $patientFname;
+        $_SESSION['patientLname'] = $patientLname;
+        $_SESSION['patientAddress'] = $patientAddress;
+        
+        redirect('pcrApp.php');
+    }
+}
 ?>

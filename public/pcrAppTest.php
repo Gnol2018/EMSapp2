@@ -1,11 +1,11 @@
 <?php
 require_once("../resources/pdoConnect.php");
+    
+session_start();
 
-    echo $_SESSION['patientFname'];
-    echo $_SESSION['patientLname'];
-    echo $_SESSION['patientAddress'];
-    echo $_SESSION['patientPhone1'];
-    echo $_SESSION['patientPhone2'];
+echo '<pre>';
+var_dump($_SESSION);
+echo '</pre>';
 
 ?>
 <!DOCTYPE html>
@@ -14,14 +14,7 @@ require_once("../resources/pdoConnect.php");
 <?php 
 	include(TEMPLATE_BACK. DS. "appNav.php")
 ?>
-<script>
-$(document).ready(function() {
-	$.ajax({
-		
-	});
-});
-}
-</script>
+
 <body>
 	<div class="card">
 		<div class="card-header" id="headingOne">
@@ -279,7 +272,7 @@ $(document).ready(function() {
 										<label>DOB:</label>
 										<input name="insurDOB2" class="form-control" id="companyDOB2"></input>
 									</div>
-								</div>
+							  </div>
 								
 								<div class="form-row">
 									<div class="col-sm">

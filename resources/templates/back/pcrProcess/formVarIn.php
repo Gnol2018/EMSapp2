@@ -1,5 +1,5 @@
 <?php 
-if(isset($_POST['dispatchSubmit'])) {   
+if(isset($_POST['medicSubmit'])) {
     //set Dispatch form inputs to Session Varible for printing
     $mileTotal = trim_input($_POST['mileTotal']);
     $dispatchDate = trim_input($_POST['dispatchDate']);
@@ -86,14 +86,14 @@ if(isset($_POST['dispatchSubmit'])) {
     foreach($_POST['chkAlStxt2'] as $id) {
         $chkALStxt2 = $_POST['data'][$id]['name'];
     }
-   
+    
     foreach($_POST['chkAlStxt3'] as $id) {
         $chkALStxt3 = $_POST['data'][$id]['name'];
     }
     $txtCath = $_POST['txtCath'];
     
     $chkBLS = $_POST['chkBLS'];
-
+    
     if(isset($_POST['chkBLStxt1'])) {
         $txtArtificial = $_POST['txtArtificial'];
     }
@@ -148,7 +148,7 @@ if(isset($_POST['dispatchSubmit'])) {
         $maxRow =  $row[1];
         $_SESSION['maxRow'] = $maxRow;
     }
-   
+    
     $vitalTime = $_POST['vitalTime'];
     $vitalResRate = $_POST['vitalResRate'];
     $vitalPulseRate = $_POST['vitalPulseRate'];
@@ -159,7 +159,7 @@ if(isset($_POST['dispatchSubmit'])) {
         $radLeftPupilIndex = array('radLeftPupil' . $i);
         $radSkinIndex = array('radSkin' . $i);
         $radStatusIndex = array('radStatus' . $i);
-       
+        
         
         $vitalResIndex = 'vitalResCheck' . $i;
         $vitalPulseIndex = 'chkPulse' . $i;
@@ -182,13 +182,13 @@ if(isset($_POST['dispatchSubmit'])) {
         
         $_SESSION['vitalResCheck' . $i] = $vitalResCheck;
         $_SESSION['chkPulse' . $i] = $vitalPulseCheck;
-      
+        
     }
     $_SESSION['vitalTime'] = $vitalTime;
     $_SESSION['vitalResRate'] = $vitalResRate;
     $_SESSION['vitalPulseRate'] = $vitalPulseRate;
     $_SESSION['txtBP'] = $txtBP;
-   
+    
     
     //--------------Vital Sign Form Input End---------------
     //Disposition Form Input
@@ -224,7 +224,7 @@ if(isset($_POST['dispatchSubmit'])) {
     $radDriver = $_POST['radDriver'];
     $driverNumber= $_POST['driverNumber'];
     
-
+    
     $otherDriver1 = $_POST['otherDriver1'];
     $radOtherDriver1 = $_POST['radOtherDriver1'];
     $otherDriverNum1 = $_POST['otherDriverNum1'];
@@ -296,199 +296,6 @@ if(isset($_POST['dispatchSubmit'])) {
     $txtIncEmt = $_POST['txtIncEmt'];
     $signAPCF = $_POST['signAPCF'];
 } else {
-    return false;
+    echo "Your Run Id is not available";
 }
-
-$_SESSION['mileTotal'] = $mileTotal;
-$_SESSION['dispatchDate'] = $dispatchDate;
-$_SESSION['runId'] = $runId;
-$_SESSION['vehId'] = $vehId;
-$_SESSION['dispatchAgency'] = $dispatchAgency;
-$_SESSION['dispatchLocation'] = $dispatchLocation;
-$_SESSION['lCode'] = $lCode;
-$_SESSION['dispatchInfo'] = $dispatchInfo;
-$_SESSION['lType'] = $lType;
-$_SESSION['dispatchCross'] = $dispatchCross;
-$_SESSION['timeReceived'] = $timeReceived;
-$_SESSION['timeRoute'] = $timeRoute;
-$_SESSION['timeAtScene'] = $timeAtScene;
-$_SESSION['timeFromScene'] = $timeFromScene;
-$_SESSION['timeAtDes'] = $timeAtDes;
-$_SESSION['timeInService'] = $timeInService;
-$_SESSION['timeInQuarter'] = $timeInQuarter;
-$_SESSION['dispatchCallType'] = $dispatchCallType;
-$_SESSION['dispatchPatientNumb'] = $dispatchPatientNumb;
-$_SESSION['dispatchMethod'] = $dispatchMethod;
-
-//Demographic Session Variable
-$_SESSION['patientFname'] = $patientFname;
-$_SESSION['patientMname'] = $patientMname;
-$_SESSION['patientLname'] = $patientLname;
-$_SESSION['patientAddress'] = $patientAddress;
-$_SESSION['patientAptUnit'] = $patientApt;
-$_SESSION['patientPhone1'] = $patientPhone1;
-$_SESSION['patientPhone2'] = $patientPhone2;
-$_SESSION['patientCity'] = $patientCity;
-$_SESSION['patientState'] = $patientState;
-$_SESSION['patientZipcode'] = $patientZipcode;
-$_SESSION['patientDOB'] = $patientDOB;
-$_SESSION['patientAge'] = $patientAge;
-$_SESSION['patientGender'] = $patientGender;
-$_SESSION['patientSS'] = $patientSS;
-$_SESSION['patientEmerContact'] = $patientEmerContact;
-$_SESSION['patientEmerPhone'] = $patientEmerPhone;
-
-//Insurance Session Variable 
-$_SESSION['insurPolicy1'] = $insurPolicy1;
-$_SESSION['insurCompany1'] = $insurCompany1;
-$_SESSION['insurAddress1'] = $insurAddress1;
-$_SESSION['insurPhone1'] = $insurPhone1;
-$_SESSION['insurGroup1'] = $insurGroup1;
-$_SESSION['insurPol1'] = $insurPol1;
-$_SESSION['insurHolder1'] = $insurHolder1;
-$_SESSION['insurSS1'] = $insurSS1;
-$_SESSION['insurDOB1'] = $insurDOB1;
-$_SESSION['insurMedicare1'] = $insurMedicare1;
-$_SESSION['insurMedicaid1'] = $insurMedicaid1;
-$_SESSION['insurClaim1'] = $insurClaim1;
-
-$_SESSION['insurPolicy2'] = $insurPolicy2;
-$_SESSION['insurCompany2'] = $insurCompany2;
-$_SESSION['insurAddress2'] = $insurAddress2;
-$_SESSION['insurPhone2'] = $insurPhone2;
-$_SESSION['insurGroup2'] = $insurGroup2;
-$_SESSION['insurPol2'] = $insurPol2;
-$_SESSION['insurHolder2'] = $insurHolder2;
-$_SESSION['insurSS2'] = $insurSS2;
-$_SESSION['insurDOB2'] = $insurDOB2;
-$_SESSION['insurMedicare2'] = $insurMedicare2;
-$_SESSION['insurMedicaid2'] = $insurMedicaid2;
-$_SESSION['insurClaim2'] = $insurClaim2;
-
-//Presenting Problems
-$_SESSION['traumaComplaint'] = $traumaComplaint;
-$_SESSION['traumaInjury'] = $traumaInjury;
-$_SESSION['presentProblem'] = $presentProblem;
-$_SESSION['medicalComplaint'] = $medicalComplaint;
-$_SESSION['pastMedical'] = $pastMedical;
-$_SESSION['patientMedication'] = $patientMedication;
-$_SESSION['traumaMapItems'] = $traumaMapItems;
-
-$_SESSION['vitalTime'] = $vitalTime;
-$_SESSION['vitalResRate'] = $vitalResRate;
-$_SESSION['vitalPulseRate'] = $vitalPulseRate;
-$_SESSION['txtBP'] = $txtBP;
-
-$_SESSION['maxRow'] = $maxRow;
-
-//Treatment Given
-$_SESSION['chkALS'] = $chkALS;
-$_SESSION['chkALStxt1'] = $chkALStxt1;
-$_SESSION['radEKG'] = $radEKG;
-$_SESSION['chkALStxt2'] = $chkALStxt2;
-$_SESSION['chkALStxt3'] = $chkALStxt3;
-$_SESSION['txtCath'] = $txtCath;
-$_SESSION['chkBLS'] = $chkBLS;
-$_SESSION['txtArtificial'] = $txtArtificial;
-$_SESSION['txtCPR'] = $txtCPR;
-$_SESSION['txtCPRstart'] = $txtCPRstart;
-$_SESSION['txtCPRarrest'] = $txtCPRarrest;
-$_SESSION['numDef'] = $numDef;
-$_SESSION['radBLS4'] = $radBLS4;
-$_SESSION['txtMast'] = $txtMast;
-$_SESSION['txtBleedCtrl'] = $txtBleedCtrl;
-$_SESSION['radLimb'] = $radLimb;
-$_SESSION['radBackBoard'] = $radBackBoard;
-$_SESSION['txtVomit'] = $txtVomit;
-$_SESSION['txtVomitMethod'] = $txtVomitMethod;
-$_SESSION['txtRestraints'] = $txtRestraints;
-$_SESSION['txtBabyDelivery'] = $txtBabyDelivery;
-$_SESSION['txtBabyCountry'] = $txtBabyCountry;
-$_SESSION['radBaby'] = $radBaby;
-$_SESSION['txtAEDshock'] = $txtAEDshock;
-$_SESSION['txtBLSother'] = $txtBLSother;
-
-//Disposition SESSION VARIABLE
-$_SESSION['chkALStransport'] = $chkALStransport;
-$_SESSION['txtDisCode'] = $txtDisCode;
-$_SESSION['selDisDes'] = $selDisDes;
-$_SESSION['radALStran'] = $radALStran;
-$_SESSION['selDisPurpose'] = $selDisPurpose;
-$_SESSION['selDisRequester'] = $selDisRequester;
-$_SESSION['selDisType'] = $selDisType;
-$_SESSION['txtDisWeight'] = $txtDisWeight;
-$_SESSION['txtDisRound'] = $txtDisRound;
-$_SESSION['txtDisStretcher'] = $txtDisStretcher;
-
-$_SESSION['chkDisDeath'] = $chkDisDeath;
-$_SESSION['txtTrans1'] = $txtTrans1;
-$_SESSION['txtOther2'] = $txtOther2;
-$_SESSION['chkDisTransport'] = $chkDisTransport;
-$_SESSION['txtDisOther3'] = $txtDisOther3;
-$_SESSION['inChargeName'] = $inChargeName;
-$_SESSION['radInCharge'] = $radInCharge;
-$_SESSION['inChargeNum'] = $inChargeNum;
-$_SESSION['driverName'] = $driverName;
-$_SESSION['radDriver'] = $radDriver;
-$_SESSION['driverNumber'] = $driverNumber;
-
-$_SESSION['otherDriver1'] = $otherDriver1;
-$_SESSION['radOtherDriver1'] = $radOtherDriver1;
-$_SESSION['otherDriverNum1'] = $otherDriverNum1;
-
-$_SESSION['otherDriver2'] = $otherDriver2;
-$_SESSION['radOtherDriver2'] = $radOtherDriver2;
-$_SESSION['otherDriverNum2'] = $otherDriverNum2;
-
-//Narrate Note
-$_SESSION['txtNarrativeNote'] = $txtNarrativeNote;
-$_SESSION['signOut1'] = $signOut1;
-$_SESSION['signOut2'] = $signOut2;
-
-//Authorization Form
-$_SESSION['signSec1'] = $signSec1;
-$_SESSION['signSec2'] = $signSec2;
-$_SESSION['signSec3'] = $signSec3;
-$_SESSION['signSec4'] = $signSec4;
-$_SESSION['signSec5'] = $signSec5;
-
-$_SESSION['txtWitnessName'] = $txtWitnessName;
-$_SESSION['txtReasonII'] = $txtReasonII;
-$_SESSION['chkSecII'] = $chkSecII;
-$_SESSION['txtRepName'] = $txtRepName;
-$_SESSION['txtReasonIII'] = $txtReasonIII;
-$_SESSION['txtFacilityIII'] = $txtFacilityIII;
-$_SESSION['txtFacilityTime'] = $txtFacilityTime;
-$_SESSION['txtCrewIII'] = $txtCrewIII;
-$_SESSION['txtRepIII'] = $txtRepIII;
-$_SESSION['chkSecIII'] = $chkSecIII;
-
-//APCF Form
-$_SESSION['chkScheduleApp'] = $chkScheduleApp;
-$_SESSION['txtOtherApp'] = $txtOtherApp;
-$_SESSION['txtAmbulance1'] = $txtAmbulance1;
-$_SESSION['txtAmbulance2'] = $txtAmbulance2;
-$_SESSION['chkAmbulance'] = $chkAmbulance;
-$_SESSION['chkUlcer'] = $chkUlcer;
-$_SESSION['chkUlcerOther'] = $chkUlcerOther;
-$_SESSION['txtUlcer3'] = $txtUlcer3;
-$_SESSION['chkPara'] = $chkPara;
-$_SESSION['chkFracture'] = $chkFracture;
-$_SESSION['txtFracture4'] = $txtFracture4;
-$_SESSION['chkContractures'] = $chkContractures;
-$_SESSION['txtSeverePain5'] = $txtSeverePain5;
-$_SESSION['chkPsychic'] = $chkPsychic;
-$_SESSION['chkPatientRequire'] = $chkPatientRequire;
-$_SESSION['chkIsolation'] = $chkIsolation;
-$_SESSION['txtIsolation6'] = $txtIsolation6;
-$_SESSION['txtAPCFother'] = $txtAPCFother;
-$_SESSION['txtPhysicianName'] = $txtPhysicianName;
-$_SESSION['chkPhysician'] = $chkPhysician;
-$_SESSION['txtIncEmt'] = $txtIncEmt;
-$_SESSION['signAPCF'] = $signAPCF;
-
-echo implode(',', $traumaInjury);
-echo implode(',',$_SESSION['pastMedical']);
-//It will work if you put it here insertPcrPdf();
-insertVital();
 ?>

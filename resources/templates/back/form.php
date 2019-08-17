@@ -61,6 +61,6 @@
 				<input class="btn btn-primary" id="dispatchSubmit" name="dispatchSubmit" type="submit" value="Submit"></input>
 			</div>
 		</div>
-		<script type="text/javascript" src="js/customJquery.js"></script>
+		
 	</form>
 </body>

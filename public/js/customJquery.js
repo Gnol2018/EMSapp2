@@ -1,7 +1,5 @@
 //Search Patient Ajax
-$(".selectPatient").on('click', function() {
-	alert("Click is successful!");
-});
+
 
 //Navigation Expand and Close All Button 
 function expandAll(){
@@ -79,8 +77,9 @@ function chkBoxGetInput(txtBox,inputVal){
 };
 
 //Add Vital Sign Table
-var btnAdd = $('#btnAdd');
+
 btnAdd.click(function(){
+	var btnAdd = $('#btnAdd');
 	//Select last ID of the last row
 	var vitalTime = $('.cloned-row .col-sm input[type=text]:nth-child(2)').last().attr('id');
 	
@@ -126,8 +125,9 @@ btnAdd.click(function(){
 });
 
 //Drop Vital Sign Table
-var btnDrop = $('#btnDrop');
+
 btnDrop.click(function(){
+	var btnDrop = $('#btnDrop');
 	//Select last ID of the last row
 	var vitalTime = $('.cloned-row .col-sm input[type=text]:nth-child(2)').last().attr('id');
 	var split_id = vitalTime.split('_');
@@ -140,9 +140,9 @@ btnDrop.click(function(){
 	
 });
 
-//Add Jsignature Pad when document is loaded
+//----------------Add Jsignature Pad when document is loaded-----------------
 $(document).ready(function() {
-	$("#signature1").resize();
+	
 	$("#signature1").jSignature({
 		height: 150
 		});
@@ -222,13 +222,14 @@ function signatureReset(signatureDiv) {
 }
 
 
-//-----------Jsignature Pad end here-------------
+//---------------------------Jsignature Pad end here----------------------------
 
-//------------Imapster Function Right Here----------
+//------------Imapster Function Right Here-------------------------
 function deselectAll(){
 	$('area').mapster('deselect');
 }
  
+//------------Imapster Function End Here-------------------------
 
 //------------Show Item List for Pain Map----------------
 function mapClearLists()
@@ -301,4 +302,37 @@ function getClock(timeCall){
 	$(timeCall).attr('readonly');
 
 }
+//------------Show Item List for Pain Map End----------------
 
+//------------------Autofill Function----------------------
+function loaddata(){
+	var patient_Fname = document.getElementById("patientFname").value ;
+	
+	console.log(patient_Fname);
+	if (patientFname) {
+		$.ajax({
+			type: 'post',
+			url: 'loaddata.php',
+			data: {
+				patientFname:patient_Fname,
+			},
+			success: function(response) {
+				$('#display_info').html(response);
+			}
+		});
+	}
+	else {
+		$('#display_info').html("Please Enter First Name and Last Name of the Patient");
+	}
+};
+
+function loadall() {
+	$.ajax({
+		type: 'post',
+		url: 'loadAll.php',
+		success: function(response) {
+			$('#display_info').html(response);
+		}
+	})	
+};
+//------------------Autofill Function End Here----------------------

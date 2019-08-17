@@ -13,4 +13,6 @@ $_SESSION['patientAddress'] = $patientAddress;
 $_SESSION['patientPhone1'] = $patientPhone1;
 $_SESSION['patientPhone2'] = $patientPhone2;
 
+echo $_SESSION['patientFname'] ;
+
 ?>

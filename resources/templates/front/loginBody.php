@@ -13,7 +13,7 @@
 
     <!-- Login Form -->
    
-    <form class="" method="POST" >
+    <form method="POST" >
       <?php userLogin(); ?> 
       <input type="text" id="login" class="fadeIn second" name="userName" placeholder="login">
       <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">

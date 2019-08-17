@@ -12,7 +12,7 @@ defined("TEMPLATE_FRONT") ? null : define("TEMPLATE_FRONT", __DIR__ . DS . "temp
 
 defined("TEMPLATE_BACK") ? null : define("TEMPLATE_BACK", __DIR__ . DS . "templates/back");
 
-error_reporting(0);
+error_reporting(1);
 
 require_once("pdoFunction.php");
 ?>
