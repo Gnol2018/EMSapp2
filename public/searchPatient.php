@@ -9,8 +9,42 @@ $pageLocation = $_SERVER['REQUEST_URI'];
 
 include(TEMPLATE_BACK . DS . "appHeader.php") ?>
 <script>
-//Ajax 
 
+//Ajax 
+function loaddata(){
+	var patient_Fname = document.getElementById("patientFname").value ;
+	var patient_Lname = document.getElementById("patientLname").value ;
+	
+	
+	console.log(patient_Fname);
+	if (patientFname) {
+		$.ajax({
+			type: 'post',
+			url: 'loaddata.php',
+			data: {
+				patientFname:patient_Fname,
+				patientLname:patient_Lname,
+			
+			},
+			success: function(response) {
+				$('#display_info').html(response);
+			}
+		});
+	}
+	else {
+		$('#display_info').html("Please Enter First Name and Last Name of the Patient");
+	}
+};
+
+function loadall() {
+	$.ajax({
+		type: 'post',
+		url: 'loadAll.php',
+		success: function(response) {
+			$('#display_info').html(response);
+		}
+	})	
+};
 
 
 $(document).ajaxComplete(function() {
@@ -22,8 +56,8 @@ $(document).ajaxComplete(function() {
     		var firstName = $('#'+ id).children('td[data-target=firstName]').text();
     		var lastName = $('#' + id).children('td[data-target=lastName]').text();
     		var address = $('#' + id).children('td[data-target=address]').text();
+    		var dob = $('#' + id).children('td[data-target=dob]').text();
     		var phone1 = $('#' + id).children('td[data-target=phone1]').text();
-    		var phone2 = $('#' + id).children('td[data-target=phone2]').text();
 
     		
     		event.preventDefault();
@@ -31,20 +65,19 @@ $(document).ajaxComplete(function() {
     		$('#firstName').val(firstName);
     	    $('#lastName').val(lastName);
     	    $('#address').val(address);
+    	    $('#dob').val(dob);
     	    $('#phone1').val(phone1);
-    	    $('#phone2').val(phone2);
     	    $('#myModal').modal('toggle');
 
     	    console.log(firstName);
     		console.log(lastName);
     		console.log(address);
+    		console.log(dob);
     		console.log(phone1);
-    		console.log(phone2);
 
 			var modalFnam = $('#firstName').val();
 			 console.log(modalFnam);
 			 
-    	
     	});
     	
     })

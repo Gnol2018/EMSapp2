@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <div class="card">
 	<div class="card-header" id="headingOne">
       <h5 class="mb-0">
@@ -45,7 +48,7 @@
 			</div>
 			<div class="col-sm">
 				<label>Veh. Id: </label>
-				<input type="text" class="form-control" name="vehId" id="dispatchVeh" value="<?php echo $veId ?>"></input>
+				<input type="text" class="form-control" name="vehId" id="dispatchVeh" value="<?php echo $vehId ?>"></input>
 			</div>
 		</div>
 	

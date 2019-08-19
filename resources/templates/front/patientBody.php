@@ -7,11 +7,11 @@
 	
 	if($pageLocation == "/EMSapp/public/addPatient.php" ) {
 	    
-	    include(TEMPLATE_FRONT . DS . "patientSection/patientAdd.php");
+	    include(TEMPLATE_FRONT . DS . "patientReportApp/patientAdd.php");
 	    
 	} elseif ($pageLocation == "/EMSapp/public/searchPatient.php" ) {
 	    
-	    include(TEMPLATE_FRONT . DS . "patientSection/patientSearch.php");
+	    include(TEMPLATE_FRONT . DS . "patientReportApp/patientSearch.php");
 	    
 	} else {
 	    

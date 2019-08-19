@@ -17,11 +17,11 @@ if(empty($_SESSION['userName'])) {
 <?php 
 if($_SESSION['userRole'] == 'admin'){  
     
-    include(TEMPLATE_BACK . DS . "form.php");
+    include(TEMPLATE_BACK . DS . "adminForm.php");
     
 } elseif($_SESSION['userRole'] == 'medic') {
     
-    include(TEMPLATE_BACK . DS . "form.php");
+    include(TEMPLATE_BACK . DS . "addPatient.php");
     
 }
 

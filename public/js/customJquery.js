@@ -78,7 +78,7 @@ function chkBoxGetInput(txtBox,inputVal){
 
 //Add Vital Sign Table
 
-btnAdd.click(function(){
+$("#btnAdd").click(function(){
 	var btnAdd = $('#btnAdd');
 	//Select last ID of the last row
 	var vitalTime = $('.cloned-row .col-sm input[type=text]:nth-child(2)').last().attr('id');
@@ -126,7 +126,7 @@ btnAdd.click(function(){
 
 //Drop Vital Sign Table
 
-btnDrop.click(function(){
+$("#btnDrop").click(function(){
 	var btnDrop = $('#btnDrop');
 	//Select last ID of the last row
 	var vitalTime = $('.cloned-row .col-sm input[type=text]:nth-child(2)').last().attr('id');
@@ -305,34 +305,5 @@ function getClock(timeCall){
 //------------Show Item List for Pain Map End----------------
 
 //------------------Autofill Function----------------------
-function loaddata(){
-	var patient_Fname = document.getElementById("patientFname").value ;
-	
-	console.log(patient_Fname);
-	if (patientFname) {
-		$.ajax({
-			type: 'post',
-			url: 'loaddata.php',
-			data: {
-				patientFname:patient_Fname,
-			},
-			success: function(response) {
-				$('#display_info').html(response);
-			}
-		});
-	}
-	else {
-		$('#display_info').html("Please Enter First Name and Last Name of the Patient");
-	}
-};
 
-function loadall() {
-	$.ajax({
-		type: 'post',
-		url: 'loadAll.php',
-		success: function(response) {
-			$('#display_info').html(response);
-		}
-	})	
-};
 //------------------Autofill Function End Here----------------------

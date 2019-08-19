@@ -8,9 +8,12 @@
 	?>
 	<!-- Navgiation End Here -->
 	<?php 
+	fillDispatch1();
+	fillDemographic1();
+	include(TEMPLATE_BACK . DS . "varConvert.php");
     //test whether the patient Run id is passed or not	
 	
-	$patientRunId = $_SESSION['patientRunId'];
+	/*$patientRunId = $_SESSION['patientRunId'];
 	if(!empty($patientRunId)) {
 	    
 	    //Use run Id as an index to pull out database information
@@ -72,7 +75,7 @@
 	        $timeInService = $row['timeInService'];
 	        $timeInQuarter = $row['timeInQuarter'];
 	    }    
-	}
+	}*/
 	?>
 	<form class="container-fluid" method="POST">
 	<!-- Dispatcher Start Right Here -->

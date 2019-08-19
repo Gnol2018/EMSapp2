@@ -67,7 +67,79 @@ function userLogin(){
 
 //-------------Finding Information Function Start Here--------------------
 
-//Function to auto-fill Demographic form
+//Function to autofill Form For Medic
+function fillDispatch1(){
+    
+    require('pdoConfig.php');
+    
+    $patientRunId = $_SESSION['patientRunId'];
+    //make connection for Dispatch Form
+    $dispatchQuery = $conn->prepare('SELECT mileage, dispatchDate, runId, veId, agencyName, agencyLocation, locationCode, dispatchinfo, locationType, crossStreet, timeReceived, timeRoute, timeAtScene, timeFromScene, timeAtDes, timeInService, timeInQuarter
+                                        FROM dispatchtable
+                                        WHERE runId = ?');
+    $dispatchQuery->execute([$patientRunId]);
+    foreach ($dispatchQuery as $row) {
+        $_SESSION['mileage'] = $row['mileage'];
+        $_SESSION['dispatchDate'] = $row['dispatchDate'];
+        $_SESSION['runId'] = $row['runId'];
+        $_SESSION['veId'] = $row['veId'];
+        $_SESSION['agencyName'] = $row['agencyName'];
+        $_SESSION['agencyLocation'] = $row['agencyLocation'];
+        $_SESSION['locationCode'] = $row['locationCode'];
+        $_SESSION['dispatchinfo'] = $row['dispatchinfo'];
+        $_SESSION['locationType'] = $row['locationType'];
+        $_SESSION['crossStreet'] = $row['crossStreet'];
+        $_SESSION['timeReceived'] = $row['timeReceived'];
+        $_SESSION['timeRoute'] = $row['timeRoute'];
+        $_SESSION['timeAtScene'] = $row['timeAtScene'];
+        $_SESSION['timeFromScene'] = $row['timeFromScene'];
+        $_SESSION['timeAtDes'] = $row['timeAtDes'];
+        $_SESSION['timeInService'] = $row['timeInService'];
+        $_SESSION['timeInQuarter'] = $row['timeInQuarter'];
+    }
+
+}
+
+function fillDemographic1(){
+    //test whether the patient Run id is passed or not
+    require('pdoConfig.php');
+    $patientRunId = $_SESSION['patientRunId'];
+    if(!empty($patientRunId)) {
+        
+        //Use run Id as an index to pull out database information
+        //make connection
+        $query = $conn->prepare('SELECT patientFname, patientLname, patientAddress, patientPhone1, patientPhone2,  patientZipcode, patientDOB, patientGender, patientSS, patientEmerContact, patientEmerPhone
+                                FROM patients INNER JOIN pcrtable
+                                ON patients.patientId = pcrtable.patientId
+                                WHERE runId = ?');
+        $query->execute([$patientRunId]);
+        foreach($query as $row){
+            $_SESSION['patientFname'] = $row['patientFname'];
+            $_SESSION['patientLname'] = $row['patientLname'];
+            $_SESSION['patientAddress'] = $row['patientAddress'];
+            $_SESSION['patientPhone1'] = $row['patientPhone1'];
+            $_SESSION['patientPhone2'] = $row['patientPhone2'];
+            $_SESSION['patientZipcode'] = $row['patientZipcode'];
+            $_SESSION['patientDOB'] = $row['patientDOB'];
+            $_SESSION['patientGender'] = $row['patientGender'];
+            $_SESSION['patientSS'] = $row['patientSS'];
+            $_SESSION['patientEmerContact'] = $row['patientEmerContact'];
+        }
+        if(!empty($_SESSION['patientZipcode'])) {
+            $queryZipcode = $conn->prepare('SELECT patientCity, patientState
+	                                        FROM zipcodes
+                                            WHERE patientZipcode = ?');
+            $queryZipcode->execute([$_SESSION['patientZipcode']]);
+            foreach($queryZipcode as $row) {
+                $_SESSION['patientCity'] = $row['patientCity'];
+                $_SESSION['patientState'] = $row['patientState'];
+            }
+        }
+    }
+}
+
+
+//-------------------Function to auto-fill Demographic Form -----
 
 function fillDemographic(){
     require('pdoConfig.php');
@@ -75,14 +147,17 @@ function fillDemographic(){
     $patientFname = $_SESSION['patientFname'];
     $patientLname = $_SESSION['patientLname'];
     $patientAddress = $_SESSION['patientAddress'];
-    //Prepare the SQL statement 
-    $query = $conn->prepare('SELECT patientFname, patientLname, patientAddress, patientPhone1, patientPhone2,  patientZipcode, patientDOB, patientGender, patientSS, patientEmerContact, patientEmerPhone
+    $patientDOB = $_SESSION['patientDOB'];
+    
+    //Prepare the SQL statement
+    $queryDemo = $conn->prepare('SELECT patientFname, patientLname, patientAddress, patientPhone1, patientPhone2,  patientZipcode, patientDOB, patientGender, patientSS, patientEmerContact, patientEmerPhone
                                 FROM patients
                                 WHERE patientFname = ?
                                 AND patientLname = ?
-                                AND patientAddress = ?');
-    $query->execute([$patientFname, $patientLname, $patientAddress]);
-    foreach($query as $row){
+                                AND patientAddress = ?
+                                AND patientDOB = ?');
+    $queryDemo->execute([$patientFname, $patientLname, $patientAddress,$patientDOB]);
+    foreach($queryDemo as $row){
         $_SESSION['patientFname'] = $row['patientFname'];
         $_SESSION['patientLname'] = $row['patientLname'];
         $_SESSION['patientAddress'] = $row['patientAddress'];
@@ -94,18 +169,19 @@ function fillDemographic(){
         $_SESSION['patientSS'] = $row['patientSS'];
         $_SESSION['patientEmerContact'] = $row['patientEmerContact'];
     }
-    if(!empty($patientZipcode)) {
+    if(!empty($_SESSION['patientZipcode'])) {
         $queryZipcode = $conn->prepare('SELECT patientCity, patientState
 	                                        FROM zipcodes
                                             WHERE patientZipcode = ?');
-        $queryZipcode->execute([$patientZipcode]);
+        $queryZipcode->execute([$_SESSION['patientZipcode']]);
         foreach($queryZipcode as $row) {
             $_SESSION['patientCity'] = $row['patientCity'];
             $_SESSION['patientState'] = $row['patientState'];
         }
     };
-   
+    
 }
+//-------------------Function to auto-fill Demographic Form End-----
 
 function findPatient(){
     if(isset($_POST['btnSearchPatient'])){
@@ -442,11 +518,13 @@ function transferPatient(){
         $patientFname = $_POST['firstName'];
         $patientLname = $_POST['lastName'];
         $patientAddress = $_POST['address'];
+        $patientDOB = $_POST['dob'];
         $patientPhone1 = $_POST['phone1'];
         $_SESSION['patientFname'] = $patientFname;
         $_SESSION['patientLname'] = $patientLname;
         $_SESSION['patientAddress'] = $patientAddress;
-        
+        $_SESSION['patientDOB'] = $patientDOB;
+        $_SESSION['patientPhone1'] = $patientPhone1;
         redirect('pcrApp.php');
     }
 }

@@ -1,5 +1,27 @@
-<?php 
+<?php
 //Convert Local Variables to Session Variables
+//Dispatch SESSION variable
+$mileage = $_SESSION['mileage'];
+$dispatchDate = $_SESSION['dispatchDate'];
+$runId = $_SESSION['runId'];
+$vehId = $_SESSION['veId'];
+$agencyName = $_SESSION['agencyName'];
+$agencyLocation = $_SESSION['agencyLocation'] ;
+$locationCode = $_SESSION['locationCode'];
+$dispatchinfo = $_SESSION['dispatchInfo'];
+$locationType = $_SESSION['locationType'];
+$crossStreet = $_SESSION['crossStreet'];
+$timeReceived = $_SESSION['timeReceived'];
+$timeRoute = $_SESSION['timeRoute'] ;
+$timeAtScene = $_SESSION['timeAtScene'] ;
+$timeFromScene = $_SESSION['timeFromScene'];
+$timeAtDes = $_SESSION['timeAtDes'] ;
+$timeInService = $_SESSION['timeInService'];
+$timeInQuarter = $_SESSION['timeInQuarter'];
+$dispatchCallType = $_SESSION['dispatchCallType'];
+$dispatchPatientNumb = $_SESSION['dispatchPatientNumb'];
+$dispatchMethod = $_SESSION['dispatchMethod'];
+
 
 //Assign Session Variable to Local Variable from fillDemographic()
 $patientFname = $_SESSION['patientFname'];
