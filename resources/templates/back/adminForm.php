@@ -1,8 +1,9 @@
+<script type="text/javascript" src="js/customJquery.js"></script>
 <body>
 	<?php 
 	//If there is session coming from addPatient -> auto-fill
 	If($_SESSION['patientFname'] & $_SESSION['patientLname']) {
-    	echo $_SESSION['patientDOB'];
+    	
     	fillDemographic();
     	include(TEMPLATE_BACK. DS . "varConvert.php");
 	}
@@ -20,7 +21,7 @@
 	<form class="container-fluid" method="POST" id="accordion">
 	    <!-- Dispatch Panel Start Here -->
 	    <?php 
-	       include(TEMPLATE_BACK. DS. "pcrProcess/dispatchProcess.php")
+	       include(TEMPLATE_BACK. DS. "patientReportApp/dispatchForm.php")
 	    ?>
 		
 	   <!---------------- Disptach Panel End Here------------------- -->
@@ -67,9 +68,14 @@
 		<!-- A.P.C.F.P End Here -->		
 		<div class="row">	
 			<div class="col-12 submitRow">
-				<input class="btn btn-primary" id="dispatchSubmit" name="dispatchSubmit" type="submit" value="Submit"></input>
+				<input class="btn btn-primary" id="pcrSubmit" name="pcrSubmit" type="submit" value="Submit"></input>
 			</div>
 		</div>
+		<?php 
+		
+		insertDispatchForm();
+		
+		?>
 		
 	</form>
 </body>

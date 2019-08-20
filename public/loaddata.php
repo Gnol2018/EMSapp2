@@ -28,7 +28,7 @@ foreach ($stmt as $row) {
     echo "<td data-target='firstName'>" . $row['patientFname'] . "</td>";
     echo "<td data-target='lastName'>" . $row['patientLname'] . '</td>';
     echo "<td data-target='address'>" . $row['patientAddress'] . "</td>";
-    echo "<td data-target='DOB'>" . $row['patientDOB'].'</td>';
+    echo "<td data-target='dob'>" . $row['patientDOB'].'</td>';
     echo "<td data-target='phone1'>" . $row['patientPhone1'] . "</td>";
     echo "</tr>";
 }

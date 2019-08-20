@@ -32,7 +32,7 @@
 		
 			<div class="col-sm">
 				<label>Total:  </label>
-				<input name= "mileTotal" id ="mileTotal" readonly type="number" class="form-control"  placeholder="Miles" value="<?php echo $milleage?>"></input>
+				<input name= "mileTotal" id ="mileTotal" readonly type="number" class="form-control"  placeholder="Miles" value="<?php echo $mileage?>"></input>
 			</div>
 
 		</div>

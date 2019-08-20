@@ -4,11 +4,11 @@
 $mileage = $_SESSION['mileage'];
 $dispatchDate = $_SESSION['dispatchDate'];
 $runId = $_SESSION['runId'];
-$vehId = $_SESSION['veId'];
+$vehId = $_SESSION['vehId'];
 $agencyName = $_SESSION['agencyName'];
 $agencyLocation = $_SESSION['agencyLocation'] ;
 $locationCode = $_SESSION['locationCode'];
-$dispatchinfo = $_SESSION['dispatchInfo'];
+$dispatchinfo = $_SESSION['dispatchinfo'];
 $locationType = $_SESSION['locationType'];
 $crossStreet = $_SESSION['crossStreet'];
 $timeReceived = $_SESSION['timeReceived'];

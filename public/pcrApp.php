@@ -12,7 +12,7 @@ if(empty($_SESSION['userName'])) {
 <!DOCTYPE html>
 <html lang="en">
 <?php include(TEMPLATE_BACK . DS . "appHeader.php") ?>
-<?php include(TEMPLATE_BACK . DS . "formInput.php")?>
+
 
 <?php 
 if($_SESSION['userRole'] == 'admin'){  

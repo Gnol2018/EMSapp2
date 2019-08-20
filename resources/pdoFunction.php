@@ -74,7 +74,7 @@ function fillDispatch1(){
     
     $patientRunId = $_SESSION['patientRunId'];
     //make connection for Dispatch Form
-    $dispatchQuery = $conn->prepare('SELECT mileage, dispatchDate, runId, veId, agencyName, agencyLocation, locationCode, dispatchinfo, locationType, crossStreet, timeReceived, timeRoute, timeAtScene, timeFromScene, timeAtDes, timeInService, timeInQuarter
+    $dispatchQuery = $conn->prepare('SELECT mileage, dispatchDate, runId, vehId, agencyName, agencyLocation, locationCode, dispatchinfo, locationType, crossStreet, timeReceived, timeRoute, timeAtScene, timeFromScene, timeAtDes, timeInService, timeInQuarter
                                         FROM dispatchtable
                                         WHERE runId = ?');
     $dispatchQuery->execute([$patientRunId]);
@@ -82,7 +82,7 @@ function fillDispatch1(){
         $_SESSION['mileage'] = $row['mileage'];
         $_SESSION['dispatchDate'] = $row['dispatchDate'];
         $_SESSION['runId'] = $row['runId'];
-        $_SESSION['veId'] = $row['veId'];
+        $_SESSION['vehId'] = $row['vehId'];
         $_SESSION['agencyName'] = $row['agencyName'];
         $_SESSION['agencyLocation'] = $row['agencyLocation'];
         $_SESSION['locationCode'] = $row['locationCode'];
@@ -317,6 +317,73 @@ function pcrFindOnSS() {
 //-------------Finding Information Function END Here--------------------
 
 //-----------------------Insert to database function start here-----------------------------
+
+//-------------------Insert Dispatch Form -------------------------
+function insertDispatchForm(){
+    require('pdoConfig.php');
+    if(isset($_POST['pcrSubmit'])){
+        //set Dispatch form inputs to Session Varible for printing
+        $mileTotal = ($_POST['mileTotal']);
+        $dispatchDate = ($_POST['dispatchDate']);
+        $runId = ($_POST['runId']);
+        $vehId = ($_POST['vehId']);
+        $dispatchAgency = ($_POST['dispatchAgency']);
+        $dispatchLocation = ($_POST['dispatchLocation']);
+        $lCode = ($_POST['lCode']);
+        $dispatchInfo = ($_POST['dispatchInfo']);
+        $lType = ($_POST['lType']);
+        $dispatchCross = ($_POST['dispatchCross']);
+        $timeReceived = ($_POST['timeReceived']);
+        $timeRoute = ($_POST['timeRoute']);
+        $timeAtScene = ($_POST['timeAtScene']);
+        $timeFromScene = ($_POST['timeFromScene']);
+        $timeAtDes = ($_POST['timeAtDes']);
+        $timeInService = ($_POST['timeInService']);
+        $timeInQuarter = ($_POST['timeInQuarter']);
+        $dispatchCallType = ($_POST['dispatchCallType']);
+        $dispatchPatientNumb = ($_POST['dispatchPatientNumb']);
+        $dispatchMethod = ($_POST['dispatchMethod']);
+        
+        //Make SQL connection and Prepare    `timeReceived`, `timeRoute`, `timeAtScene`, `timeFromScene`, `timeAtDes`,
+        //`timeInService`, `timeInQuarter`, `dispatchCallType`, `dispatchPatientNumb`, `dispatchMethod`,
+        $sql = "INSERT INTO `dispatchtable` (`mileage`, `dispatchDate`, `runId`, `vehId`, `agencyName`,
+                                         `agencyLocation`, `locationCode`, `dispatchinfo`, `locationType`, `crossStreet`,
+                                         `timeReceived`, `timeRoute`, `timeAtScene`, `timeFromScene`, `timeAtDes`,
+                                         `timeInService`, `timeInQuarter`, `dispatchCallType`, `dispatchPatientNumb`, `dispatchMethod` )
+                       VALUE (:mileTotal, :dispatchDate, :runId, :vehId, :dispatchAgency,
+                              :dispatchLocation, :lCode, :dispatchInfo, :lType, :dispatchCross,
+                              :timeReceived, :timeRoute, :timeAtScene, :timeFromScene, :timeAtDes,
+                              :timeInService, :timeInQuarter, :dispatchCallType, :dispatchPatientNumb, :dispatchMethod )";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':mileTotal', $mileTotal);
+        $stmt->bindValue(':dispatchDate', $dispatchDate);
+        $stmt->bindValue(':runId', $runId);
+        $stmt->bindValue(':vehId', $vehId);
+        $stmt->bindValue(':dispatchAgency', $dispatchAgency);
+        $stmt->bindValue(':dispatchLocation', $dispatchLocation);
+        $stmt->bindValue(':lCode', $lCode);
+        $stmt->bindValue(':dispatchInfo', $dispatchInfo);
+        $stmt->bindValue(':lType', $lType);
+        $stmt->bindValue(':dispatchCross', $dispatchCross);
+        
+        $stmt->bindValue(':timeReceived', $timeReceived);
+        $stmt->bindValue(':timeRoute', $timeRoute);
+        $stmt->bindValue(':timeAtScene', $timeAtScene);
+        $stmt->bindValue(':timeFromScene', $timeFromScene);
+        $stmt->bindValue(':timeAtDes', $timeAtDes);
+        $stmt->bindValue(':timeInService', $timeInService);
+        $stmt->bindValue(':timeInQuarter', $timeInQuarter);
+        $stmt->bindValue(':dispatchCallType', $dispatchCallType);
+        $stmt->bindValue(':dispatchPatientNumb', $dispatchPatientNumb);
+        $stmt->bindValue(':dispatchMethod', $dispatchMethod);
+        
+        $insertShit = $stmt->execute();
+    }
+}
+
+//-------------------Insert Dispatch Form End ---------------------
+
+
 function insertPcrPdf(){
     require('pdoConfig.php');
     //Get the SESSION from Demographic Form Variable, check it right here
@@ -528,4 +595,49 @@ function transferPatient(){
         redirect('pcrApp.php');
     }
 }
+//------------------ Add Patient to DB ----------------
+function addPatient() {
+    
+        require_once("pdoConfig.php");
+        $patientFname = ($_POST['patientFname']);
+        $patientLname = ($_POST['patientLname']);
+        $patientAddress = ($_POST['patientAddress']);
+        $patientPhone1 = ($_POST['patientPhone1']);
+        $patientPhone2 = ($_POST['patientPhone2']);
+        $patientZipcode = ($_POST['patientZipcode']);
+        $patientDOB = ($_POST['patientDOB']);
+        $patientGender = ($_POST['patientGender']);
+        $patientSS = ($_POST['patientSS']);
+        $patientEmerContact = ($_POST['patientEmerContact']);
+        $patientEmerPhone = ($_POST['patientEmerPhone']);
+        
+        //Select patient info in DB then compare to not allow duplicate
+        $sqlPatientIndex = 'SELECT patientFname, patientLname, patientAddress, patientDOB
+                                       FROM patients
+                                       WHERE (patientFname = ?
+                                       AND patientLname = ?
+                                       AND patientAddress = ?
+                                       AND patientDOB = ?)';
+        $stmtIndex = $conn->prepare($sqlPatientIndex);
+        $stmtIndex->execute([$patientFname, $patientLname, $patientAddress, $patientDOB]);
+        $row = $stmtIndex->fetch(PDO::FETCH_ASSOC);
+        
+        if($row >= 1) {
+            echo '<script language="javascript">';
+            echo 'alert("Patient Is Already Existed. Please Search for The Patient or Retry!")';
+            echo '</script>';
+        }
+        else {
+            //PDO prepare SQL and Insert if patient is not existed
+            $sqlPatientInfo = "INSERT INTO patients (patientFname, patientLname, patientAddress, patientPhone1, patientPhone2, patientZipcode, patientDOB, patientGender, patientSS,patientEmerContact,patientEmerPhone)
+                           VALUE (?,?,?,?,?,?,?,?,?,?,?)";
+            $stmt = $conn->prepare($sqlPatientInfo);
+            $stmt->execute([$patientFname,$patientLname,$patientAddress,$patientPhone1,$patientPhone2, $patientZipcode,$patientDOB,$patientGender,$patientSS,$patientEmerContact,$patientEmerPhone]);
+            echo '<script language="javascript">';
+            echo 'alert("Patient has been added sucessfully")';
+            echo '</script>';
+        }
+    
+}
+//------------------- End Add Patient -----------------
 ?>

@@ -49,6 +49,7 @@ if (isset($_POST["btnAddPatient"])) {
         echo '</script>';
     }          
 }
+
 ?>
 <script>
 //Ajax 
