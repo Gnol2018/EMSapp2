@@ -22,11 +22,23 @@
     		<h4>SECTION I - PATIENT SIGNATURE</h4>
     		<p>The patient must sign here unless the patient is physically or mentally incapable of signing:</p>
     		<h5>Patient Signature or Mark:</h5>
+    		
     		<div id="signatureSec1"></div>
+    		
+    		<div class="col">
+       			<a onclick="signatureReset(signatureSec1)" class="btn btn-secondary">Reset</a>
+       		</div>
+       		
     		<p>If the patient signs with an "X" or other mark, it is recommended that someone sign below as a witness:
     		</p>
     		<h5>Witness Signature:</h5>
+    		
     		<div id="signatureSec2"></div>
+    		
+    		<div class="col">
+       			<a onclick="signatureReset(signatureSec2)" class="btn btn-secondary">Reset</a>
+       		</div>
+       		
     		<div class="form-inline">
     			<label class="font-weight-bold">Witness Printed Name: </label>
     			<input name="txtWitnessName" class="form-control" type="text">
@@ -64,7 +76,13 @@
            <p class="font-italic">I am signing on behalf of the patient. I recognize that signing on behalf of 
             the patient is not an acceptance of financial responsibility for the services rendered.</p>
             <h5>Representative's Signature:</h5>
+            
              <div id="signatureSec3"></div>
+             
+             <div class="col">
+       			<a onclick="signatureReset(signatureSec3)" class="btn btn-secondary">Reset</a>
+       		 </div>
+       		
             <div class="form-inline">
     			<label class="font-weight-bold">Representatives Printed Name: </label>
     			<input name="txtRepName" class="form-control" type="text">
@@ -89,7 +107,13 @@
     		 	<input name="txtFacilityTime" type="text" class="form-control">
     		 </div>
     		 <h5>Signature of Crewmember:</h5>
+    		 
     		 <div id="signatureSec4"></div>
+    		 
+    		 <div class="col">
+       			<a onclick="signatureReset(signatureSec4)" class="btn btn-secondary">Reset</a>
+       		 </div>
+       		 
     		 <div class="form-inline">
     		 	<label class="font-weight-bold">Printed Name of Crewmember:</label>
     		 	<input name="txtCrewIII" type="text" class="form-control">
@@ -97,8 +121,13 @@
     		 <p class="font-weight-bold">B. Receiving Facility Representative Signature</p>
     		 <p>The above-named patient was received by this facility at the date and time indicated above.</p>
     		 <p class="font-weight-bold">Signature of Receiving Facility Representative:</p>
-    		 <div id="signatureSec5">
-    		 </div>
+    		 
+    		 <div id="signatureSec5"></div>
+    		 
+    		 <div class="col">
+       			<a onclick="signatureReset(signatureSec5)" class="btn btn-secondary">Reset</a>
+       		 </div>
+    		 
     		 <div class="form-inline">
     		 	<label class="font-weight-bold">Printed Name of Receiving Facility Representative: </label>
     		 	<input name="txtRepIII" type="text" class="form-control">

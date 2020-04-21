@@ -62,7 +62,7 @@
 			by Ambulance and the level of care that implies and other means of transport are contraindicated based on the patient's health and safety.
 			</p>
 			<div class="form-group form-inline">
-				<input class="form-control" type="checkbox">
+				<input class="form-control" name ="patientBedConfined" value="Yes" type="checkbox">
 				<p><span class="font-weight-bold">Patient Bed Confined</span> and is Unable to get up or out of bed without assistance <span class="font-weight-bold">AND</span> Unable to ambulate <span class="font-weight-bold">AND</span> Unable to sit in a Wheel chair or chair because:<br>
 				Note: The term applies to individuals who are unable to tolerate any activity out of bed. This term is <span class="font-weight-bold">not</span> synonymous with "Bed Rest", or "Non-Ambulatory",
  				or "Stretcher Bound". All three components must be met in order for the patient to meet the requirements of the definition of "Bed Confined".
@@ -74,7 +74,7 @@
 			<div class="col-sm form-group">
 				<h2 class="text-left">Requires an Ambulance because:</h2>
 				<div class="form-inline">
-					<input name="chkAPCFtxt1" class="form-check-input" type="checkbox">
+					<input name="chkAmbulance1" class="form-check-input" type="checkbox">
 					<label>Unable to hold self in w/c due to:</label>
 					<input name="txtAmbulance1" class="form-control" type="text">
 				</div>
@@ -89,7 +89,7 @@
 				</div>
 			
 				<div class="form-inline">
-					<input name="chkAPCFtxt2" class="form-check-input" type="checkbox">
+					<input name="chkAmbulance2" class="form-check-input" type="checkbox">
 					<label>Unable to sit for duration of transport due to:</label>
 					<input name="txtAmbulance2" class="form-control" type="text">
 				</div>
@@ -117,14 +117,14 @@
     					<label>Lower Extremity</label>
 					</div>
 					<div class="form-check form-inline">
-    					<input name="chkUlcertxt" class="form-check-input" type="checkbox">
+    					<input name="chkUlcer1" class="form-check-input" type="checkbox">
     					<label>Others</label>
-    					<input name="chkUlcerOther" class="form-control" type="text">
+    					<input name="txtUlcer1" class="form-control" type="text">
 					</div>
 					<div class="form-check form-inline">
-    					<input name="chkAPCFtxt3" class="form-check-input" type="checkbox">
+    					<input name="chkUlcer2" class="form-check-input" type="checkbox">
     					<label>Overall Wasting, too weak to sit up due to:</label>
-    					<input name="txtUlcer3" class="form-control" type="text">
+    					<input name="txtUlcer2" class="form-control" type="text">
 					</div>
 				</div>
 				
@@ -164,9 +164,9 @@
     				<label class="form-check-label">Knee</label>
     			</div>
     			<div class="form-check form-check-inline form-inline">
-    				<input name="chkAPCFtxt4" class="form-check-input" type="checkbox" >
+    				<input name="chkFracture1" class="form-check-input" type="checkbox" >
     				<label class="form-check-label">Other Fracture:</label>
-    				<input name="txtFracture4" class="form-control" type="text">
+    				<input name="txtFracture1" class="form-control" type="text">
     			</div>
     			
     			<h2 class="text-left">Contractures or Abnormal Stiffness or Rigidity of:</h2>
@@ -256,9 +256,9 @@
     				<label class="form-check-label">Meningitis</label>
     			</div>
     			<div class="form-check form-check-inline form-inline" >
-    				<input name="chkAPCFtxt6" class="form-check-input" type="checkbox">
+    				<input name="chkIsolation1" class="form-check-input" type="checkbox">
     				<label class="form-check-label">Other:</label>
-    				<input name="txtIsolation6" class="form-control" type="text">
+    				<input name="txtIsolation1" class="form-control" type="text">
     			</div>
     			
     			<h2 class="text-left">Other (Describe what or why):</h2>
@@ -299,18 +299,24 @@
         				<label class="form-check-label">DP</label>
         			</div>
     			</div>
+    			
     			<div class="form-group">
     				<label class="form-input font-weight-bold">Physician or Designee Signature:</label>
     			</div>
+    			
     			<div id="signatureAPCF">
+    			
     			</div>
+    			<input type="text" id="signAPCF" name="signAPCF">
+    			
+    			
     		</div>
     	</div>	
     	<div class="row form-group border border-dark">
     		<div class="col-12">
     			<div class="form-inline">
-    				<label class="form-input font-weight-bold">Senior Care Emergency Medical Services Inc EMT Name:</label>
-    				<input name="txtIncEmt" class="form-control" type="text">
+    				<label class="form-input font-weight-bold">Intercity Ambulance EMS:</label>
+    				<input name="txtEMSsign" class="form-control" type="text">
     			</div>
     		</div>
     	</div>

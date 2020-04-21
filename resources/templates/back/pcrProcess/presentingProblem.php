@@ -27,7 +27,7 @@
 				<div class="form-row">
 					<div class="col-lg">
 					<h2>Chief Complaint - Trauma</h2>
-					<input type="text" class="form-control" name="traumaComplain"></input>
+					<input type="text" class="form-control" name="traumaComplaint"></input>
 					</div>
 				</div>
 				
@@ -61,9 +61,8 @@
     						<label class="form-check-label" for="chkALS">Machinery</label>
     					</div>
     					<div class="form-check form-check-inline">
-    					<input class="form-check-input"  type="checkbox">
     						<label>Fall of</label>
-    						<input name="trauma_injury[fallFeet]"  id="traumaInjuryFall" type="number" class="form-control form-control-sm">
+    						<input name="trauma_injury[]"  id="traumaInjuryFall"type="number" class="form-control form-control-sm">
     						<label>feet</label>
     					</div>
     					<div class="form-check form-check-inline">
@@ -84,19 +83,19 @@
 					<div class="col-lg">
 						<p>Seat Belt Used?</p>
 						<div class="form-check form-check-inline">
-							<input class="form-check-input " type="radio" id="radSeatbeltYes" name="patientSeatbelt" value="Yes">
+							<input class="form-check-input " type="radio" id="radSeatbeltYes">
 							<label class="form-check-label">
                             Yes
                             </label>
                        	</div >
                        	<div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="radSeatbeltNo" name="patientSeatbelt" value="No">
+                            <input class="form-check-input" type="radio" id="radSeatbeltNo">
 							<label class="form-check-label">
                             No
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" id="radSeatbeltUnknown" name="patientSeatbelt" value="Unknown">
+                            <input class="form-check-input" type="radio" id="radSeatbeltUnknown">
 							<label class="form-check-label">
                             Unknown
                             </label>
@@ -372,24 +371,20 @@
             					<OPTION value="OTHER">OTHER...</OPTION>
     						</select>
 						</div>
-						<div>
-							<input type="text" name="painKey" id="painKey">
-						</div>
-						
 					</div>
 					
 					<!-- Set coordination point for click to certain area on the map -->
 					<map name="painMap1">
 						<!-- To use ImageMapster, it will require to have href="#", but when it bugs out, the customJquery will keep making the page go up on top -->
-						<area data-key="head" href="#" class="headArea" name="head" shape="circle" coords="115,42,31" onclick="boxShow('headMapList')"  alt="Head">
-						<area data-key="neck" href="#"class="neckArea" name="neck" shape="rect" coords="98,79,133,99" onclick="boxShow('neckMapList')"  alt="Neck">
-						<area data-key="thoraxArea" href="#" onclick="boxShow('thoraxMapList')" class="thorax" name="thorax" shape="poly" coords="70,104,96,93,114,99,132,91,159,101,153,155,84,153"  alt="Thorax" >
-						<area data-key="abdomenArea" href="#" onclick="boxShow('abdomenMapList')" class="abdomenArea" name="abdomen" shape="poly" coords="83,156,84,187,80,212,105,225,130,223,156,213,152,158"  alt="Abdomen" >
-						<area data-key="leftArm1" href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="67,104,77,140,75,166,65,189,42,231,32,262,6,257,4,238,27,224,38,192,51,165,56,127"  alt="Arm" >
-						<area data-key="leftArm2" href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="166,101,170,114,177,137,192,178,210,220,230,230,228,248,222,261,204,252,200,233,163,185,153,149,158,105"  alt="Arm" >
-						<area data-key="groinArea" href="#" onclick="boxShow('groinMapList')" class="groinArea" name="groin" shape="circle" coords="121,238,14"  alt="Groin">
-						<area data-key="leftLeg1" href="#" onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="76,217,108,228,108,239,114,251,108,303,102,339,102,365,97,398,97,412,97,440,88,457,73,442,82,413,81,395,75,368,84,331,84,312,74,255"  alt="Leg">						
-						<area data-key="rightLeg2" href="#" onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="157,217,133,227,132,239,122,252,137,333,137,347,138,377,145,400,143,417,147,447,153,457,165,447,158,415,162,357,159,335,160,311,162,273"  alt="Leg">
+						<area href="#" class="headArea" name="head" shape="circle" coords="115,42,31" onclick="boxShow('headMapList')"  alt="Head">
+						<area href="#"class="neckArea" name="neck" shape="rect" coords="98,79,133,99" onclick="boxShow('neckMapList')"  alt="Neck">
+						<area href="#" onclick="boxShow('thoraxMapList')" class="thorax" name="thorax" shape="poly" coords="70,104,96,93,114,99,132,91,159,101,153,155,84,153"  alt="Thorax" >
+						<area href="#" onclick="boxShow('abdomenMapList')" class="abdomenArea" name="abdomen" shape="poly" coords="83,156,84,187,80,212,105,225,130,223,156,213,152,158"  alt="Abdomen" >
+						<area href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="67,104,77,140,75,166,65,189,42,231,32,262,6,257,4,238,27,224,38,192,51,165,56,127"  alt="Arm" >
+						<area href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="166,101,170,114,177,137,192,178,210,220,230,230,228,248,222,261,204,252,200,233,163,185,153,149,158,105"  alt="Arm" >
+						<area href="#" onclick="boxShow('groinMapList')" class="groinArea" name="groin" shape="circle" coords="121,238,14"  alt="Groin">
+						<area href="#" onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="76,217,108,228,108,239,114,251,108,303,102,339,102,365,97,398,97,412,97,440,88,457,73,442,82,413,81,395,75,368,84,331,84,312,74,255"  alt="Leg">						
+						<area href="#" onclick="boxShow('legMapList')" class="legArea" name="leg" shape="poly" coords="157,217,133,227,132,239,122,252,137,333,137,347,138,377,145,400,143,417,147,447,153,457,165,447,158,415,162,357,159,335,160,311,162,273"  alt="Leg">
 						<!-- Set coordination point for click to second part of the map-- -->
 						<area href="#" onclick="boxShow('headMapList')" class="headArea" name="head" shape="circle" coords="367,33,26"  alt="Head">
 						<area href="#" onclick="boxShow('armMapList')" class="armArea" name="arm" shape="poly" coords="321,94,330,144,325,177,293,225,284,257,258,250,258,234,281,217,295,177,308,158,312,121"  alt="Arm">
@@ -402,16 +397,13 @@
 					</map>
 					
 					<script>
-					$('#painMap').mapster({
-						mapKey: 'data-key'
-					});
-					console.log($('#painMap').mapster('get'));
+					$('#painMap').mapster();
+						
 					</script>
 				
 					
 					<!-- Text box for obtain the input from user click to the map -->
 					<div class="col">
-					
 						<textarea name="traumaMapItems" id="traumaMapItems" class="w-100 h-100"></textarea>
 						
 					</div>
@@ -424,7 +416,7 @@
 				<div class="form-row">
 					<div class="col-lg">
 					<h2>Chief Complaint - Medical</h2>
-					<input name="medicalComplain" type="text" class="form-control" id="txtCheifMedical"></input>
+					<input name="medicalComplaint" type="text" class="form-control" id="txtCheifMedical"></input>
 					</div>
 				</div>
 				<div class="form-row form-group">
@@ -470,23 +462,19 @@
         		</div>
         		<div class="form-row">
             		<label>Medication:</label>
-            		<input name="patientMedication" type="text" class="form-control"></input>
+            		<input name="medicalMedi" type="text" class="form-control"></input>
         		</div>
         		<div class="form-row form-check form-check-inline">
         			<div class="col-sm">
-        				
-            			<input name="patientChkAllergy" type="checkbox" class="form-check-input"></input>
+            			<input type="checkbox" class="form-check-input"></input>
             			<label>Allergy to:</label>
-            			<input name="patientAllergy" type="text" class="form-control"></input>
-        			
+            			<input type="text" class="form-control"></input>
         			</div>
-        			<!-- 
             		<div class="col-sm">
-                		<input name="patientChkAllergyO"type="checkbox" class="form-check-input"></input>
+                		<input type="checkbox" class="form-check-input"></input>
                 		<label>Other:</label>
-                		<input name="patientAllergyO" type ="text" class="form-control"></input>
+                		<input type="text" class="form-control"></input>
             		</div>	
-            		 -->
         		</div>
 				<!-- Past Medical Problem Row End Here -->
 				
@@ -655,9 +643,7 @@
 					</div>
 				</div>
 			<div class="form-row">
-			
-				<input name="rowNumber" id="rowNumber" type="text" value="Row_0">	
-				
+				<input hidden name="rowNumber" id="rowNumber" type="text" value="Row_0">	
 			</div>	
 			</div>
 			

@@ -31,22 +31,26 @@
             				<input name="chkALS[]" class="form-check-input" type="checkbox" value="EndoTracheal Tube (E/T)">
             				<label class="form-check-label">EndoTracheal Tube (E/T)</label>
             			</div>
+            			<div class="form-check">
+            				<input name="chkALS[]" class="form-check-input" checked type="checkbox" value="EndoTracheal Tube (E/T)">
+            				<label class="form-check-label">Ventilator</label>
+            			</div>
             			<div class="form-inline">
-            				<input name="chkAlStxt1[]" class="form-check-input" type="checkbox" value="chkEKG">
+            				<input name="chkELS" class="form-check-input" type="checkbox" value="chkEKG">
             				<label class="form-check-label">EKG Monitored [Rythm(s):
-            				<input name="data[chkEKG][name]" class="form-control" type="text">]</label>
+            				<input name="ekgALS" class="form-control" type="text">]</label>
             			</div>
             			<div class="form-check form-check-inline">
-            				<input name="chkAlStxt2[]" class="form-check-input" type="checkbox" value="chkCardio">
+            				<input name="chkCardio" class="form-check-input" type="checkbox" value="chkCardio">
             				<label class="form-check-label">Cardioversion No. Times:</label>
-            				<input name="data[chkCardio][name]" class="form-control" type="text">
+            				<input name="cardioALS" class="form-control" type="text">
             			</div>
             			<div class="form-check form-check-inline">
-            				<input class="form-check-input" type="radio" name="radEKG" value="Manual">
+            				<input class="form-check-input" type="radio" name="radCardio" value="Manual">
             				<label class="form-check-label">Manual</label>
             			</div>
             			<div class="form-check form-check-inline">
-            				<input class="form-check-input" type="radio" name="radEKG" value="Semi-auto">
+            				<input class="form-check-input" type="radio" name="radCardio" value="Semi-auto">
             				<label class="form-check-label">Semi-auto.</label>
             			</div>
             			<div class="form-check">
@@ -54,20 +58,20 @@
             				<label class="form-check-label">Medication Administred</label>
             			</div>
             			<div class="form-inline">
-            				<input name="chkAlStxt3[]" class="form-check-input" type="checkbox" value="chkIVcath">
+            				<input name="chkIV1" class="form-check-input" type="checkbox" value="chkIVcath">
             				<label class="form-check-label">IV Established Fluid</label>
-            				<input name="data[chkIVcath][name]" class="form-control" type="text">
+            				<input name="ivFluidALS" class="form-control" type="text">
             				<label class="form-check-label">Cath. Gauge</label>
-            				<input name="txtCath" class="form-control" type="text">
+            				<input name="ivGaugeALS" class="form-control" type="text">
             			</div>
             			<div class="form-check">
             				<input name="chkALS[]" class="form-check-input" type="checkbox" value="12 Lead">
             				<label class="form-check-label">12 Lead</label>
             			</div>
             			<div class="form-inline">
-            				<input name="chkAlStxt4[]" class="form-check-input" type="checkbox">
+            				<input name="chkIV2" class="form-check-input" type="checkbox">
             				<label class="form-check-label">I.V. </label>
-            				<input class="form-control" type="text">
+            				<input name="ivALS2" class="form-control" type="text">
             			</div>
             			<div class="form-check">
             				<input name="chkALS[]" class="form-check-input" type="checkbox" value="I.O.">
@@ -132,43 +136,43 @@
     				<label class="form-check-label">Suction Used</label>
             	</div>
             	<div class="form-inline">
-            		<input name="chkBLStxt1" class="form-control" type="checkbox">
+            		<input name="chkVenBLS" class="form-control" type="checkbox">
     				<label class="form-label">Artificial Ventilation Method:</label>
-    				<input name="txtArtificial" class="form-control form-control-sm" type="text">
+    				<input name="venMethod" class="form-control form-control-sm" type="text">
             	</div>
             	<div class="form-check">
-    				<input name="chkBLStxt2" class="form-check-input" type="checkbox" value="">
+    				<input name="chkCPRby" class="form-check-input" type="checkbox" value="">
     				<label class="form-check-label">C.P.R. in progress on arrival by:</label>
             	</div>
             	<div class="form-check form-check-inline">
-    				<input class="form-check-input" type="radio" name="radCPR" value="Citizen">
+    				<input class="form-check-input" type="radio" name="cprBy" value="Citizen">
     				<label class="form-check-label">Citizen</label>
             	</div>
             	<div class="form-check form-check-inline">
-    				<input class="form-check-input" type="radio" name="radCPR" value="PD/FD/Other First Responder">
+    				<input class="form-check-input" type="radio" name="cprBy" value="PD/FD/Other First Responder">
     				<label class="form-check-label">PD/FD/Other First Responder</label>
             	</div>
             	<div class="form-check">
-    				<input class="form-check-input form-check-inline" type="radio" name="radCPR" value="Other">
+    				<input class="form-check-input form-check-inline" type="radio" name="cprBy" value="Other">
     				<label class="form-check-label">Other</label>
             	</div>
             	<div class="form-inline">
-            		<input name="chkBLStxt3" class="form-check-input" type="checkbox">
+            		<input name="chkCprStart" class="form-check-input" type="checkbox">
             		<label class="form-check-label">C.P.R. started @</label>
-            		<input class="form-control" type="text" name="txtCPRstart">
+            		<input class="form-control" type="text" name="cprStart">
             		<label class="form-check-label">Time from Arrest til CPR:</label>
-            		<input class="form-control" type="text" name="txtCPRarrest">
+            		<input class="form-control" type="text" name="cprArrest">
             	</div>
             	<div class="form-inline">
-            		<input name="chkBLStxt4" class="form-check-input" type="checkbox">
+            		<input name="chkDefi" class="form-check-input" type="checkbox">
             		<label class="form-check-label">Defibrillation No. Times</label>
-            		<input name="numDef" class="form-control" type="number">
+            		<input name="defiTimes" class="form-control" type="number">
                 	<div class="form-check form-check-inline ml-1">
-        				<input name="radBLS4" type="radio" name="radCPR" value="Manual">
+        				<input name="radDefi" type="radio" name="radCPR" value="Manual">
         				<label class="form-check-label">Manual</label>
                 	</div>
                 	<div class="form-check form-check-inline">
-        				<input name="radBLS4" class="form-check-input" value="Semi-auto." type="radio" name="radCPR">
+        				<input name="radDefi" class="form-check-input" value="Semi-auto." type="radio" name="radCPR">
         				<label class="form-check-label">Semi-auto.</label>
                 	</div>
             	</div>
@@ -185,14 +189,14 @@
     				<label class="form-check-label">Irrigation</label>
             	</div>
             	<div class="form-check">
-    				<input name="chkBLStxt2" class="form-check-input" type="checkbox" value="">
-    				<label class="form-check-label">Mast Infated</label>
-    				<input name="txtMast" class="form-control form-control-sm w-25" type="text">
+    				<input name="chkMast" class="form-check-input" type="checkbox" value="">
+    				<label class="form-check-label">Mast Inflated</label>
+    				<input name="mastBLS" class="form-control form-control-sm w-25" type="text">
             	</div>
             	<div class="form-inline">
-    				<input name="chkBLStxt3" class="form-check-input" type="checkbox" value="">
+    				<input name="chkBleed" class="form-check-input" type="checkbox" value="">
     				<label class="form-check-label">Bleeding/Hemorrhage Controlled (Method:
-    				<input name="txtBleedCtrl" class="form-control form-control-sm w-25" type="text"></label>
+    				<input name="bleedBLS" class="form-control form-control-sm w-25" type="text"></label>
     				<label class="form-check-label">)</label>
             	</div>
             	<div class="form-check">
@@ -246,19 +250,19 @@
     				<label class="form-check-label">Heat or Cold Applied</label>
     			</div>
     			<div class="form-group form-inline">
-    				<input name="chkBLStxt4"class="form-check-input" type="checkbox">
+    				<input name="chkVomit"class="form-check-input" type="checkbox">
     				<label class="form-check-label">Vomiting Induced @</label>
     				<input name="txtVomit" class="form-control" type="text">
     				<label class="form-label">Method:</label>
     				<input name="txtVomitMethod" class="form-control" type="text">
     			</div>
     			<div class="form-inline">
-    				<input name="chkBLStxt5" class="form-check-input" type="checkbox">
+    				<input name="chkRestraint" class="form-check-input" type="checkbox">
     				<label class="form-check-label">Restraints Applied:</label>	
-    				<input name="txtRestraints" class="form-control" type="text">
+    				<input name="restraintBLS" class="form-control" type="text">
     			</div>
     			<div class="form-inline">
-    				<input name="chkBLStxt6" class="form-check-input" type="checkbox">
+    				<input name="chkBaby" class="form-check-input" type="checkbox">
     				<label class="form-check-label">Baby Delivered @:</label>	
     				<input name="txtBabyDelivery" class="form-control" type="text">
     				<label class="form-label ml-1">In Country:</label>
@@ -281,18 +285,18 @@
                 	</div>
     			</div>
     			<div class="form-group form-inline">
-    				<input name="chkBLStxt7" class="form-check-input" type="checkbox">
+    				<input name="chkAED" class="form-check-input" type="checkbox">
     				<label class="form-check-label">AED; #shocks:</label>	
-    				<input name="txtAEDshock" class="form-control form-control-sm" type="text">
+    				<input name="aedBLS" class="form-control form-control-sm" type="text">
     			</div>
     			<div class="form-check form-check-inline">
         				<input name="chkBLS[]" class="form-check-input" type="checkbox" value="Bandaging">
         				<label class="form-check-label">Bandaging</label>
                 </div>
                 <div class="form-group form-inline">
-    				<input name="chkBLStxt8" class="form-check-input" type="checkbox">
+    				<input name="chkOtherBLS" class="form-check-input" type="checkbox">
     				<label class="form-check-label">Other:</label>	
-    				<input name="txtBLSother" class="form-control form-control-sm" type="text">
+    				<input name="otherBLS" class="form-control form-control-sm" type="text">
     			</div>
             </div>
      	</div>

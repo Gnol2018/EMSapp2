@@ -1,6 +1,5 @@
 <?php
-require_once("../resources/config.php");
-echo $_SESSION['userName'];
+require_once("../resources/pdoConfig.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">

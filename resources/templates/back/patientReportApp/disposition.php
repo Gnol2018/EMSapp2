@@ -20,13 +20,8 @@
  				</div>
  				<div class="form-group">
  					<label>Destination (Hospital/Non-Hospital)</label>
- 					<select name="selDisDes" class="form-control">
- 						<option>A</option>
- 						<option>B</option>
- 						<option>C</option>
- 						<option>D</option>
- 						<option>E</option>
- 					</select>
+ 					<input name="txtDisDes" class="form-control" type="text">
+ 						
  				</div>
  				<div class="form-check form-check-inline">
  					<label class="form-check-label">Proximity:</label>		
@@ -50,17 +45,8 @@
  				</div>
  				<div class="form-group">
  					<label>Ambulance Requested By:</label>
- 					<select name="selDisRequester" class="form-control">
- 						<option>&lt;Select&gt;</option>
-						<option>Patient</option>
-						<option>Friend</option>
-						<option>Family</option>
-						<option>Hospital/Clinic/SNF</option>
-						<option>Physician</option>
-						<option>Police</option>
-						<option>Renal Dialysis</option>
-						<option>Witness</option>
- 					</select>
+ 					<input type="text" name="selDisRequester" class="form-control">
+ 						
  				</div>
  				<div class="form-group">
  					<label>Type of Transport:</label>
@@ -79,7 +65,7 @@
  				</div>
  				<div class="form-group">
  					<label>Purpose of Round Trip:</label>
- 					<input name="txtDisRound"form-control" type="text">
+ 					<input name="txtDisRound" type="text">
  				</div>
  				<div class="form-group">
  					<label>Reason for Stretcher:</label>
@@ -104,10 +90,7 @@
  					<input name="chkDisDeath[]" class="form-check-input" type="checkbox" value="Helicopter">
  					<label class="form-check-label">Helicopter</label>
  				</div>
- 				<div class="form-check">
- 					<input name="chkDisDeath[]" class="form-check-input" type="checkbox" value="RMA/AMA">
- 					<label class="form-check-label">RMA/AMA</label>
- 				</div>
+ 				
  				<div class="form-check">
  					<input name="chkDisDeath[]" class="form-check-input" type="checkbox" value="DNR">
  					<label class="form-check-label">DNR</label>
@@ -115,10 +98,6 @@
  				<div class="form-check">
  					<input name="chkDisDeath[]" class="form-check-input" type="checkbox" value="Unfounded">
  					<label class="form-check-label">Unfounded</label>
- 				</div>
- 				<div class="form-check">
- 					<input name="chkDisDeath[]" class="form-check-input" type="checkbox" value="MIA">
- 					<label class="form-check-label">MIA</label>
  				</div>
  				<div class="form-group form-inline">
  					<input name="chkDistxt1" class="form-check-input" type="checkbox">
@@ -157,10 +136,7 @@
  					<input name="chkDisTransport[]" class="form-check-input" type="checkbox" value="Walked to ambulance">
  					<label class="form-check-label">Walked to ambulance</label>
  				</div>
- 				<div class="form-check">
- 					<input name="chkDisTransport[]" class="form-check-input" type="checkbox" value="Met at ambulance">
- 					<label class="form-check-label">Met at ambulance</label>
- 				</div>
+ 				
  				<div class="form-check">
  					<input name="chkDisTransport[]" class="form-check-input" type="checkbox" value="Restrained during transportation">
  					<label class="form-check-label">Restrained during transportation</label>
@@ -243,26 +219,34 @@
  		<div class="row">
  			<div class="col-sm border border-dark">
  				<div class="form-group">
- 					<label>In Charger:</label>
+ 					<label>In Charge:</label>
  					<input name="inChargeName" class="form-control" type="text">
  				</div>
  				<div class="form-check form-check-inline">
- 					<input class="form-check-input" type="radio" name="radInCharge" value="EMT">
+ 					<input class="form-check-input" type="radio" name="crewLevel1" value="EMT">
+ 					<label class="form-check-label">EMTP</label>
+ 				</div>
+ 				<div class="form-check form-check-inline">
+ 					<input class="form-check-input" type="radio" name="crewLevel1" value="EMT">
  					<label class="form-check-label">EMT</label>
  				</div>
  				<div class="form-check form-check-inline">
- 					<input class="form-check-input" type="radio" name="radInCharge" value="AEMT">
+ 					<input class="form-check-input" type="radio" name="crewLevel1" value="AEMT">
  					<label class="form-check-label">AEMT#</label>
  				</div>
  				<div class="form-group form-inline">
  					<label>#:</label>
- 					<input name="inChargeNum" class="form-control" type="text">
+ 					<input name="crewId1" class="form-control" type="text">
  				</div>
  			</div>
  			<div class="col-sm border border-dark">
  				<div class="form-group">
  					<label>Driver:</label>
  					<input name="driverName" class="form-control" type="text">
+ 				</div>
+ 				<div class="form-check form-check-inline">
+ 					<input class="form-check-input" type="radio" name="radInCharge" value="EMT">
+ 					<label class="form-check-label">EMTP</label>
  				</div>
  				<div class="form-check form-check-inline">
  					<input class="form-check-input" type="radio" name="radDriver">
@@ -283,6 +267,10 @@
  					<input name="otherDriver1" class="form-control" type="text">
  				</div>
  				<div class="form-check form-check-inline">
+ 					<input class="form-check-input" type="radio" name="radInCharge" value="EMT">
+ 					<label class="form-check-label">EMTP</label>
+ 				</div>
+ 				<div class="form-check form-check-inline">
  					<input class="form-check-input" type="radio" name="radOtherDriver1">
  					<label class="form-check-label">EMT</label>
  				</div>
@@ -299,6 +287,10 @@
  				<div class="form-group">
  					<label>Other:</label>
  					<input name="otherDriver2" class="form-control" type="text">
+ 				</div>
+ 				<div class="form-check form-check-inline">
+ 					<input class="form-check-input" type="radio" name="radInCharge" value="EMT">
+ 					<label class="form-check-label">EMTP</label>
  				</div>
  				<div class="form-check form-check-inline">
  					<input class="form-check-input" type="radio" name="radInCharge">

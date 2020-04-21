@@ -2,6 +2,19 @@ body {
 	color: #f2f2f2;
 	background-color: #0d0d0d;
 }
+/*----- Media Query -----*/
+@media only screen 
+and (max-width: 768px) 
+and (max-width: 1024px){
+	.nav-item {
+		width: 120px !important;
+	}	
+}
+
+.jSignature {
+	
+	
+}
 
 /* ---Main Form CSS -----*/
 a {
@@ -10,6 +23,17 @@ a {
 
 .nav-link:hover {
 	font-weight: bold;
+}
+.navbar {
+	background-color: #0d0d0d;
+}
+.nav-item{
+	background-color: #0d0d0d;
+}
+
+.submitRow > .btn {
+	margin-top: 5px;
+	font-size: 1.5em;
 }
 .card {
 	background-color:transparent;
@@ -27,7 +51,10 @@ a {
 	border: 4px solid #ED1A23;
 }
 
-
+.dropdown-menu {
+	background-color:white;
+	z-index: 1070;
+}
 .form-control {
 	color: #f2f2f2;
 	background-color: #0d0d0d;
@@ -42,7 +69,7 @@ a {
 }
 
 #dispatchPanel, #demographicPanel, #problemPanel, #treatmentPanel,
- #dispositionPanel, #apcfpPanel, #narrativePanel, #authorizationPanel {
+ #dispositionPanel, #apcfpPanel, #narrativePanel, #authorizationPanel, #addDemo {
 	background:#262626;
 }
 .btn-outline-secondary {
@@ -53,6 +80,10 @@ a {
 	background-color:#404040;
 }
 
+.selectRow:hover{
+	background-color:#f2f2f2;
+	color: black;
+}
  /* Style the buttons that are used to open and close the accordion panel */
 .accordion {
   background-color: #eee;
@@ -83,4 +114,6 @@ a {
 
 
 .signature-component {
+	width:100%;
+	max-height: 100%;
 }

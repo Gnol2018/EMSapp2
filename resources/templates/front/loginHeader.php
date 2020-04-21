@@ -4,9 +4,10 @@
     <title>EMS Login Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
     
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
         
 /* BASIC */
 
@@ -37,8 +38,25 @@ h2 {
   color: #cccccc;
 }
 
-
-
+input[type="password"]{
+background-color: #f6f6f6;
+border: none;
+color: #0d0d0d;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 5px;
+width: 85%;
+border: 2px solid #f6f6f6;
+-webkit-transition: all 0.5s ease-in-out;
+-moz-transition: all 0.5s ease-in-out;
+-ms-transition: all 0.5s ease-in-out;
+-o-transition: all 0.5s ease-in-out;
+transition: all 0.5s ease-in-out;
+-webkit-border-radius: 5px 5px 5px 5px;
+border-radius: 5px 5px 5px 5px;}
 /* STRUCTURE */
 
 .wrapper {
