@@ -84,6 +84,9 @@ function chkBoxGetInput(txtBox,inputVal){
 
 //Add Vital Sign Table
 
+function alertSubmit() {
+	alert("");
+}
 
 
 //----------------Add Jsignature Pad when document is loaded-----------------

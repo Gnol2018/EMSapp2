@@ -1,13 +1,22 @@
 
 <form class="container-fluid" method="POST">
 <?php 
+   
     if(!empty($_SESSION['runId'])) {
-        fillDispatch1();
+        $dispatchCheck = dataCheck(($_SESSION['runId']), 'dispatchtable');
+        if ($dispatchCheck == '0') {
+            
+            include(TEMPLATE_BACK. DS. "patientReportApp/dispatchForm.php");
+            
+        } else {
+            fillDispatch1();
+        }
+        
         fillDemographic1();
     }
     if(isset($_POST['medicSubmit'])) {
-        $letSee = insertEntireForm();
-        echo $letSee;
+        insertEntireForm();
+       
     }
 ?>
 

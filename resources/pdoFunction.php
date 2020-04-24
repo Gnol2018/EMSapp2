@@ -584,6 +584,12 @@ function insertEntireForm() {
         
     }
     
+    if ((!empty($_POST['checkALS']) || !empty($_POST['checkBLS']))) {
+        
+        insertTreatmentGiven();
+        
+    }
+    
     if (!empty($_POST['txtNarrativeNote']) ) {
        insertNarrativeNote();
     }

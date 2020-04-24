@@ -52,7 +52,7 @@ include(TEMPLATE_FRONT. DS . "appNav.php");
 	
 	<div class="row">	
 		<div class="col-12 submitRow">
-			<input class="btn btn-primary" id="dispatchSubmit" name="dispatchSubmit" type="submit" value="Submit"></input>
+			<input class="btn btn-primary" id="dispatchSubmit" onclick="return confirm('Initialize Patient Care Report ?')" name="dispatchSubmit" type="submit" value="Submit"></input>
 		</div>
 	</div>
 	<?php 

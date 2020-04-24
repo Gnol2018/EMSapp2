@@ -27,14 +27,6 @@
             ";
 		}
 		?>
-			 <div class='col-sm'>
-				<label for='dispatchDate'>Begin: </label>
-				<input  oninput='mileCal()' type='text'class='form-control' id='mileBegin' value='' required></input>
-			</div>
-			<div class='col-sm'>
-				<label>End:  </label>
-				<input oninput='mileCal()' type='text' class='form-control' id='mileEnd' value='' required></input>
-			</div>
 			<div class="col-sm">
 				<label>Total:  </label>
 				<input  name="mileTotal" id ="mileTotal"  type="text" class="form-control"  placeholder="Miles" value="<?php echo $mileage?>"></input>
