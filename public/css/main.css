@@ -69,7 +69,8 @@ a {
 }
 
 #dispatchPanel, #demographicPanel, #problemPanel, #treatmentPanel,
- #dispositionPanel, #apcfpPanel, #narrativePanel, #authorizationPanel, #addDemo {
+#dispositionPanel, #apcfpPanel, #narrativePanel, #authorizationPanel,
+#addDemo, #patientUpdate {
 	background:#262626;
 }
 .btn-outline-secondary {

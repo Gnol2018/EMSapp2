@@ -410,8 +410,75 @@ function fillDemographicFromSearchPatient(){
             $insurClaim1 = $row['insurClaim1'];
         }
     }
-    
     include(TEMPLATE_BACK. DS. "pcrProcess/demographicProcess.php");
+}
+
+function fillDemographicForUpdate() {
+    require('pdoConfig.php');
+    //Pick up patient index infor from addPatient
+    $patientFname = $_SESSION['patientFname'];
+    $patientLname = $_SESSION['patientLname'];
+    $patientAddress = $_SESSION['patientAddress'];
+    $patientDOB = $_SESSION['patientDOB'];
+    $patientId = $_SESSION['patientId'];
+    //Prepare the SQL statement
+    $queryDemo = $conn->prepare('SELECT patientId, patientFname, patientLname, patientAddress, patientPhone1, patientPhone2,  patientZipcode, patientDOB, patientAge, patientGender, patientRace, patientSS, patientEmerContact, patientEmerPhone
+                                FROM patients
+                                WHERE patientId = ?');
+    
+    $queryDemo->execute([$patientId]);
+    foreach($queryDemo as $row){
+        
+        $patientFname = $row['patientFname'];
+        $patientLname = $row['patientLname'];
+        $patientAddress = $row['patientAddress'];
+        $patientPhone1 = $row['patientPhone1'];
+        $patientPhone2 = $row['patientPhone2'];
+        $patientZipcode = $row['patientZipcode'];
+        $patientDOB = $row['patientDOB'];
+        $patientAge = $row['patientAge'];
+        $patientGender = $row['patientGender'];
+        $patientRace = $row['patientRace'];
+        $patientSS = $row['patientSS'];
+        $patientEmerContact = $row['patientEmerContact'];
+        $patientEmerPhone = $row['patientEmerPhone'];
+    }
+    
+    
+    if(isset($patientZipcode)) {
+        $queryZipcode = $conn->prepare('SELECT patientCity, patientState
+	                                        FROM zipcodes
+                                            WHERE patientZipcode = ?');
+        $queryZipcode->execute([$patientZipcode]);
+        foreach($queryZipcode as $row) {
+            $patientCity = $row['patientCity'];
+            $patientState = $row['patientState'];
+        }
+    };
+    
+    if($patientId) {
+        $queryInsur = $conn->prepare('SELECT insurPolicy1, insurCompany1, insurAddress1, insurPhone1, insurGroup1,
+                                    insurPol1, insurHolder1, insurSS1, insurDOB1, insurMedicaid1,
+                                    insurMedicare1, insurClaim1
+                                    FROM insurancetable
+                                    WHERE patientId = ?');
+        $queryInsur->execute([$patientId]);
+        foreach($queryInsur as $row) {
+            $insurPolicy1 = $row['insurPolicy1'];
+            $insurCompany1 = $row['insurCompany1'];
+            $insurAddress1 = $row['insurAddress1'];
+            $insurPhone1 = $row['insurPhone1'];
+            $insurGroup1 = $row['insurGroup1'];
+            $insurPol1 = $row['insurPol1'];
+            $insurHolder1 = $row['insurHolder1'];
+            $insurSS1 = $row['insurSS1'];
+            $insurDOB1 = $row['insurDOB1'];
+            $insurMedicaid1 = $row['insurMedicaid1'];
+            $insurMedicare1 = $row['insurMedicare1'];
+            $insurClaim1 = $row['insurClaim1'];
+        }
+    }
+    include(TEMPLATE_BACK. DS. "pcrProcess/updateProcess.php");
 }
 //-------------------Function to auto-fill Demographic Form End-----
 function submitRunId() {
@@ -1603,24 +1670,30 @@ function transferPatient(){
         $_SESSION['patientId'] = $patientId;
         redirect('initializePCR.php');
     }
+    
+    if(isset($_POST['updatePatient'])){
+        $patientId = $_POST['modalId'];
+        $_SESSION['patientId'] = $patientId;
+        redirect('updatePatient.php');
+    }
 }
 //------------------ Add Patient to DB ----------------
 function addPatient() {
     
         require("pdoConfig.php");
-        $patientFname = ($_POST['patientFname']);
-        $patientLname = ($_POST['patientLname']);
-        $patientAddress = ($_POST['patientAddress']);
-        $patientPhone1 = ($_POST['patientPhone1']);
-        $patientPhone2 = ($_POST['patientPhone2']);
-        $patientZipcode = ($_POST['patientZipcode']);
-        $patientDOB = ($_POST['patientDOB']);
-        $patientAge = $_POST['patientAge'];
-        $patientGender = ($_POST['patientGender']);
-        $patientRace = ($_POST['patientRace']);
-        $patientSS = ($_POST['patientSS']);
-        $patientEmerContact = ($_POST['patientEmerContact']);
-        $patientEmerPhone = ($_POST['patientEmerPhone']);
+        $patientFname = trim_input($_POST['patientFname']);
+        $patientLname = trim_input($_POST['patientLname']);
+        $patientAddress = trim_input($_POST['patientAddress']);
+        $patientPhone1 = trim_input($_POST['patientPhone1']);
+        $patientPhone2 = trim_input($_POST['patientPhone2']);
+        $patientZipcode = trim_input($_POST['patientZipcode']);
+        $patientDOB = trim_input($_POST['patientDOB']);
+        $patientAge = trim_input($_POST['patientAge']);
+        $patientGender = trim_input($_POST['patientGender']);
+        $patientRace = trim_input($_POST['patientRace']);
+        $patientSS = trim_input($_POST['patientSS']);
+        $patientEmerContact = trim_input($_POST['patientEmerContact']);
+        $patientEmerPhone = trim_input($_POST['patientEmerPhone']);
         
         //Select patient info in DB then compare to not allow duplicate
         $sqlPatientIndex = 'SELECT patientFname, patientLname, patientAddress, patientDOB
@@ -1725,7 +1798,37 @@ function addInsurance() {
 } 
 //------------------- End Add Patient -----------------
 
-
+//------------------- Update Patient Start ------------
+function updatePatient() {
+    require('pdoConfig.php');
+    $patientId = $_SESSION['patientId'];
+    $patientFname = trim_input($_POST['patientFname']);
+    $patientLname = trim_input($_POST['patientLname']);
+    $patientAddress = trim_input($_POST['patientAddress']);
+    $patientPhone1 = trim_input($_POST['patientPhone1']);
+    $patientPhone2 = trim_input($_POST['patientPhone2']);
+    $patientZipcode = trim_input($_POST['patientZipcode']);
+    $patientDOB = trim_input($_POST['patientDOB']);
+    $patientAge = trim_input($_POST['patientAge']);
+    $patientGender = trim_input($_POST['patientGender']);
+    $patientRace = trim_input($_POST['patientRace']);
+    $patientSS = trim_input($_POST['patientSS']);
+    $patientEmerContact = trim_input($_POST['patientEmerContact']);
+    $patientEmerPhone = trim_input($_POST['patientEmerPhone']);
+    //Make sql to update patient 
+    $updateSQL = $conn->prepare('UPDATE patients 
+                                 SET patientFname = ?, patientLname = ?, patientAddress = ?, patientPhone1 = ?, patientPhone2 = ?,
+                                     patientZipcode = ?, patientDOB = ?, patientAge= ?, patientGender = ?, patientRace = ?, 
+                                     patientSS = ?, patientEmerContact = ?, patientEmerPhone = ?
+                                WHERE patientId = ?');
+    $updateSQL->execute([$patientFname, $patientLname, $patientAddress, $patientPhone1, $patientPhone2,
+                        $patientZipcode, $patientDOB, $patientAge, $patientGender, $patientRace,
+                        $patientSS, $patientEmerContact, $patientEmerPhone, $patientId]);
+    echo '<script language="javascript">';
+    echo 'alert("Patient has been updated!")';
+    echo '</script>';
+}
+//------------------- Update Patient Ends -------------
 
 //--------------------Printing Function Start Here -------------------
 function getDemographic() {

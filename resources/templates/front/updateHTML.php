@@ -1,14 +1,11 @@
-
 <div class="card-header" id="headingOne">
-  <button class="btn btn-primary" id="btnSearchPatient" name="btnSearchPatient" type="submit" value="SEARCH PATIENT" onclick="loaddata();">
-      <i class="fas fa-search"></i>
-      Search Patients
-  </button>
-  <button class="btn btn-primary" id="btnSearchPatient" name="btnSearchAll" type="submit" value="SEARCH All" onclick="loadall();">
-      <i class="fas fa-search"></i>
-      Search All
-  </button>
+	<h5 class="mb-0" >
+		<a class="btn btn-link" data-toggle="collapse" data-target="#addDemo" aria-expanded="false" aria-controls="collapseOne">
+		UPDATE PATIENT
+		</a>
+	</h5>
 </div>
+
 <div class="container-fluid my-2 py-2">   
     <div class="form-row">
     	<div class="form-group col-sm">
@@ -91,53 +88,4 @@
     		<input type="text" class="form-control" name="patientEmerPhone" id="demographicEcontact"></input>
     	</div>
     </div>
-</div>
-
-<!-- <div class="card-header" id="headingOne">
-  <a class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open Modal</a>
-</div> -->
-
-<!-- Initialize Modal -->
-<div id="myModal" class="modal fade " role="dialog">
-	<div class=" modal-dialog">
-	<!-- Modal Content -->
-    	<div class="bg-dark text-light modal-content">
-    		<div class="modal-header">
-    			<h4 class="modal-title">Selected Patient</h4>
-    		</div>
-    		<div class="modal-body">
-        		<form method="POST" class="form-group">
-        			<div class="form-row">
-        				<label>Patient Id</label>
-        				<input type="text" name="modalId" id="modalId" class="form-control">
-        			</div>
-        			<div class="form-row">
-        				<label>First Name</label>
-        				<input type="text" name="firstName" id="firstName" class="form-control">
-        			</div>
-        			<div class="form-row">
-        				<label>Last Name</label>
-        				<input type="text" name="lastName" id="lastName" class="form-control">
-        			</div>
-        			<div class="form-row">
-        				<label>Address</label>
-        				<input type="text" name="address" id="address" class="form-control">
-        			</div>
-        			<div class="form-row">
-        				<label>Date of Birth: </label>
-        				<input type="text" name="dob" id="dob" class="form-control">
-        			</div>
-        			<div class="form-row">
-        				<label>Phone #1: </label>
-        				<input type="text" name="phone1" id="phone1" class="form-control">
-        			</div>
-        			<button type="submit" id="selectSubmit" name="selectSubmit" class="my-2 btn btn-primary">Initialize PCR</button>
-        			<button type="submit" id="updatePatient" name="updatePatient" class="my-2 btn btn-primary">Update Patient</button>
-        		</form>
-      		</div>
-    	</div>
-	</div>
-</div>
-<!-- Modal -->
-<div class="container-fluid my-2 py-2" id="display_info">   
 </div>
