@@ -389,6 +389,7 @@ function fillDemographicFromSearchPatient(){
     };
    
     if($patientId) {
+        //This is missing preventing duplication
         $queryInsur = $conn->prepare('SELECT insurPolicy1, insurCompany1, insurAddress1, insurPhone1, insurGroup1, 
                                     insurPol1, insurHolder1, insurSS1, insurDOB1, insurMedicaid1,
                                     insurMedicare1, insurClaim1
@@ -1827,6 +1828,53 @@ function updatePatient() {
     echo '<script language="javascript">';
     echo 'alert("Patient has been updated!")';
     echo '</script>';
+}
+
+function updateInsurance() {
+    require('pdoConfig.php');
+    $patientId = $_SESSION['patientId'];
+    //Get input from the Form
+    $insurPolicy1 = ($_POST['insurPolicy1']);
+    $insurCompany1 = ($_POST['insurCompany1']);
+    $insurAddress1 = ($_POST['insurAddress1']);
+    $insurPhone1 = ($_POST['insurPhone1']);
+    $insurGroup1 = ($_POST['insurGroup1']);
+    $insurPol1 = ($_POST['insurPol1']);
+    $insurHolder1 = ($_POST['insurHolder1']);
+    $insurSS1 = $_POST['insurSS1'];
+    $insurDOB1 = $_POST['insurDOB1'];
+    $insurMedicare1 = ($_POST['insurMedicare1']);
+    $insurMedicaid1 = $_POST['insurMedicaid1'];
+    $insurClaim1 = $_POST['insurClaim1'];
+    //If the patient Id is existed in the Insurance table then update, if not, initilize row insert
+    $sqlcount = $conn->prepare('SELECT patientId FROM insurancetable WHERE patientId = ?');
+    $sqlcount->execute([$patientId]);
+    if ($sqlcount->rowcount() > 1) {
+        $sql = "INSERT INTO insurancetable(patientId, insurPolicy1, insurCompany1, insurAddress1,
+                                       insurPhone1, insurGroup1, insurPol1, insurHolder1,
+                                       insurSS1, insurDOB1, insurMedicare1, insurMedicaid1,
+                                       insurClaim1)
+                        VALUE(?, ?, ?, ?,
+                              ?, ?, ?, ?,
+                              ?, ?, ?, ?,
+                              ?) ";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$patientId, $insurPolicy1, $insurCompany1, $insurAddress1,
+            $insurPhone1, $insurGroup1, $insurPol1, $insurHolder1,
+            $insurSS1, $insurDOB1, $insurMedicare1, $insurMedicaid1,
+            $insurClaim1]);
+    } else {
+        $updateInsurance = $conn->prepare('UPDATE insurancetable 
+                                           SET insurPolicy1 = ?, insurCompany1 = ?, insurAddress1 = ?,
+                                           insurPhone1 = ?, insurGroup1 = ?, insurPol1 = ?, insurHolder1 = ?,
+                                           insurSS1 = ?, insurDOB1 = ?, insurMedicare1 = ?, insurMedicaid1 = ?,
+                                           insurClaim1 = ?');
+        $updateInsurance->execute([$insurPolicy1, $insurCompany1, $insurAddress1,
+            $insurPhone1, $insurGroup1, $insurPol1, $insurHolder1,
+            $insurSS1, $insurDOB1, $insurMedicare1, $insurMedicaid1,
+            $insurClaim1]);
+    }
+    
 }
 //------------------- Update Patient Ends -------------
 

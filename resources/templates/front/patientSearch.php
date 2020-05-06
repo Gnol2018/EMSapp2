@@ -9,7 +9,7 @@
       Search All
   </button>
 </div>
-<div class="container-fluid my-2 py-2">   
+<div class="container-fluid my-2 py-2 bg-gray">   
     <div class="form-row">
     	<div class="form-group col-sm">
     		<label>First Name:</label>

@@ -18,6 +18,7 @@ include(TEMPLATE_FRONT. DS. "appNav.php");
 <?php 
 if(isset($_POST['btnUpdatePatient'])) {
     updatePatient();
+    updateInsurance();
 };
  if($_SESSION['patientId']) {
     
