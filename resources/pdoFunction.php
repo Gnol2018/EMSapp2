@@ -1010,7 +1010,7 @@ function insertDispatchForm1(){
 function insertPresentProblem(){
     require('pdoConfig.php');
     $runId = $_POST['runId'];
-    $traumaComplain = $_POST['traumaComplain'];
+    $traumaComplain = trim_input($_POST['traumaComplain']);
     $traumaInjury = implode(',', $_POST['trauma_injury']);
     $patientSeatbelt = $_POST['patientSeatbelt'];
     $presentProblem = implode(',', $_POST['present_problem']);
@@ -1059,7 +1059,7 @@ function insertPresentProblem(){
 
 function insertTreatmentGiven() {
     require('pdoConfig.php');
-    $runId = $_POST['runId'];
+    $runId = trim_input($_POST['runId']);
     
     //Insert ALS here
     $chkALS = implode(',', $_POST['chkALS']);
@@ -1073,7 +1073,7 @@ function insertTreatmentGiven() {
     
     $chkCardio = $_POST['chkCardio'];
     if(isset($chkCardio)) {
-        $radCardio = $_POST['radCardio'];
+        $radCardio = trim_input($_POST['radCardio']);
         $cardioALS = $_POST['cardioALS'] . '(' . $radCardio . ')';
     } else {
         $cardioALS = '';
@@ -1730,11 +1730,11 @@ function addPatient() {
 function addInsurance() {
     require('pdoConfig.php');
     //specific patient info to find patient Id
-    $patientFname = ($_POST['patientFname']);
-    $patientLname = ($_POST['patientLname']);
-    $patientAddress = ($_POST['patientAddress']);
-    $patientAge = ($_POST['patientAge']);
-    $patientRace = ($_POST['patientRace']);
+    $patientFname = trim_input($_POST['patientFname']);
+    $patientLname = trim_input($_POST['patientLname']);
+    $patientAddress = trim_input($_POST['patientAddress']);
+    $patientAge = trim_input($_POST['patientAge']);
+    $patientRace = trim_input($_POST['patientRace']);
    echo $patientFname;
    echo $patientLname;
    echo 'Age: ' . $patientAge;
@@ -1755,18 +1755,18 @@ function addInsurance() {
     echo $patientId;
     //Found patientId
     
-    $insurPolicy1 = ($_POST['insurPolicy1']);
-    $insurCompany1 = ($_POST['insurCompany1']);
-    $insurAddress1 = ($_POST['insurAddress1']);
-    $insurPhone1 = ($_POST['insurPhone1']);
-    $insurGroup1 = ($_POST['insurGroup1']);
-    $insurPol1 = ($_POST['insurPol1']);
-    $insurHolder1 = ($_POST['insurHolder1']);
-    $insurSS1 = $_POST['insurSS1'];
-    $insurDOB1 = $_POST['insurDOB1'];
-    $insurMedicare1 = ($_POST['insurMedicare1']);
-    $insurMedicaid1 = $_POST['insurMedicaid1'];
-    $insurClaim1 = $_POST['insurClaim1'];
+    $insurPolicy1 = trim_input($_POST['insurPolicy1']);
+    $insurCompany1 = trim_input($_POST['insurCompany1']);
+    $insurAddress1 = trim_input($_POST['insurAddress1']);
+    $insurPhone1 = trim_input($_POST['insurPhone1']);
+    $insurGroup1 = trim_input($_POST['insurGroup1']);
+    $insurPol1 = trim_input($_POST['insurPol1']);
+    $insurHolder1 = trim_input($_POST['insurHolder1']);
+    $insurSS1 = trim_input($_POST['insurSS1']);
+    $insurDOB1 = trim_input($_POST['insurDOB1']);
+    $insurMedicare1 = trim_input($_POST['insurMedicare1']);
+    $insurMedicaid1 = trim_input($_POST['insurMedicaid1']);
+    $insurClaim1 = trim_input($_POST['insurClaim1']);
     
     $insurPolicy2 = ($_POST['insurPolicy2']);
     $insurCompany2 = ($_POST['insurCompany2']);
@@ -1802,7 +1802,7 @@ function addInsurance() {
 //------------------- Update Patient Start ------------
 function updatePatient() {
     require('pdoConfig.php');
-    $patientId = $_SESSION['patientId'];
+    $patientId = trim_input($_SESSION['patientId']);
     $patientFname = trim_input($_POST['patientFname']);
     $patientLname = trim_input($_POST['patientLname']);
     $patientAddress = trim_input($_POST['patientAddress']);
@@ -1832,20 +1832,20 @@ function updatePatient() {
 
 function updateInsurance() {
     require('pdoConfig.php');
-    $patientId = $_SESSION['patientId'];
+    $patientId = trim_input($_SESSION['patientId']);
     //Get input from the Form
-    $insurPolicy1 = ($_POST['insurPolicy1']);
-    $insurCompany1 = ($_POST['insurCompany1']);
-    $insurAddress1 = ($_POST['insurAddress1']);
-    $insurPhone1 = ($_POST['insurPhone1']);
-    $insurGroup1 = ($_POST['insurGroup1']);
-    $insurPol1 = ($_POST['insurPol1']);
-    $insurHolder1 = ($_POST['insurHolder1']);
-    $insurSS1 = $_POST['insurSS1'];
-    $insurDOB1 = $_POST['insurDOB1'];
-    $insurMedicare1 = ($_POST['insurMedicare1']);
-    $insurMedicaid1 = $_POST['insurMedicaid1'];
-    $insurClaim1 = $_POST['insurClaim1'];
+    $insurPolicy1 = trim_input($_POST['insurPolicy1']);
+    $insurCompany1 = trim_input($_POST['insurCompany1']);
+    $insurAddress1 = trim_input($_POST['insurAddress1']);
+    $insurPhone1 = trim_input($_POST['insurPhone1']);
+    $insurGroup1 = trim_input($_POST['insurGroup1']);
+    $insurPol1 = trim_input($_POST['insurPol1']);
+    $insurHolder1 = trim_input($_POST['insurHolder1']);
+    $insurSS1 = trim_input( $_POST['insurSS1']);
+    $insurDOB1 = trim_input($_POST['insurDOB1']);
+    $insurMedicare1 = trim_input($_POST['insurMedicare1']);
+    $insurMedicaid1 = trim_input($_POST['insurMedicaid1']);
+    $insurClaim1 = trim_input($_POST['insurClaim1']);
     //If the patient Id is existed in the Insurance table then update, if not, initilize row insert
     $sqlcount = $conn->prepare('SELECT patientId FROM insurancetable WHERE patientId = ?');
     $sqlcount->execute([$patientId]);
@@ -1881,7 +1881,7 @@ function updateInsurance() {
 //--------------------Printing Function Start Here -------------------
 function getDemographic() {
     require('pdoConfig.php');
-    $runId = $_SESSION['runId'];
+    $runId = trim_input($_SESSION['runId']);
     //User run Id to get Dispatch table rows 
     //make connection for Dispatch Form
     $dispatchQuery = $conn->prepare('SELECT mileage, dispatchDate, runId, vehId, agencyName,
@@ -2035,7 +2035,7 @@ function getDemographic() {
 }
 function fillPDF() {
   
-    $runId = $_SESSION['runId'];
+    $runId = trim_input($_SESSION['runId']);
     echo 'Run Id is ' . $runId . '<br>';
     if(!empty($runId)) {
        
