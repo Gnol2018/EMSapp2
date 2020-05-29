@@ -220,7 +220,7 @@
  			<div class="col-sm border border-dark">
  				<div class="form-group">
  					<label>In Charge:</label>
- 					<input name="inChargeName" class="form-control" type="text">
+ 					<input name="crewName1" class="form-control" type="text">
  				</div>
  				<div class="form-check form-check-inline">
  					<input class="form-check-input" type="radio" name="crewLevel1" value="EMT">
@@ -242,23 +242,23 @@
  			<div class="col-sm border border-dark">
  				<div class="form-group">
  					<label>Driver:</label>
- 					<input name="driverName" class="form-control" type="text">
+ 					<input name="crewName2" class="form-control" type="text">
  				</div>
  				<div class="form-check form-check-inline">
- 					<input class="form-check-input" type="radio" name="radInCharge" value="EMT">
+ 					<input class="form-check-input" type="radio" name="crewLevel2" value="EMT">
  					<label class="form-check-label">EMTP</label>
  				</div>
  				<div class="form-check form-check-inline">
- 					<input class="form-check-input" type="radio" name="radDriver">
+ 					<input class="form-check-input" type="radio" name="crewLevel2">
  					<label class="form-check-label">EMT</label>
  				</div>
  				<div class="form-check form-check-inline">
- 					<input class="form-check-input" type="radio" name="radDriver">
+ 					<input class="form-check-input" type="radio" name="crewLevel2">
  					<label class="form-check-label">AEMT#</label>
  				</div>
  				<div class="form-group form-inline">
  					<label>#:</label>
- 					<input name="driverNumber" class="form-control" type="text">
+ 					<input name="crewId2" class="form-control" type="text">
  				</div>
  			</div>
  			<div class="col-sm border border-dark">

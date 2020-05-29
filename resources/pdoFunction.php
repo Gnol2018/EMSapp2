@@ -625,7 +625,7 @@ function pcrFindOnSS() {
 
 //-------------Finding Information Function END Here--------------------
 
-//-----------------------Insert to database function start here-----------------------------
+//----------------------- to database function start here-----------------------------
 function dataCheck($runId,$tableName) {
     require('pdoConfig.php');
    
@@ -1299,6 +1299,16 @@ function insertDisposition() {
 
 //-----------------Insert Crew Member --------------
 function insertCrew() {
+   require('pdoConfig.php');
+   $runId = $_POST['runId'];
+ 
+   $pkIdSql = $conn->prepare('SELECT pk_PatientCareReport WHERE runId = ?');
+   $pkIdSql->execute([$runId]);
+   foreach ($pkIdSql as $row) {
+       $fr_pk_PatientCareReport = $row['pk_PatientCareReport'];
+   }
+   
+   
    
     
 }
